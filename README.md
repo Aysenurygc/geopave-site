@@ -23,9 +23,9 @@ One folder per page, so every page has a clean URL (`hizmetler/` serves
 | `404.html` | Not-found page; points old geopaveco.com URLs to their new home | — |
 | `sitemap.xml` | Every page, both build stages | — |
 
-Detail pages (stage 2) sit one level further down: nine services under
+Detail pages sit one level further down: nine services under
 `hizmetler/`, five product groups under `urunler/`, two product pages under
-their group, five company pages under `kurumsal/`. They are already linked from
+their group (three levels down), five company pages under `kurumsal/`. All are linked from
 the navigation, the hubs and `sitemap.xml`.
 
 ### Shared assets
@@ -73,10 +73,10 @@ python -m http.server 8000
 
 Drawn in code rather than photographed:
 
-1. An exploded flexible pavement section, rotatable, with selectable layers (home page)
+1. An exploded flexible pavement section, rotatable, with selectable layers (home page and `hizmetler/yol-ustyapi-muhendisligi/`)
 2. A lane surface rendered as 3D displacement from a generated profile, with
-   roughness values computed from that profile (stage 2)
-3. A micro surfacing application sequence (stage 2)
+   roughness values computed from that profile (`urunler/yol-yuzey-olcum-ekipmanlari/`)
+3. A micro surfacing application sequence (`urunler/mikro-yuzeyleme/`)
 
 Each falls back to a drawn static diagram carrying the same information when
 WebGL is unavailable. With reduced motion requested, nothing animates on its own.

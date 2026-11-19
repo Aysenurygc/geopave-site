@@ -126,7 +126,8 @@ if(form)(function(){
     if(!submitTxt.hasOwnProperty(v))v='hizmet';
     types.forEach(function(t){t.checked=t.value===v;});
     groups.forEach(function(g){g.disabled=g.getAttribute('data-group')!==v;});
-    if(submit)submit.textContent=submitTxt[v];
+    // a form may fix its own button label (e.g. the RFQ on a product page: data-submit="Proforma Fatura Talep Edin")
+    if(submit)submit.textContent=form.getAttribute('data-submit')||submitTxt[v];
     if(micro){micro.textContent=microTxt[v];micro.lang=v==='temsil'?'en':'tr';}
   }
   function showForm(){if(done)done.hidden=true;form.hidden=false;}
