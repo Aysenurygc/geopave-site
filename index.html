@@ -1,0 +1,1784 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B4F8F">
+<!-- Design preview, not the live company site. Kept out of search so it cannot
+     compete with www.geopaveco.com for the same terms. Remove this tag, and
+     robots.txt, only when this becomes the production site. -->
+<meta name="robots" content="noindex, nofollow">
+<!-- Base reset. The Artifact platform injected an equivalent; a standalone document needs its own.
+     Declared BEFORE the page stylesheet so the page's dark-theme blocks still win. -->
+<style>:root{color-scheme:light}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Geopave Mühendislik</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Geopave Mühendislik: Ankara merkezli yol üstyapı mühendisliği danışmanlığı ve yol teknolojileri temsilciliği. Üstyapı tasarımı, geoteknik, kalite kontrol; yüzey ölçüm ekipmanları, asfalt kimyasalları, mikro yüzeyleme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: "Instrument Grade" — a document sheet on a 12-col grid. Hairlines, not boxes.
+   Colour is reserved for data: blue = interface/selection, amber = a measured value. */
+:root{
+  --bg:#FFFFFF; --surface-2:#F6F7F8; --surface-3:#EEF1F4; --stage:#F2F4F6;
+  --ink-900:#10151A; --ink-700:#39424C; --ink-500:#5D6873; --ink-400:#767F8A;
+  --line-strong:#848D99; --line:#D5DAE0; --line-soft:#E3E7EB;
+  --primary:#0B4F8F; --primary-hover:#083B6B; --on-primary:#FFFFFF; --link:#0A66C2; --primary-100:#EAF2FB; --focus:#0A66C2;
+  --amber:#F2A21C; --amber-text:#8C5600;
+  --success:#1F7A4D; --danger:#B3261E;
+  --pending-ink:#8C5600; --pending-stripe:rgba(242,162,28,.14); --pending-bg:#FFFCF6;
+  --inv-bg:#10151A; --inv-2:#1A2129; --inv-ink:#E8ECF0; --inv-muted:#A3AEBA; --inv-line:#2C353F; --inv-primary:#6BAEF2; --inv-on-primary:#0B1A2A;
+  --fig-face:#FFFFFF; --fig-top:#E9EDF1; --fig-side:#DDE2E7; --fig-hatch:#5D6873; --fig-edge:#10151A; --fig-sel:#DCE9F7; --fig-sel-hatch:#0B4F8F;
+  --scan-base:#E4E8EC; --scan-meas:#B9C1CA; --scan-grid:#39424C;
+  --asph-old:#A2A9B1; --asph-new:#262C33; --crack:#3A4048;
+  --font-sans:"IBM Plex Sans","Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+  --font-mono:"IBM Plex Mono","JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --font-cond:"IBM Plex Sans Condensed","Archivo Narrow","Roboto Condensed","Arial Narrow",sans-serif;
+  --radius:4px;
+  --gutter-l:max(clamp(16px,4vw,44px),env(safe-area-inset-left,0px));
+  --gutter-r:max(clamp(16px,4vw,44px),env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151A; --surface-2:#1A2129; --surface-3:#222B35; --stage:#141A20;
+    --ink-900:#E8ECF0; --ink-700:#C5CDD5; --ink-500:#A3AEBA; --ink-400:#8792A0;
+    --line-strong:#62707E; --line:#2C353F; --line-soft:#232B34;
+    --primary:#6BAEF2; --primary-hover:#93C4F6; --on-primary:#0B1A2A; --link:#6BAEF2; --primary-100:#15283C; --focus:#6BAEF2;
+    --amber:#F2A21C; --amber-text:#F2A21C; --success:#4FBF85; --danger:#F2857B;
+    --pending-ink:#F2A21C; --pending-stripe:rgba(242,162,28,.09); --pending-bg:#15191D;
+    --inv-bg:#0A0E12; --inv-2:#141A20; --inv-ink:#E8ECF0; --inv-muted:#A3AEBA; --inv-line:#2C353F; --inv-primary:#6BAEF2; --inv-on-primary:#0B1A2A;
+    --fig-face:#1A2129; --fig-top:#28323D; --fig-side:#161C23; --fig-hatch:#8E9AA7; --fig-edge:#E8ECF0; --fig-sel:#18304A; --fig-sel-hatch:#6BAEF2;
+    --scan-base:#1E262F; --scan-meas:#46525F; --scan-grid:#C5CDD5;
+    --asph-old:#5F6873; --asph-new:#0C0F12; --crack:#1A1F25;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151A; --surface-2:#1A2129; --surface-3:#222B35; --stage:#141A20;
+  --ink-900:#E8ECF0; --ink-700:#C5CDD5; --ink-500:#A3AEBA; --ink-400:#8792A0;
+  --line-strong:#62707E; --line:#2C353F; --line-soft:#232B34;
+  --primary:#6BAEF2; --primary-hover:#93C4F6; --on-primary:#0B1A2A; --link:#6BAEF2; --primary-100:#15283C; --focus:#6BAEF2;
+  --amber:#F2A21C; --amber-text:#F2A21C; --success:#4FBF85; --danger:#F2857B;
+  --pending-ink:#F2A21C; --pending-stripe:rgba(242,162,28,.09); --pending-bg:#15191D;
+  --inv-bg:#0A0E12; --inv-2:#141A20; --inv-ink:#E8ECF0; --inv-muted:#A3AEBA; --inv-line:#2C353F; --inv-primary:#6BAEF2; --inv-on-primary:#0B1A2A;
+  --fig-face:#1A2129; --fig-top:#28323D; --fig-side:#161C23; --fig-hatch:#8E9AA7; --fig-edge:#E8ECF0; --fig-sel:#18304A; --fig-sel-hatch:#6BAEF2;
+  --scan-base:#1E262F; --scan-meas:#46525F; --scan-grid:#C5CDD5;
+  --asph-old:#5F6873; --asph-new:#0C0F12; --crack:#1A1F25;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink-700);font-family:var(--font-sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+#gp{hyphens:manual}
+#gp p{hyphens:auto}
+h1,h2,h3,h4{color:var(--ink-900);margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--link);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+button{font:inherit;color:inherit}
+.mono,code,kbd{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"zero" 0}
+.wrap{max-width:1360px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--primary);color:var(--on-primary);padding:10px 14px;border-radius:var(--radius);text-decoration:none}
+.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
+svg.defs{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---------- labels / eyebrows ---------- */
+.label{font:500 12px/1.4 var(--font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-500)}
+.std{font-family:var(--font-mono);font-size:.92em;letter-spacing:.01em;white-space:nowrap;color:var(--ink-500)}
+.code{font-family:var(--font-mono);font-weight:500;color:var(--ink-900);white-space:nowrap}
+
+/* ---------- pending (client content required) ---------- */
+.pending{position:relative;border:1px dashed var(--pending-ink);border-radius:var(--radius);background:var(--pending-bg) repeating-linear-gradient(135deg,var(--pending-stripe) 0 7px,transparent 7px 14px);color:var(--ink-700)}
+.ptag{display:inline-flex;align-items:center;gap:8px;font:600 11px/1.2 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--pending-ink)}
+.ptag::before{content:"";width:8px;height:8px;border:1.5px solid currentColor;transform:rotate(45deg);flex:none}
+.pneed{font-size:13.5px;line-height:1.5;color:var(--ink-700)}
+.pneed b{font-weight:600;color:var(--ink-900)}
+.pinline{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border:1px dashed var(--pending-ink);border-radius:var(--radius);background:var(--pending-bg);font:500 12px/1.4 var(--font-mono);color:var(--pending-ink)}
+
+/* ---------- preview strip + header ---------- */
+.preview{background:var(--surface-2);border-bottom:1px solid var(--line);font:400 12.5px/1.45 var(--font-sans);color:var(--ink-500)}
+.preview .wrap{display:flex;gap:10px;align-items:center;padding-block:7px;flex-wrap:wrap}
+.preview .pinline{font-size:11px}
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.head-in{display:flex;align-items:center;gap:20px;min-height:68px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink-900);flex:none}
+.brand svg{display:block}
+.brand .wm{display:flex;flex-direction:column;line-height:1}
+.brand .wm b{font:600 19px/1 var(--font-sans);letter-spacing:.04em}
+.brand .wm span{font:500 9.5px/1 var(--font-sans);letter-spacing:.27em;color:var(--ink-500);margin-top:5px}
+.mark-arc{stroke:var(--primary)}
+.mark-dot{fill:var(--amber)}
+.nav{margin-left:auto}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px}
+.nav a{display:block;padding:10px 11px;font:500 12.5px/1 var(--font-sans);letter-spacing:.07em;color:var(--ink-700);text-decoration:none;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav a:hover{color:var(--ink-900);border-bottom-color:var(--line-strong)}
+.nav a[aria-current="true"]{color:var(--primary);border-bottom-color:var(--primary)}
+.head-tools{display:flex;align-items:center;gap:12px}
+.lang{display:flex;align-items:center;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.lang button{border:0;background:transparent;padding:7px 9px;font:500 11.5px/1 var(--font-mono);letter-spacing:.05em;color:var(--ink-500);cursor:pointer}
+.lang button+button{border-left:1px solid var(--line)}
+.lang button[aria-pressed="true"]{color:var(--ink-900);background:var(--surface-2)}
+.menu-btn{display:none;border:1px solid var(--line-strong);background:transparent;border-radius:var(--radius);width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center}
+.menu-btn span{display:block;width:18px;height:1.5px;background:var(--ink-900);position:relative}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--ink-900)}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.en-note{background:var(--primary-100);border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink-900)}
+.en-note .wrap{padding-block:9px}
+@media (max-width:1180px){
+  .nav{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);display:none;margin:0}
+  .nav.open{display:block}
+  .nav ul{flex-direction:column;padding:8px var(--gutter-r) 16px var(--gutter-l)}
+  .nav a{padding:14px 0;border-bottom:1px solid var(--line-soft);font-size:13px}
+  .menu-btn{display:inline-flex}
+  .head-tools{margin-left:auto}
+}
+@media (max-width:560px){
+  .head-cta .long{display:none}
+  .brand .wm span{letter-spacing:.2em}
+}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 20px;border-radius:var(--radius);font:500 15px/1.2 var(--font-sans);border:1.5px solid transparent;cursor:pointer;text-decoration:none;transition:background-color .15s,border-color .15s,color .15s;text-align:left}
+.btn svg{flex:none;transition:transform .15s}
+.btn:hover svg{transform:translateX(3px)}
+.btn-primary{background:var(--primary);color:var(--on-primary)}
+.btn-primary:hover{background:var(--primary-hover)}
+.btn-ghost{background:transparent;color:var(--ink-900);border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--ink-900)}
+.btn-sm{min-height:40px;padding:0 14px;font-size:14px}
+.btn-quiet{background:transparent;border:0;color:var(--link);padding:0;min-height:40px;font-weight:500;cursor:pointer;font-size:14px}
+.btn-quiet:hover{text-decoration:underline}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:1px solid var(--line)}
+.hero .wrap{padding-block:clamp(28px,4.4vw,60px) clamp(40px,5vw,72px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);gap:clamp(28px,4vw,64px);align-items:start}
+.hero-copy{padding-top:clamp(0px,2vw,28px);min-width:0}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.eyebrow .tick{width:22px;height:1px;background:var(--ink-500)}
+.display{font-family:var(--font-cond);font-weight:600;font-size:clamp(2.5rem,1.05rem + 3.7vw,4.6rem);line-height:.99;letter-spacing:-.02em;color:var(--ink-900);margin-top:20px}
+.dim{position:relative;display:inline-block;padding-bottom:.5em;white-space:nowrap}
+.dim::before{content:"";position:absolute;left:1px;right:1px;bottom:.2em;height:11px;border-left:1.5px solid var(--amber-text);border-right:1.5px solid var(--amber-text);background:linear-gradient(var(--amber-text),var(--amber-text)) center/100% 1px no-repeat}
+.dim-tag{position:absolute;left:50%;bottom:calc(.2em + 5.5px);transform:translate(-50%,50%);font:500 12px/1 var(--font-mono);letter-spacing:.02em;color:var(--amber-text);background:var(--bg);padding:2px 9px;white-space:nowrap}
+.hero-sub{font-size:clamp(17px,1.2vw,19px);line-height:1.6;color:var(--ink-700);max-width:56ch;margin-top:26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-micro{font-size:13.5px;color:var(--ink-500);margin-top:12px;max-width:52ch}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:36px 0 0;border-top:1px solid var(--line)}
+.facts>div{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);min-width:0}
+.facts>div:nth-child(odd){border-right:1px solid var(--line)}
+.facts>div:nth-child(even){padding-left:16px}
+.facts dt{font:500 11.5px/1.4 var(--font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-500)}
+.facts dd{margin:6px 0 0;font:500 15px/1.35 var(--font-sans);color:var(--ink-900)}
+.facts dd .n{font:500 26px/1 var(--font-mono);display:block;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.facts dd small{display:block;font:400 13px/1.45 var(--font-sans);color:var(--ink-500);margin-top:2px}
+.facts .pending{border-radius:0;border-width:0 0 1px 0;border-bottom-style:solid;border-bottom-color:var(--line)}
+@media (max-width:980px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- figure sheet (Evidence Block) ---------- */
+.ev{margin:0;min-width:0}
+.sheet{border:1px solid var(--line-strong);background:var(--bg)}
+.sheet-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;border-bottom:1px solid var(--line-strong);font:500 11.5px/1.3 var(--font-mono);letter-spacing:.04em;color:var(--ink-700)}
+.sheet-head>*{padding:9px 12px;min-width:0}
+.sheet-head>*+*{border-left:1px solid var(--line)}
+.sheet-head .no{color:var(--ink-900);font-weight:600}
+.sheet-head .tt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stage{position:relative;width:100%;max-width:100%;background:var(--stage);overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .6s ease}
+.stage.gl canvas{opacity:1}
+.stage .fallback{position:absolute;inset:0;width:100%;height:100%;display:block;transition:opacity .5s ease}
+.stage.gl .fallback{opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s .5s}
+.stage[tabindex]:focus-visible{outline-offset:-3px}
+.stage.grab{cursor:grab}.stage.grab:active{cursor:grabbing}
+.stage.pick{cursor:pointer}
+.stage-note{position:absolute;left:12px;bottom:10px;font:400 11px/1.3 var(--font-mono);color:var(--ink-500);pointer-events:none}
+.nogl-note{display:none;font:400 12px/1.4 var(--font-mono);color:var(--ink-500);padding:8px 12px;border-top:1px solid var(--line)}
+.nogl+.nogl-note,.stage.nogl~.nogl-note{display:block}
+/* fallback drawing styles */
+.hl{stroke:var(--fig-hatch);stroke-width:.9;fill:none}
+.hd{fill:var(--fig-hatch)}
+.fallback .f-top{fill:var(--fig-top)}
+.fallback .f-side{fill:var(--fig-side)}
+.fallback .f-front{fill:var(--fig-face)}
+.fallback .edge{fill:none;stroke:var(--fig-edge);stroke-width:1.5;stroke-linejoin:miter}
+.fallback .slab.sel .f-top,.fallback .slab.sel .f-front,.fallback .slab.sel .f-side{fill:var(--fig-sel)}
+.fallback .slab.sel .edge{stroke:var(--primary)}
+.fallback .load-ring{fill:none;stroke:var(--amber);stroke-width:1.5;stroke-dasharray:6 4}
+.fallback .load-patch{fill:var(--amber)}
+.fallback .load,.fallback .dir{stroke:var(--fig-edge);stroke-width:1.5}
+.fallback .load-head,.fallback .dir-h{fill:var(--fig-edge)}
+.fallback .load-t{font:600 14px var(--font-mono);fill:var(--ink-900)}
+.fallback .ldr{fill:none;stroke:var(--ink-500);stroke-width:1}
+.fallback .ldr.on{stroke:var(--primary)}
+.fallback .ldr-dot{fill:var(--ink-500)}.fallback .ldr-dot.on{fill:var(--primary)}
+.fallback .prof{fill:none;stroke:var(--fig-edge);stroke-width:2}
+.fallback .se{stroke:var(--primary);stroke-width:2.5}
+.fallback .dimln{stroke:var(--amber-text);stroke-width:1}
+.fallback .dimt{font:500 13px var(--font-mono);fill:var(--amber-text)}
+.fallback .lbl{font:500 13px var(--font-cond);fill:var(--ink-900)}
+.fallback .lbl.mute{font:400 11.5px var(--font-mono);fill:var(--ink-500)}
+.fallback .ms-new{fill:var(--asph-new);stroke:var(--fig-edge);stroke-width:1}
+
+/* ---------- Fig 1 specifics ---------- */
+.xs-stage{aspect-ratio:700/600}
+.xs-labels{list-style:none;margin:0;padding:0;position:absolute;inset:0;pointer-events:none}
+.xs-labels li{position:absolute;left:64%;right:8px;top:var(--y);transform:translateY(-50%);pointer-events:auto}
+.xs-labels button{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:8px;align-items:baseline;width:100%;text-align:left;border:0;background:transparent;padding:4px 0 4px 10px;border-left:2px solid var(--line-strong);cursor:pointer;color:var(--ink-900)}
+.xs-labels .i{font:500 11px/1 var(--font-mono);color:var(--ink-500);grid-row:span 2}
+.xs-labels .nm{font:600 clamp(12.5px,1.15vw,15px)/1.15 var(--font-cond);letter-spacing:.005em}
+.xs-labels .th{font:500 clamp(11px,.95vw,12.5px)/1.3 var(--font-mono);color:var(--ink-500);font-variant-numeric:tabular-nums}
+.xs-labels button:hover .nm{color:var(--primary)}
+.xs-labels button[aria-pressed="true"]{border-left-color:var(--primary)}
+.xs-labels button[aria-pressed="true"] .nm{color:var(--primary)}
+.xs-labels button[aria-pressed="true"] .th{color:var(--amber-text)}
+.leaders{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:none}
+.stage.gl .leaders{display:block}
+.leaders path{fill:none;stroke:var(--ink-500);stroke-width:1}
+.leaders circle{fill:var(--ink-500)}
+.leaders .on path{stroke:var(--primary)}.leaders .on circle{fill:var(--primary)}
+.xs-ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:10px 12px;border-top:1px solid var(--line)}
+.xs-ctrl label{font:500 11.5px/1 var(--font-mono);letter-spacing:.04em;color:var(--ink-500);display:flex;align-items:center;gap:10px}
+.xs-ctrl output{min-width:4ch;color:var(--ink-900);font-variant-numeric:tabular-nums}
+.hint{font:400 11.5px/1.3 var(--font-mono);color:var(--ink-500);margin-left:auto}
+input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:28px;width:150px;max-width:100%;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:2px;background:var(--line-strong)}
+input[type=range]::-moz-range-track{height:2px;background:var(--line-strong)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;margin-top:-6px;border-radius:2px;background:var(--bg);border:2px solid var(--primary)}
+input[type=range]::-moz-range-thumb{width:12px;height:12px;border-radius:2px;background:var(--bg);border:2px solid var(--primary)}
+.readout{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;padding:14px 12px 16px;border-top:1px solid var(--line-strong);background:var(--surface-2)}
+.readout .ri{font:500 30px/1 var(--font-mono);color:var(--amber-text);grid-row:span 3;padding-top:2px}
+.readout h3{font:600 19px/1.2 var(--font-sans)}
+.readout .rm{font:400 13px/1.45 var(--font-mono);color:var(--ink-500)}
+.readout .rm b{font-weight:500;color:var(--ink-900)}
+.readout .rf{font-size:14.5px;line-height:1.55;color:var(--ink-700);max-width:68ch}
+.cap{padding:12px 2px 0;font-size:13.5px;line-height:1.55;color:var(--ink-500);max-width:76ch}
+.cap b{font-family:var(--font-mono);font-weight:600;color:var(--ink-900);margin-right:6px}
+.evmeta{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:10px 0 0;font-size:13px;line-height:1.5}
+.evmeta dt{font:500 11px/1.9 var(--font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-500)}
+.evmeta dd{margin:0;color:var(--ink-700)}
+
+/* ---------- sections ---------- */
+.sec{border-bottom:1px solid var(--line)}
+.sec>.wrap{padding-block:clamp(64px,8.5vw,124px)}
+.sec-meta{display:flex;align-items:center;gap:14px;font:500 12px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-500)}
+.sec-meta .no{color:var(--ink-900);font-weight:600}
+.sec-meta .rule{flex:1;height:1px;background:var(--line);min-width:20px}
+.sh{font-family:var(--font-cond);font-weight:600;font-size:clamp(2.05rem,1.2rem + 2.5vw,3.5rem);line-height:1.02;letter-spacing:-.015em;margin-top:24px;max-width:21ch}
+.lead{font-size:clamp(17px,1.15vw,18.5px);line-height:1.62;color:var(--ink-700);max-width:64ch;margin-top:20px}
+.sub-h{display:flex;align-items:baseline;gap:14px;margin:clamp(56px,7vw,96px) 0 22px;padding-top:18px;border-top:1px solid var(--ink-900)}
+.sub-h .no{font:600 13px/1 var(--font-mono);color:var(--ink-900)}
+.sub-h h3{font:600 clamp(1.4rem,1.1rem + .9vw,1.85rem)/1.15 var(--font-cond);letter-spacing:-.005em}
+
+/* method chain */
+.chain{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink-900)}
+.chain li{position:relative;padding:20px 22px 4px 0;min-width:0}
+.chain li+li{padding-left:22px;border-left:1px solid var(--line)}
+.chain .k{font:500 12px/1 var(--font-mono);color:var(--amber-text)}
+.chain h3{font:600 1.35rem/1.15 var(--font-cond);margin-top:12px}
+.chain p{font-size:14.5px;line-height:1.55;margin-top:8px;color:var(--ink-700)}
+.chain li::after{content:"";position:absolute;top:-4px;left:-4px;width:7px;height:7px;background:var(--ink-900);transform:rotate(45deg)}
+.chain li:first-child::after{left:0}
+@media (max-width:860px){.chain{grid-template-columns:repeat(2,minmax(0,1fr))}.chain li:nth-child(3){padding-left:0;border-left:0}.chain li:nth-child(n+3){border-top:1px solid var(--line);margin-top:14px}}
+@media (max-width:520px){.chain{grid-template-columns:minmax(0,1fr)}.chain li+li{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:10px}}
+
+/* service register */
+.grp{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:56px 0 0;padding-bottom:10px}
+.grp h3{font:500 12px/1 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-500)}
+.grp span{font:400 12px/1 var(--font-mono);color:var(--ink-500)}
+.svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line-strong);border-left:1px solid var(--line)}
+.svc a{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px 22px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none;color:inherit;min-width:0;transition:box-shadow .15s,background-color .15s}
+.svc a:hover{box-shadow:inset 0 0 0 1px var(--primary);background:var(--surface-2)}
+.svc .top{display:flex;justify-content:space-between;align-items:center}
+.svc .idx{font:500 12px/1 var(--font-mono);color:var(--ink-500)}
+.svc .arr{color:var(--ink-500);transition:transform .15s,color .15s}
+.svc a:hover .arr{transform:translate(3px,-3px);color:var(--primary)}
+.svc h4{font:600 1.2rem/1.25 var(--font-sans);letter-spacing:-.005em}
+.svc p{font-size:14.5px;line-height:1.55;color:var(--ink-700)}
+.svc .meta{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font:400 12px/1.5 var(--font-mono);color:var(--ink-500)}
+@media (max-width:980px){.svc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.svc{grid-template-columns:minmax(0,1fr)}}
+
+/* spec table */
+.tbl-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+.tbl-head p{font-size:14px;color:var(--ink-700)}
+.tbl-head p b{font-family:var(--font-mono);font-weight:600;color:var(--ink-900);margin-right:6px}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid var(--ink-900);background:linear-gradient(to right,var(--bg) 30%,transparent),linear-gradient(to left,var(--bg) 30%,transparent) 100% 0,linear-gradient(to right,rgba(0,0,0,.12),transparent 14px),linear-gradient(to left,rgba(0,0,0,.12),transparent 14px) 100% 0;background-repeat:no-repeat;background-size:40px 100%,40px 100%,14px 100%,14px 100%;background-attachment:local,local,scroll,scroll}
+table.spec{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
+table.spec th,table.spec td{padding:12px 16px;text-align:left;vertical-align:baseline;height:44px}
+table.spec thead th{background:var(--surface-2);font:500 12.5px/1.35 var(--font-sans);color:var(--ink-700);border-top:1px solid var(--ink-900);border-bottom:1px solid var(--line-strong);white-space:nowrap}
+table.spec tbody+tbody tr:first-child>*{border-top:1px solid var(--line)}
+table.spec td.n,table.spec th.n{text-align:right;font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;white-space:nowrap}
+table.spec thead th.n{font-family:var(--font-sans)}
+table.spec td.n{color:var(--ink-900)}
+table.spec th[scope=row]{position:sticky;left:0;background:var(--bg);font-weight:500;color:var(--ink-900);white-space:nowrap}
+table.spec td.k{font-family:var(--font-mono);color:var(--ink-500);width:3.5em}
+table.spec tr.cur>*{background:var(--primary-100)}
+table.spec tr.cur th[scope=row]{background:var(--primary-100)}
+.tnote{font-size:12.5px;color:var(--ink-500);margin-top:10px;max-width:80ch}
+
+/* ---------- Fig 2: scan ---------- */
+.scan{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:clamp(24px,3vw,44px);align-items:start}
+@media (max-width:1080px){.scan{grid-template-columns:minmax(0,1fr)}}
+.scan-stage{aspect-ratio:16/9}
+.hud{position:absolute;left:12px;top:12px;display:grid;gap:2px;padding:10px 12px;background:color-mix(in srgb,var(--bg) 88%,transparent);border:1px solid var(--line);font:400 11.5px/1.45 var(--font-mono);color:var(--ink-500);pointer-events:none;min-width:190px}
+@supports not (background:color-mix(in srgb,red 50%,blue)){.hud{background:var(--bg)}}
+.hud .km{font:500 20px/1.1 var(--font-mono);color:var(--ink-900);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.hud .row{display:flex;justify-content:space-between;gap:14px}
+.hud .row b{font-weight:500;color:var(--ink-900);font-variant-numeric:tabular-nums}
+.hud .row b.a{color:var(--amber-text)}
+.stage-btn{position:absolute;right:10px;top:10px;display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--bg);font:500 12px/1 var(--font-mono);color:var(--ink-900);cursor:pointer}
+.stage-btn:hover{border-color:var(--ink-900)}
+.stage.nogl .stage-btn{display:none}
+@media (max-width:560px){.hud{min-width:0;padding:7px 9px;font-size:10.5px}.hud .km{font-size:16px}.hud .row.opt{display:none}}
+.chart{position:relative;border-top:1px solid var(--line-strong)}
+.chart canvas{display:block;width:100%;height:210px;touch-action:pan-y;cursor:crosshair}
+.chart-tip{position:absolute;top:8px;pointer-events:none;background:var(--ink-900);color:var(--bg);font:400 12px/1.45 var(--font-mono);padding:8px 10px;border-radius:var(--radius);white-space:nowrap;transform:translateX(-50%);z-index:2}
+.chart-tip b{font-weight:500}
+.scrub{display:flex;align-items:center;gap:12px;padding:6px 12px 10px;font:500 11.5px/1 var(--font-mono);color:var(--ink-500)}
+.scrub input{flex:1;width:auto}
+.scan-side h4{font:600 1.15rem/1.3 var(--font-sans)}
+.scan-side p{font-size:15px;line-height:1.6;margin-top:10px}
+.inst{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--line)}
+.inst li{display:grid;grid-template-columns:minmax(0,12.5em) minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.45}
+.inst li .code{white-space:normal}
+
+/* ---------- product catalogue ---------- */
+.cat{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border-top:1px solid var(--line-strong);border-left:1px solid var(--line)}
+.cat article{grid-column:span 2;display:flex;flex-direction:column;gap:12px;padding:22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.cat article.w3{grid-column:span 3}
+.cat .chip{align-self:flex-start;font:500 11px/1 var(--font-mono);letter-spacing:.04em;color:var(--primary);background:var(--primary-100);padding:5px 8px;border-radius:2px}
+.cat h4{font:600 1.25rem/1.2 var(--font-sans)}
+.cat .mfr{font:500 11.5px/1.4 var(--font-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-500)}
+.cat ul{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px dashed var(--line)}
+.cat ul li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13.5px;color:var(--ink-500)}
+.cat ul li .code{font-size:13.5px}
+.cat p{font-size:14px;line-height:1.5}
+.cat .acts{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:6px}
+@media (max-width:1080px){.cat{grid-template-columns:repeat(2,minmax(0,1fr))}.cat article,.cat article.w3{grid-column:span 1}.cat article:last-child{grid-column:span 2}}
+@media (max-width:640px){.cat{grid-template-columns:minmax(0,1fr)}.cat article:last-child{grid-column:span 1}}
+.docs-pending{margin-top:18px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+
+/* ---------- Fig 3: micro surfacing ---------- */
+.ms{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(24px,3vw,44px);align-items:start}
+@media (max-width:1080px){.ms{grid-template-columns:minmax(0,1fr)}}
+.ms-stage{aspect-ratio:2/1}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.steps li{min-width:0}
+.steps li+li button{border-left:1px solid var(--line)}
+.steps button{display:block;width:100%;height:100%;text-align:left;border:0;background:transparent;padding:10px 12px 12px;cursor:pointer;position:relative}
+.steps button::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:transparent}
+.steps button[aria-current="step"]::before{background:var(--primary)}
+.steps .k{display:block;font:500 11px/1 var(--font-mono);color:var(--ink-500)}
+.steps .t{display:block;font:600 14px/1.25 var(--font-cond);color:var(--ink-900);margin-top:6px}
+.steps button[aria-current="step"] .k{color:var(--amber-text)}
+.steps button:hover .t{color:var(--primary)}
+@media (max-width:560px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps li:nth-child(3) button{border-left:0}.steps li:nth-child(n+3){border-top:1px solid var(--line)}}
+.step-text{padding:12px 12px 16px;border-top:1px solid var(--line);font-size:14.5px;line-height:1.55;min-height:4.6em}
+.ms-side p{font-size:15.5px;line-height:1.65}
+.ms-side p+p{margin-top:14px}
+.ms-prod{margin-top:22px;border-top:1px solid var(--ink-900)}
+.ms-prod div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink-500)}
+
+/* ---------- references ---------- */
+.refs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:44px}
+@media (max-width:980px){.refs{grid-template-columns:minmax(0,1fr)}}
+.ref{padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.ref .row1{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.slot{display:block;border-bottom:1px dashed var(--pending-ink);color:var(--ink-500);font-size:13.5px;padding:3px 0}
+.slot.big{font:500 30px/1.1 var(--font-mono);color:var(--ink-400);border-bottom-style:dashed;padding:6px 0}
+.ref dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;margin:0;font-size:13.5px}
+.ref dt{font:500 11px/1.8 var(--font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-500)}
+.ref dd{margin:0}
+.ref-foot{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+.ref-foot p{font-size:14px;color:var(--ink-500);max-width:70ch}
+
+/* ---------- company ---------- */
+.co{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:start}
+@media (max-width:980px){.co{grid-template-columns:minmax(0,1fr)}}
+.co-text p{font-size:17px;line-height:1.65;max-width:58ch}
+.co-text p+p{margin-top:16px}
+.kv{margin:28px 0 0;border-top:1px solid var(--ink-900)}
+.kv>div{display:grid;grid-template-columns:minmax(0,11em) minmax(0,1fr);gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.kv dt{font:500 11.5px/1.7 var(--font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-500)}
+.kv dd{margin:0;color:var(--ink-900)}
+.people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:560px){.people{grid-template-columns:minmax(0,1fr)}}
+.person{padding:18px;display:grid;gap:12px}
+.portrait{aspect-ratio:4/5;max-width:100%;border:1px dashed var(--pending-ink);display:grid;place-items:center;font:400 12px/1.4 var(--font-mono);color:var(--ink-500);text-align:center;padding:12px;background:var(--bg)}
+.certs{margin-top:16px;padding:18px;display:grid;gap:10px}
+
+/* ---------- representation (inverse band) ---------- */
+.inv{background:var(--inv-bg);color:var(--inv-muted);border-bottom:0}
+.inv h2,.inv h3,.inv h4{color:var(--inv-ink)}
+.inv .sec-meta{color:var(--inv-muted)}.inv .sec-meta .no{color:var(--inv-ink)}.inv .sec-meta .rule{background:var(--inv-line)}
+.inv .lead{color:var(--inv-muted)}
+.inv .lead b{color:var(--inv-ink);font-weight:500}
+.rep{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:48px;border-top:1px solid var(--inv-ink)}
+.rep>div{padding:22px 22px 6px 0;min-width:0}
+.rep>div+div{padding-left:22px;border-left:1px solid var(--inv-line)}
+@media (max-width:900px){.rep{grid-template-columns:minmax(0,1fr)}.rep>div+div{padding-left:0;border-left:0;border-top:1px solid var(--inv-line)}}
+.rep .k{font:500 12px/1 var(--font-mono);color:var(--amber)}
+.rep h3{font:600 1.3rem/1.2 var(--font-cond);margin-top:10px}
+.rep ul{list-style:none;margin:14px 0 0;padding:0}
+.rep li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--inv-line);font-size:14px}
+.rep li .code{color:var(--inv-ink);white-space:normal;text-align:right}
+.inv .pending{background:var(--inv-2) repeating-linear-gradient(135deg,rgba(242,162,28,.10) 0 7px,transparent 7px 14px);border-color:var(--amber);color:var(--inv-muted);margin-top:14px;padding:14px}
+.inv .ptag{color:var(--amber)}
+.inv .pneed{color:var(--inv-muted)}.inv .pneed b{color:var(--inv-ink)}
+.rep-cta{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-top:40px}
+.inv .btn-primary{background:var(--inv-primary);color:var(--inv-on-primary)}
+.inv .btn-primary:hover{background:#93C4F6}
+.inv .en{font-size:14px;color:var(--inv-muted)}
+.inv .en i{color:var(--inv-ink);font-style:italic}
+.inv :focus-visible{outline-color:var(--inv-primary)}
+
+/* ---------- contact ---------- */
+.ct{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:clamp(28px,5vw,80px);align-items:start;margin-top:44px}
+@media (max-width:980px){.ct{grid-template-columns:minmax(0,1fr)}}
+.contact-list{margin:0;border-top:1px solid var(--ink-900)}
+.contact-list>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.contact-list dt{grid-column:1/-1;font:500 11.5px/1.4 var(--font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-500)}
+.contact-list dd{margin:0;font:500 16px/1.45 var(--font-mono);color:var(--ink-900);user-select:all;-webkit-user-select:all;min-width:0;overflow-wrap:anywhere}
+.contact-list dd.addr{font:400 15.5px/1.55 var(--font-sans);user-select:text;-webkit-user-select:text}
+.copy{border:1px solid var(--line-strong);background:transparent;border-radius:var(--radius);min-height:36px;padding:0 12px;font:500 12px/1 var(--font-mono);color:var(--ink-900);cursor:pointer;white-space:nowrap}
+.copy:hover{border-color:var(--ink-900)}
+.copy.done{border-color:var(--success);color:var(--success)}
+.contact-note{font-size:13px;color:var(--ink-500);margin-top:14px}
+
+/* form */
+.form{border:1px solid var(--line-strong);background:var(--bg)}
+.form-head{padding:18px 20px 0}
+.form-head h3{font:600 1.35rem/1.2 var(--font-cond)}
+.form-head p{font-size:14px;color:var(--ink-500);margin-top:6px}
+form{padding:18px 20px 22px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0}
+.types{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden}
+.types label{position:relative;display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:56px;padding:8px 12px;cursor:pointer;font:500 14px/1.2 var(--font-sans);color:var(--ink-700);border-left:1px solid var(--line)}
+.types label:first-of-type{border-left:0}
+.types label small{font:400 11px/1.2 var(--font-mono);color:var(--ink-500)}
+.types input{position:absolute;opacity:0;pointer-events:none}
+.types label:has(input:checked){background:var(--primary-100);color:var(--ink-900);box-shadow:inset 0 -2px 0 var(--primary)}
+.types label:has(input:focus-visible){outline:2px solid var(--focus);outline-offset:-2px}
+@media (max-width:640px){.types{grid-template-columns:repeat(2,minmax(0,1fr))}.types label:nth-of-type(3){border-left:0}.types label:nth-of-type(n+3){border-top:1px solid var(--line)}}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 16px;margin-top:20px}
+.fgrid .full{grid-column:1/-1}
+@media (max-width:640px){.fgrid{grid-template-columns:minmax(0,1fr)}}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld label,.fld .lb{font:500 12.5px/1.35 var(--font-sans);color:var(--ink-700)}
+.fld .req{font:400 11px/1 var(--font-mono);color:var(--ink-500);margin-left:6px}
+.fld input,.fld select,.fld textarea{width:100%;min-height:48px;padding:11px 14px;border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--bg);color:var(--ink-900);font:400 16px/1.4 var(--font-sans)}
+.fld textarea{min-height:110px;resize:vertical}
+.fld select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink-500) 50%),linear-gradient(135deg,var(--ink-500) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:38px}
+.fld input:hover,.fld select:hover,.fld textarea:hover{border-color:var(--ink-500)}
+.fld input:focus-visible,.fld select:focus-visible,.fld textarea:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-color:var(--focus)}
+.fld [aria-invalid="true"]{border-color:var(--danger);border-width:2px;padding:10px 13px}
+.fld .hint2{font-size:12.5px;color:var(--ink-500)}
+.err{display:flex;gap:7px;align-items:flex-start;font-size:13px;line-height:1.4;color:var(--danger);font-weight:500}
+.err svg{flex:none;margin-top:1px}
+.group[disabled]{display:none}
+.kvkk{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:10px;font-size:13px;color:var(--ink-500)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink-900);cursor:pointer}
+.check input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--primary);flex:none}
+.submit-row{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:20px}
+.submit-row p{font-size:13px;color:var(--ink-500);flex:1;min-width:220px}
+.err-sum{margin-bottom:16px;padding:12px 14px;border:2px solid var(--danger);border-radius:var(--radius);color:var(--danger);font-size:14px;font-weight:500}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.done-panel{padding:22px 20px}
+.done-panel h3{font:600 1.4rem/1.2 var(--font-cond)}
+.done-panel .warn{margin-top:12px;padding:12px 14px;border-left:3px solid var(--amber);background:var(--surface-2);font-size:14.5px;color:var(--ink-900)}
+.done-panel dl{display:grid;grid-template-columns:minmax(0,11em) minmax(0,1fr);gap:0;margin:18px 0 0;border-top:1px solid var(--line)}
+.done-panel dt,.done-panel dd{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;margin:0;min-width:0;overflow-wrap:anywhere}
+.done-panel dt{color:var(--ink-500)}
+.done-panel dd{color:var(--ink-900)}
+
+/* ---------- footer ---------- */
+.foot{background:var(--inv-bg);color:var(--inv-muted);border-top:1px solid var(--inv-line)}
+.foot .wrap{padding-block:56px 32px}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:32px}
+@media (max-width:980px){.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
+.foot h4{font:500 11.5px/1 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--inv-ink);margin-bottom:14px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px}
+.foot a{color:var(--inv-muted);text-decoration:none}
+.foot a:hover{color:var(--inv-ink);text-decoration:underline}
+.foot .brand{color:var(--inv-ink)}
+.foot .brand .wm span{color:var(--inv-muted)}
+.foot .mark-arc{stroke:var(--inv-primary)}
+.foot .mono{color:var(--inv-ink);font-size:13.5px}
+.foot :focus-visible{outline-color:var(--inv-primary)}
+.foot .pending{background:var(--inv-2) repeating-linear-gradient(135deg,rgba(242,162,28,.10) 0 7px,transparent 7px 14px);border-color:var(--amber);padding:14px;margin-top:36px;color:var(--inv-muted)}
+.foot .ptag{color:var(--amber)}
+.foot .pneed{color:var(--inv-muted)}.foot .pneed b{color:var(--inv-ink)}
+.foot-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:36px;padding-top:18px;border-top:1px solid var(--inv-line);font:400 12.5px/1.5 var(--font-mono)}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:80;max-width:min(560px,calc(100vw - 32px));background:var(--ink-900);color:var(--bg);padding:12px 16px;border-radius:var(--radius);font-size:14px;line-height:1.45;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.toast code{font-family:var(--font-mono);font-size:13px}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:0s!important;animation-duration:0s!important}
+}
+</style>
+</head>
+<body>
+
+<div id="gp" lang="tr">
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="pt-asph" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hl" x1="0" y1="0" x2="0" y2="6"/></pattern>
+<pattern id="pt-bind" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hl" x1="0" y1="0" x2="0" y2="9"/><circle class="hd" cx="4.5" cy="4.5" r=".85"/></pattern>
+<pattern id="pt-base" width="48" height="48" patternUnits="userSpaceOnUse"><polygon class="hl" points="11,8.8 6.6,12.9 0.3,12.1 -1.2,4.3 1.1,-0.5 8.6,2.3"/><polygon class="hl" points="24.8,16.6 21,21.2 16.3,19.1 14.2,15.4 17.3,10.3 21.9,10.6"/><polygon class="hl" points="31.4,31.6 26.6,35.4 23.7,32.9 20.8,27.9 23.9,25 30.3,25.6"/><polygon class="hl" points="27.9,25.3 23.3,28.6 18,27.3 15.6,20 18.1,16.2 24.4,18.7"/><polygon class="hl" points="36.3,43 31.6,45 27.5,44.7 25.8,38.2 30.8,35.6 36.6,37.5"/><polygon class="hl" points="28.4,37.4 26.4,39.6 23.2,38.9 22.8,35.8 25,33.9 28.2,34.9"/><polygon class="hl" points="19.9,13.5 16.8,16.4 15,16 13.5,12.6 16.4,11 19.1,11.9"/><polygon class="hl" points="43.9,29.5 37.9,35.2 32.8,33.8 29.1,28.2 35.6,22.1 42,23.9"/><polygon class="hl" points="34.1,34.9 30.1,41 23.7,36.8 21.9,31.6 26.9,27.9 32.3,28.2"/></pattern>
+<pattern id="pt-sub" width="14" height="14" patternUnits="userSpaceOnUse"><circle class="hd" cx="7.2" cy="7.4" r=".9"/><circle class="hd" cx="8.5" cy="8.3" r=".9"/><circle class="hd" cx="11.9" cy="7.5" r=".9"/><circle class="hd" cx="1.1" cy="7.4" r=".9"/><circle class="hd" cx="8.5" cy="6.3" r=".9"/><circle class="hd" cx="6.7" cy="11.8" r=".9"/><circle class="hd" cx="5.9" cy="9.4" r=".9"/></pattern>
+<pattern id="pt-soil" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hl" x1="2" y1="1" x2="2" y2="9"/><line class="hl" x1="5" y1="1" x2="5" y2="9"/><line class="hl" x1="8" y1="1" x2="8" y2="9"/><circle class="hd" cx="15" cy="15" r=".9"/></pattern>
+</defs></svg>
+<a class="skip" href="#icerik" data-en="Skip to content">İçeriğe geç</a>
+
+<!-- PREVIEW STRIP: remove at launch. It tells reviewers how pending content is marked. -->
+<div class="preview" role="note">
+  <div class="wrap">
+    <span class="pinline">İÇERİK BEKLENİYOR</span>
+    <span>Tasarım önizlemesi. Kesikli ve taralı çerçeveli alanlar, yayından önce Geopave'in sağlaması gereken içeriktir. Bu alanlara örnek veya uydurma bilgi konmamıştır.</span>
+  </div>
+</div>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <!-- LOGO PLACEHOLDER: an interim drawing of the concentric-arc mark and a wordmark set in IBM Plex.
+         Replace with the redrawn official logo SVG (primary, reversed and single-colour versions) — see docs/research/04 §9. -->
+    <a class="brand" href="#top" aria-label="Geopave Mühendislik, sayfa başı">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <path class="mark-arc" d="M20 3 A17 17 0 1 1 3.6 15.6" fill="none" stroke-width="3.2" stroke-linecap="butt"/>
+        <path class="mark-arc" d="M20 9.2 A10.8 10.8 0 1 0 30.4 17.2" fill="none" stroke-width="3.2" stroke-linecap="butt"/>
+        <circle class="mark-dot" cx="20" cy="20" r="3.4"/>
+      </svg>
+      <span class="wm"><b>GEOPAVE</b><span>MÜHENDİSLİK</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Ana menü">
+      <ul>
+        <li><a href="#kurumsal" data-en="COMPANY">KURUMSAL</a></li>
+        <li><a href="#hizmetler" data-en="SERVICES">HİZMETLER</a></li>
+        <li><a href="#urunler" data-en="PRODUCTS">ÜRÜNLER</a></li>
+        <li><a href="#referanslar" data-en="PROJECTS">REFERANSLAR</a></li>
+        <li><a href="#temsilcilik" data-en="REPRESENTATION">TEMSİLCİLİK</a></li>
+        <li><a href="#iletisim" data-en="CONTACT">İLETİŞİM</a></li>
+      </ul>
+    </nav>
+    <div class="head-tools">
+      <div class="lang" role="group" aria-label="Dil / Language">
+        <button type="button" data-lang="tr" aria-pressed="true" lang="tr">TR</button>
+        <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+      </div>
+      <a class="btn btn-primary btn-sm head-cta" href="#iletisim" data-enquiry="urun"><span data-en="Request a Quotation">Teklif İsteyin</span></a>
+      <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menüyü aç"><span></span></button>
+    </div>
+  </div>
+  <div class="en-note" id="en-note" hidden lang="en">
+    <div class="wrap">English preview: navigation, headings and key actions only. The English site is planned as a separate set of pages for manufacturers seeking representation in Türkiye. <a href="#temsilcilik">See Representation</a>.</div>
+  </div>
+</header>
+
+<main id="icerik">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow label"><span data-en="Pavement engineering &amp; road technologies">Yol üstyapı mühendisliği ve teknolojileri</span><span class="tick" aria-hidden="true"></span><span>Ankara</span></p>
+
+      <!-- HERO HEADLINE — current version is true whether Geopave operates the survey instruments or only distributes them
+           (brief §3, blocking question 1). It states a discipline, not an operational claim.
+           SWITCHABLE once the client confirms Geopave OWNS AND OPERATES Hawkeye / iPAVE / Roughometer IV / Walking Profiler:
+             H1:  Yol ağınızın gerçek durumu — <span class="dim">ölçülmüş verilerle<span class="dim-tag">ölçüm · teşhis · çözüm</span></span>
+             Sub: Kalibre yüzey ölçüm sistemleriyle yol üstyapısının durumunu ölçüyor, bozulmanın nedenini teşhis ediyor ve
+                  nedeni gideren tasarımı, malzemeyi ya da onarımı belirliyoruz. Ankara merkezli; Türkiye genelinde idareler,
+                  belediyeler ve yükleniciler için çalışıyoruz.
+             (Only use "Türkiye genelinde" if the client confirms the service area.) -->
+      <h1 class="display" id="h1" data-en="Pavements are managed on &lt;span class='dim'&gt;measured evidence&lt;span class='dim-tag'&gt;measure · diagnose · design&lt;/span&gt;&lt;/span&gt;.">Yol üstyapısı, <span class="dim">ölçülmüş kanıtla<span class="dim-tag">ölçüm · teşhis · tasarım</span></span> yönetilir.</h1>
+
+      <p class="hero-sub" data-en="Geopave Mühendislik is a pavement engineering consultancy in Ankara. We work on how road pavements perform, why they deteriorate and what fixes the cause — and we supply the survey systems, asphalt chemistry and repair technologies that the engineering calls for.">Geopave Mühendislik, yol üstyapılarının nasıl performans gösterdiğini, neden bozulduğunu ve nedeni neyin gidereceğini inceleyen bir mühendislik danışmanlığıdır. Mühendisliğin gerektirdiği yüzey ölçüm sistemlerini, asfalt kimyasallarını ve onarım teknolojilerini de aynı ekipten sağlıyoruz.</p>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#iletisim" data-enquiry="hizmet"><span data-en="Request a Project Consultation">Proje Ön Görüşmesi Talep Edin</span><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        <a class="btn btn-ghost" href="#iletisim" data-enquiry="urun"><span data-en="Request a Quotation">Teklif İsteyin</span></a>
+      </div>
+      <p class="hero-micro" data-en="Tell us briefly about your project and we will call you within one business day. There is no charge for the preliminary discussion.">Projenizi kısaca aktarın; bir iş günü içinde sizi arayalım. Ön görüşme için ücret talep etmiyoruz.</p>
+
+      <dl class="facts">
+        <div><dt data-en="Founding partners">Kurucu ortaklar</dt><dd><span class="n">2</span>İnşaat mühendisi<small>ODTÜ ve İTÜ mezunu</small></dd></div>
+        <div><dt data-en="Product groups">Ürün grupları</dt><dd><span class="n">5</span>Temsil edilen teknoloji<small>Ölçüm · kimyasal · laboratuvar · onarım</small></dd></div>
+        <div><dt data-en="Office">Merkez</dt><dd>Ankara<small>Söğütözü, Çankaya</small></dd></div>
+        <!-- PENDING: founding year. Footer of the current site says 2018 (copyright only) — not a confirmed founding date. -->
+        <div class="pending"><dt>Kuruluş yılı</dt><dd><span class="ptag">Bekleniyor</span><small>Müşteri teyidi gerekli</small></dd></div>
+      </dl>
+    </div>
+
+    <!-- FIG 1 — interactive exploded pavement section -->
+    <figure class="ev" id="fig1" aria-labelledby="fig1cap">
+      <div class="sheet">
+        <div class="sheet-head"><span class="no">ŞEKİL 1</span><span class="tt">Esnek üstyapı · tipik tabaka dizilimi</span><span>Ölçeksiz</span></div>
+        <div class="stage xs-stage grab" id="xs-stage" tabindex="0" aria-label="Etkileşimli üç boyutlu çizim. Sürükleyerek veya ok tuşlarıyla döndürün; katman seçmek için sağdaki etiketleri kullanın.">
+<svg class="fallback" viewBox="0 0 700 600" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="f1t f1d"><title id="f1t">Esnek üstyapı tabakalarının ayrıştırılmış çizimi</title><desc id="f1d">Üstten alta aşınma tabakası, binder, temel, alt temel ve taban zemini. Her malzeme ayrı tarama deseniyle gösterilmiştir.</desc><g class="slab" data-i="4"><polygon class="f-top" points="30,438 300,438 410,378 140,378"/><polygon class="f-side" points="300,438 410,378 410,470 300,530"/><polygon fill="url(#pt-soil)" points="300,438 410,378 410,470 300,530"/><rect class="f-front" x="30" y="438" width="270" height="92"/><rect fill="url(#pt-soil)" x="30" y="438" width="270" height="92"/><polygon class="edge" points="30,438 300,438 410,378 140,378"/><polygon class="edge" points="300,438 410,378 410,470 300,530"/><rect class="edge" x="30" y="438" width="270" height="92"/></g><g class="slab" data-i="3"><polygon class="f-top" points="30,338 300,338 410,278 140,278"/><polygon class="f-side" points="300,338 410,278 410,356 300,416"/><polygon fill="url(#pt-sub)" points="300,338 410,278 410,356 300,416"/><rect class="f-front" x="30" y="338" width="270" height="78"/><rect fill="url(#pt-sub)" x="30" y="338" width="270" height="78"/><polygon class="edge" points="30,338 300,338 410,278 140,278"/><polygon class="edge" points="300,338 410,278 410,356 300,416"/><rect class="edge" x="30" y="338" width="270" height="78"/></g><g class="slab" data-i="2"><polygon class="f-top" points="30,246 300,246 410,186 140,186"/><polygon class="f-side" points="300,246 410,186 410,256 300,316"/><polygon fill="url(#pt-base)" points="300,246 410,186 410,256 300,316"/><rect class="f-front" x="30" y="246" width="270" height="70"/><rect fill="url(#pt-base)" x="30" y="246" width="270" height="70"/><polygon class="edge" points="30,246 300,246 410,186 140,186"/><polygon class="edge" points="300,246 410,186 410,256 300,316"/><rect class="edge" x="30" y="246" width="270" height="70"/></g><g class="slab" data-i="1"><polygon class="f-top" points="30,188 300,188 410,128 140,128"/><polygon class="f-side" points="300,188 410,128 410,164 300,224"/><polygon fill="url(#pt-bind)" points="300,188 410,128 410,164 300,224"/><rect class="f-front" x="30" y="188" width="270" height="36"/><rect fill="url(#pt-bind)" x="30" y="188" width="270" height="36"/><polygon class="edge" points="30,188 300,188 410,128 140,128"/><polygon class="edge" points="300,188 410,128 410,164 300,224"/><rect class="edge" x="30" y="188" width="270" height="36"/></g><g class="slab sel" data-i="0"><polygon class="f-top" points="30,140 300,140 410,80 140,80"/><polygon class="f-side" points="300,140 410,80 410,106 300,166"/><polygon fill="url(#pt-asph)" points="300,140 410,80 410,106 300,166"/><rect class="f-front" x="30" y="140" width="270" height="26"/><rect fill="url(#pt-asph)" x="30" y="140" width="270" height="26"/><polygon class="edge" points="30,140 300,140 410,80 140,80"/><polygon class="edge" points="300,140 410,80 410,106 300,166"/><rect class="edge" x="30" y="140" width="270" height="26"/></g><ellipse class="load-ring" cx="220" cy="110" rx="62" ry="17"/><ellipse class="load-patch" cx="220" cy="110" rx="20" ry="6"/><line class="load" x1="220" y1="36" x2="220" y2="98"/><polygon class="load-head" points="215,94 225,94 220,104"/><text class="load-t" x="230" y="50">P</text><path data-i="0" class="ldr on" d="M355 123 L436 123"/><circle data-i="0" class="ldr-dot on" cx="355" cy="123" r="2.6"/><path data-i="1" class="ldr" d="M355 176 L436 176"/><circle data-i="1" class="ldr-dot" cx="355" cy="176" r="2.6"/><path data-i="2" class="ldr" d="M355 251 L436 251"/><circle data-i="2" class="ldr-dot" cx="355" cy="251" r="2.6"/><path data-i="3" class="ldr" d="M355 347 L436 347"/><circle data-i="3" class="ldr-dot" cx="355" cy="347" r="2.6"/><path data-i="4" class="ldr" d="M355 454 L436 454"/><circle data-i="4" class="ldr-dot" cx="355" cy="454" r="2.6"/></svg>
+          <canvas aria-hidden="true"></canvas>
+          <svg class="leaders" aria-hidden="true"></svg>
+          <ol class="xs-labels" id="xs-labels" aria-label="Tabakalar">
+            <li style="--y:20.5%"><button type="button" data-layer="0" aria-pressed="true"><span class="i">01</span><span class="nm">Aşınma tabakası</span><span class="th">40–50 mm</span></button></li>
+            <li style="--y:29.3%"><button type="button" data-layer="1" aria-pressed="false"><span class="i">02</span><span class="nm">Binder tabakası</span><span class="th">50–80 mm</span></button></li>
+            <li style="--y:41.8%"><button type="button" data-layer="2" aria-pressed="false"><span class="i">03</span><span class="nm">Temel</span><span class="th">150–250 mm</span></button></li>
+            <li style="--y:57.8%"><button type="button" data-layer="3" aria-pressed="false"><span class="i">04</span><span class="nm">Alt temel</span><span class="th">150–300 mm</span></button></li>
+            <li style="--y:75.7%"><button type="button" data-layer="4" aria-pressed="false"><span class="i">05</span><span class="nm">Taban zemini</span><span class="th">CBR ile</span></button></li>
+          </ol>
+        </div>
+        <p class="nogl-note">Etkileşimli görünüm bu tarayıcıda açılamadı; aynı bilgiyi taşıyan statik çizim gösteriliyor.</p>
+        <div class="xs-ctrl">
+          <button type="button" class="btn btn-ghost btn-sm" id="xs-toggle" aria-pressed="true">Katmanları birleştir</button>
+          <label for="xs-range">Ayrıştırma <input type="range" id="xs-range" min="0" max="100" value="62"> <output id="xs-out" for="xs-range">%62</output></label>
+          <span class="hint" aria-hidden="true">Sürükle: döndür · Dokun: seç</span>
+        </div>
+        <div class="readout" aria-live="polite">
+          <span class="ri mono" id="xs-r-no">01</span>
+          <h3 id="xs-r-name">Aşınma tabakası</h3>
+          <p class="rm"><span id="xs-r-mat">Bitümlü sıcak karışım (BSK)</span> · tipik <b id="xs-r-th">40–50 mm</b></p>
+          <p class="rf" id="xs-r-fn">Trafikle doğrudan temas eden yüzey. Kayma direnci, sürüş konforu ve alt tabakaların sudan korunması bu tabakanın işidir.</p>
+        </div>
+      </div>
+      <figcaption class="cap" id="fig1cap"><b>Şekil 1.</b>Esnek üstyapının tabaka dizilimi. Kesikli amber halkalar, tekerlek yükünün (P) derinlikle daha geniş bir alana yayılmasını şematik olarak gösterir. Kalınlıklar genel mühendislik pratiğindeki tipik aralıklardır; gerçek kalınlıklar trafik, taban zemini taşıma gücü ve iklim verisine göre projeye özel belirlenir.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 01 HİZMETLER ================= -->
+<section class="sec" id="hizmetler" aria-labelledby="h-hizmet">
+  <div class="wrap">
+    <div class="sec-meta"><span class="no">§ 01</span><span data-en="SERVICES">HİZMETLER</span><span class="rule"></span><span>Tablo 1</span></div>
+    <h2 class="sh" id="h-hizmet" data-en="From understanding the pavement to verifying what was built.">Üstyapının durumunu anlamaktan, yapılanın doğrulanmasına kadar.</h2>
+    <p class="lead">Tek bir konu üzerinde çalışıyoruz: yol üstyapısının nasıl performans gösterdiği ve performansını yitirdiğinde ne yapılması gerektiği. Her hizmet aynı zincirin bir halkasıdır.</p>
+
+    <ol class="chain" aria-label="Çalışma zinciri">
+      <li><span class="k mono">01</span><h3>Ölçüm ve değerlendirme</h3><p>Hangi verinin, hangi yöntemle ve hangi standarda göre toplanacağını belirlemek; ölçüm verisini mühendislik açısından yorumlamak.</p></li>
+      <li><span class="k mono">02</span><h3>Teşhis</h3><p>Bozulmanın nedenini ayırmak: malzeme, nem ve drenaj, trafik yükü ya da yapım kaynaklı.</p></li>
+      <li><span class="k mono">03</span><h3>Tasarım</h3><p>Nedeni gideren üstyapı, malzeme veya onarım çözümünü projelendirmek.</p></li>
+      <li><span class="k mono">04</span><h3>Uygulama ve doğrulama</h3><p>Gereken malzeme ve sistemi sağlamak; yapılanın şartnameye uygunluğunu kalite kontrolle doğrulamak.</p></li>
+    </ol>
+
+    <div class="grp"><h3>Mühendislik ve tasarım</h3><span>6 hizmet</span></div>
+    <div class="svc">
+      <a href="/hizmetler/yol-ustyapi-muhendisligi" data-future><span class="top"><span class="idx">01</span><svg class="arr" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><h4>Yol üstyapı mühendisliği</h4><p>Esnek ve rijit üstyapıların tasarımı, mevcut üstyapının değerlendirilmesi ve rehabilitasyon çözümleri.</p><span class="meta">İlgili ürünler: yüzey ölçüm ekipmanları · asfalt kimyasalları</span></a>
+      <a href="/hizmetler/geoteknik-ve-temel-muhendisligi" data-future><span class="top"><span class="idx">02</span><svg class="arr" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><h4>Geoteknik ve temel mühendisliği</h4><p>Zemin davranışının değerlendirilmesi, zemin mekaniği ve temel tasarımı tek bir hizmet olarak.</p><span class="meta">İlgili: zemin etütleri · köprü mühendisliği</span></a>
+      <a href="/hizmetler/zemin-etutleri" data-future><span class="top"><span class="idx">03</span><svg class="arr" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><h4>Zemin etütleri</h4><p>Proje öncesi zemin araştırması ve raporlaması; ayrı kalem olarak ihale edilebilen bir iş.</p><span class="meta">İlgili: geoteknik ve temel mühendisliği</span></a>
+      <a href="/hizmetler/kopru-muhendisligi" data-future><span class="top"><span class="idx">04</span><svg class="arr" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><h4>Köprü mühendisliği</h4><p>Köprü projelendirme işleri.</p><span class="meta">İlgili: geoteknik ve temel mühendisliği</span></a>
+      <a href="/hizmetler/kalite-kontrol" data-future><span class="top"><span class="idx">05</span><svg class="arr" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><h4>Kalite kontrol</h4><p>Yapım sürecinde bağımsız kalite kontrol, deney ve saha denetimi.</p><span class="meta">İlgili ürünler: emülsiyon laboratuvar cihazları · ölçüm ekipmanları</span></a>
+      <a href="/hizmetler/arge-ve-urun-gelistirme" data-future><span class="top"><span class="idx">06</span><svg class="arr" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><h4>Ar-Ge ve ürün geliştirme</h4><p>Malzeme ve ürün geliştirme çalışmaları.</p><span class="meta">İlgili ürünler: asfalt kimyasalları · mikro yüzeyleme</span></a>
+    </div>
+
+    <div class="grp"><h3>Beton uygulamaları</h3><span>danışmanlık · tasarım · uygulama</span></div>
+    <div class="svc">
+      <a href="/hizmetler/silindirle-sikistirilmis-beton" data-future><span class="top"><span class="idx">07</span><svg class="arr" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><h4>Silindirle sıkıştırılmış beton (SSB) yollar</h4><p>SSB yollarda danışmanlık, tasarım ve uygulama tek başlık altında.</p><span class="meta">İlgili: yol üstyapı mühendisliği</span></a>
+      <a href="/hizmetler/gecirimli-beton" data-future><span class="top"><span class="idx">08</span><svg class="arr" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><h4>Geçirimli beton uygulamaları</h4><p>Suyun yüzeyden geçerek zemine ulaşmasını sağlayan geçirimli beton kaplamalar.</p><span class="meta">İlgili: SSB yollar</span></a>
+      <a href="/hizmetler/brut-beton" data-future><span class="top"><span class="idx">09</span><svg class="arr" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><h4>Brüt beton</h4><p>Görünür yüzeyli brüt beton uygulamaları.</p><span class="meta">İlgili: geçirimli beton uygulamaları</span></a>
+    </div>
+
+    <div class="sub-h" style="margin-top:72px"><span class="no">01.1</span><h3>Esnek üstyapı tabakaları</h3></div>
+    <div class="tbl-head">
+      <p><b>Tablo 1.</b>Tabaka görevleri ve tipik kalınlık aralıkları (Şekil 1 ile aynı veri)</p>
+      <!-- PENDING: technical sign-off. Ranges are general engineering practice, not Geopave design values. -->
+      <span class="pinline">Teknik teyit bekleniyor</span>
+    </div>
+    <div class="tscroll" role="region" aria-label="Tablo 1, yatay kaydırılabilir" tabindex="0">
+      <table class="spec">
+        <thead><tr><th scope="col">Tabaka</th><th scope="col">No</th><th scope="col">Tipik malzeme</th><th scope="col" class="n">Kalınlık, alt (mm)</th><th scope="col" class="n">Kalınlık, üst (mm)</th><th scope="col">Görev</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Aşınma tabakası</th><td class="k">01</td><td>BSK aşınma</td><td class="n">40</td><td class="n">50</td><td>Yüzey, kayma direnci, su geçirimsizliği</td></tr>
+          <tr><th scope="row">Binder tabakası</th><td class="k">02</td><td>BSK binder</td><td class="n">50</td><td class="n">80</td><td>Gerilme dağılımı, tekerlek izine direnç</td></tr>
+        </tbody>
+        <tbody>
+          <tr><th scope="row">Temel</th><td class="k">03</td><td>Granüler / plent-miks temel</td><td class="n">150</td><td class="n">250</td><td>Ana taşıyıcı; yükü geniş alana yayar</td></tr>
+          <tr><th scope="row">Alt temel</th><td class="k">04</td><td>Granüler malzeme</td><td class="n">150</td><td class="n">300</td><td>Drenaj, don koruması, çalışma platformu</td></tr>
+        </tbody>
+        <tbody>
+          <tr><th scope="row">Taban zemini</th><td class="k">05</td><td>Doğal / iyileştirilmiş zemin</td><td class="n">—</td><td class="n">—</td><td>Taşıma gücü (CBR) tasarımın başlangıç verisi</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tnote">BSK: bitümlü sıcak karışım. Kalınlıklar bilgi amaçlıdır; tasarım değerleri her proje için trafik, zemin ve iklim verisinden hesaplanır.</p>
+  </div>
+</section>
+
+<!-- ================= 02 ÜRÜNLER ================= -->
+<section class="sec" id="urunler" aria-labelledby="h-urun">
+  <div class="wrap">
+    <div class="sec-meta"><span class="no">§ 02</span><span data-en="PRODUCTS">ÜRÜNLER</span><span class="rule"></span><span>Şekil 2–3</span></div>
+    <h2 class="sh" id="h-urun" data-en="The instruments and materials the engineering calls for.">Mühendisliğin gerektirdiği cihaz ve malzemeler.</h2>
+    <p class="lead">Yüzey ölçüm sistemleri, asfalt kimyasalları, emülsiyon laboratuvar cihazları ve onarım teknolojileri. Ürünleri, tasarladığımız çözümün bir parçası olarak ele alıyoruz.</p>
+
+    <div class="sub-h"><span class="no">02.1</span><h3>Yüzey ölçümü: profil, pürüzlülük ve tekerlek izi</h3></div>
+    <div class="scan">
+      <figure class="ev" id="fig2" aria-labelledby="fig2cap">
+        <div class="sheet">
+          <div class="sheet-head"><span class="no">ŞEKİL 2</span><span class="tt">Şerit yüzey profili · temsili veri</span><span>Düşey ×20</span></div>
+          <div class="stage scan-stage grab" id="scan-stage" tabindex="0" aria-label="Üç boyutlu yüzey profili. Sürükleyerek açıyı değiştirin.">
+<svg class="fallback" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="f2t f2d"><title id="f2t">Şerit enine profili ve tekerlek izi derinliği</title><desc id="f2d">İki tekerlek izinde oluşan çukurlaşma, düz mastar altında ölçülen derinlik d1 ve d2 olarak gösterilmiştir.</desc><path class="f-front" d="M80 210.1 L83.6 209.5 L87.1 208.9 L90.7 208.2 L94.2 207.6 L97.8 206.9 L101.3 206.1 L104.9 205.3 L108.4 204.5 L112 203.5 L115.6 202.5 L119.1 201.5 L122.7 200.4 L126.2 199.4 L129.8 198.6 L133.3 197.9 L136.9 197.5 L140.4 197.5 L144 197.9 L147.6 198.8 L151.1 200.1 L154.7 202 L158.2 204.2 L161.8 206.9 L165.3 209.8 L168.9 213 L172.4 216.3 L176 219.6 L179.6 223 L183.1 226.3 L186.7 229.5 L190.2 232.7 L193.8 235.6 L197.3 238.5 L200.9 241.2 L204.4 243.7 L208 246.1 L211.6 248.2 L215.1 250.1 L218.7 251.8 L222.2 253.1 L225.8 254.2 L229.3 254.9 L232.9 255.2 L236.4 255.2 L240 254.9 L243.6 254.2 L247.1 253.1 L250.7 251.7 L254.2 250.1 L257.8 248.2 L261.3 246.1 L264.9 243.8 L268.4 241.3 L272 238.8 L275.6 236.2 L279.1 233.5 L282.7 230.9 L286.2 228.2 L289.8 225.5 L293.3 222.9 L296.9 220.3 L300.4 217.7 L304 215.2 L307.6 212.7 L311.1 210.4 L314.7 208.3 L318.2 206.4 L321.8 204.8 L325.3 203.6 L328.9 202.8 L332.4 202.4 L336 202.5 L339.6 202.9 L343.1 203.6 L346.7 204.6 L350.2 205.7 L353.8 206.9 L357.3 208.1 L360.9 209.2 L364.4 210.1 L368 210.8 L371.6 211.3 L375.1 211.6 L378.7 211.8 L382.2 211.7 L385.8 211.5 L389.3 211.2 L392.9 210.9 L396.4 210.4 L400 209.9 L403.6 209.4 L407.1 208.8 L410.7 208.2 L414.2 207.6 L417.8 207 L421.3 206.4 L424.9 205.8 L428.4 205.2 L432 204.5 L435.6 203.8 L439.1 203.2 L442.7 202.5 L446.2 201.9 L449.8 201.4 L453.3 201.1 L456.9 200.9 L460.4 201.1 L464 201.5 L467.6 202.2 L471.1 203.3 L474.7 204.6 L478.2 206.3 L481.8 208.2 L485.3 210.3 L488.9 212.5 L492.4 214.8 L496 217.1 L499.6 219.4 L503.1 221.6 L506.7 223.8 L510.2 225.9 L513.8 227.8 L517.3 229.7 L520.9 231.4 L524.4 233 L528 234.5 L531.6 235.8 L535.1 236.9 L538.7 237.8 L542.2 238.5 L545.8 239 L549.3 239.3 L552.9 239.3 L556.4 239.2 L560 238.7 L563.6 238.1 L567.1 237.2 L570.7 236.2 L574.2 235 L577.8 233.6 L581.3 232.1 L584.9 230.5 L588.4 228.9 L592 227.2 L595.6 225.5 L599.1 223.8 L602.7 222.1 L606.2 220.4 L609.8 218.8 L613.3 217.2 L616.9 215.6 L620.4 214.1 L624 212.6 L627.6 211.2 L631.1 209.9 L634.7 208.7 L638.2 207.7 L641.8 206.9 L645.3 206.3 L648.9 206 L652.4 205.9 L656 206.1 L659.6 206.5 L663.1 207 L666.7 207.8 L670.2 208.6 L673.8 209.4 L677.3 210.1 L680.9 210.8 L684.4 211.4 L688 211.8 L691.6 212 L695.1 212.1 L698.7 212.1 L702.2 211.9 L705.8 211.6 L709.3 211.2 L712.9 210.8 L716.4 210.3 L720 209.8 L720 300 L80 300 Z"/><path fill="url(#pt-asph)" d="M80 210.1 L83.6 209.5 L87.1 208.9 L90.7 208.2 L94.2 207.6 L97.8 206.9 L101.3 206.1 L104.9 205.3 L108.4 204.5 L112 203.5 L115.6 202.5 L119.1 201.5 L122.7 200.4 L126.2 199.4 L129.8 198.6 L133.3 197.9 L136.9 197.5 L140.4 197.5 L144 197.9 L147.6 198.8 L151.1 200.1 L154.7 202 L158.2 204.2 L161.8 206.9 L165.3 209.8 L168.9 213 L172.4 216.3 L176 219.6 L179.6 223 L183.1 226.3 L186.7 229.5 L190.2 232.7 L193.8 235.6 L197.3 238.5 L200.9 241.2 L204.4 243.7 L208 246.1 L211.6 248.2 L215.1 250.1 L218.7 251.8 L222.2 253.1 L225.8 254.2 L229.3 254.9 L232.9 255.2 L236.4 255.2 L240 254.9 L243.6 254.2 L247.1 253.1 L250.7 251.7 L254.2 250.1 L257.8 248.2 L261.3 246.1 L264.9 243.8 L268.4 241.3 L272 238.8 L275.6 236.2 L279.1 233.5 L282.7 230.9 L286.2 228.2 L289.8 225.5 L293.3 222.9 L296.9 220.3 L300.4 217.7 L304 215.2 L307.6 212.7 L311.1 210.4 L314.7 208.3 L318.2 206.4 L321.8 204.8 L325.3 203.6 L328.9 202.8 L332.4 202.4 L336 202.5 L339.6 202.9 L343.1 203.6 L346.7 204.6 L350.2 205.7 L353.8 206.9 L357.3 208.1 L360.9 209.2 L364.4 210.1 L368 210.8 L371.6 211.3 L375.1 211.6 L378.7 211.8 L382.2 211.7 L385.8 211.5 L389.3 211.2 L392.9 210.9 L396.4 210.4 L400 209.9 L403.6 209.4 L407.1 208.8 L410.7 208.2 L414.2 207.6 L417.8 207 L421.3 206.4 L424.9 205.8 L428.4 205.2 L432 204.5 L435.6 203.8 L439.1 203.2 L442.7 202.5 L446.2 201.9 L449.8 201.4 L453.3 201.1 L456.9 200.9 L460.4 201.1 L464 201.5 L467.6 202.2 L471.1 203.3 L474.7 204.6 L478.2 206.3 L481.8 208.2 L485.3 210.3 L488.9 212.5 L492.4 214.8 L496 217.1 L499.6 219.4 L503.1 221.6 L506.7 223.8 L510.2 225.9 L513.8 227.8 L517.3 229.7 L520.9 231.4 L524.4 233 L528 234.5 L531.6 235.8 L535.1 236.9 L538.7 237.8 L542.2 238.5 L545.8 239 L549.3 239.3 L552.9 239.3 L556.4 239.2 L560 238.7 L563.6 238.1 L567.1 237.2 L570.7 236.2 L574.2 235 L577.8 233.6 L581.3 232.1 L584.9 230.5 L588.4 228.9 L592 227.2 L595.6 225.5 L599.1 223.8 L602.7 222.1 L606.2 220.4 L609.8 218.8 L613.3 217.2 L616.9 215.6 L620.4 214.1 L624 212.6 L627.6 211.2 L631.1 209.9 L634.7 208.7 L638.2 207.7 L641.8 206.9 L645.3 206.3 L648.9 206 L652.4 205.9 L656 206.1 L659.6 206.5 L663.1 207 L666.7 207.8 L670.2 208.6 L673.8 209.4 L677.3 210.1 L680.9 210.8 L684.4 211.4 L688 211.8 L691.6 212 L695.1 212.1 L698.7 212.1 L702.2 211.9 L705.8 211.6 L709.3 211.2 L712.9 210.8 L716.4 210.3 L720 209.8 L720 300 L80 300 Z"/><path class="prof" d="M80 210.1 L83.6 209.5 L87.1 208.9 L90.7 208.2 L94.2 207.6 L97.8 206.9 L101.3 206.1 L104.9 205.3 L108.4 204.5 L112 203.5 L115.6 202.5 L119.1 201.5 L122.7 200.4 L126.2 199.4 L129.8 198.6 L133.3 197.9 L136.9 197.5 L140.4 197.5 L144 197.9 L147.6 198.8 L151.1 200.1 L154.7 202 L158.2 204.2 L161.8 206.9 L165.3 209.8 L168.9 213 L172.4 216.3 L176 219.6 L179.6 223 L183.1 226.3 L186.7 229.5 L190.2 232.7 L193.8 235.6 L197.3 238.5 L200.9 241.2 L204.4 243.7 L208 246.1 L211.6 248.2 L215.1 250.1 L218.7 251.8 L222.2 253.1 L225.8 254.2 L229.3 254.9 L232.9 255.2 L236.4 255.2 L240 254.9 L243.6 254.2 L247.1 253.1 L250.7 251.7 L254.2 250.1 L257.8 248.2 L261.3 246.1 L264.9 243.8 L268.4 241.3 L272 238.8 L275.6 236.2 L279.1 233.5 L282.7 230.9 L286.2 228.2 L289.8 225.5 L293.3 222.9 L296.9 220.3 L300.4 217.7 L304 215.2 L307.6 212.7 L311.1 210.4 L314.7 208.3 L318.2 206.4 L321.8 204.8 L325.3 203.6 L328.9 202.8 L332.4 202.4 L336 202.5 L339.6 202.9 L343.1 203.6 L346.7 204.6 L350.2 205.7 L353.8 206.9 L357.3 208.1 L360.9 209.2 L364.4 210.1 L368 210.8 L371.6 211.3 L375.1 211.6 L378.7 211.8 L382.2 211.7 L385.8 211.5 L389.3 211.2 L392.9 210.9 L396.4 210.4 L400 209.9 L403.6 209.4 L407.1 208.8 L410.7 208.2 L414.2 207.6 L417.8 207 L421.3 206.4 L424.9 205.8 L428.4 205.2 L432 204.5 L435.6 203.8 L439.1 203.2 L442.7 202.5 L446.2 201.9 L449.8 201.4 L453.3 201.1 L456.9 200.9 L460.4 201.1 L464 201.5 L467.6 202.2 L471.1 203.3 L474.7 204.6 L478.2 206.3 L481.8 208.2 L485.3 210.3 L488.9 212.5 L492.4 214.8 L496 217.1 L499.6 219.4 L503.1 221.6 L506.7 223.8 L510.2 225.9 L513.8 227.8 L517.3 229.7 L520.9 231.4 L524.4 233 L528 234.5 L531.6 235.8 L535.1 236.9 L538.7 237.8 L542.2 238.5 L545.8 239 L549.3 239.3 L552.9 239.3 L556.4 239.2 L560 238.7 L563.6 238.1 L567.1 237.2 L570.7 236.2 L574.2 235 L577.8 233.6 L581.3 232.1 L584.9 230.5 L588.4 228.9 L592 227.2 L595.6 225.5 L599.1 223.8 L602.7 222.1 L606.2 220.4 L609.8 218.8 L613.3 217.2 L616.9 215.6 L620.4 214.1 L624 212.6 L627.6 211.2 L631.1 209.9 L634.7 208.7 L638.2 207.7 L641.8 206.9 L645.3 206.3 L648.9 206 L652.4 205.9 L656 206.1 L659.6 206.5 L663.1 207 L666.7 207.8 L670.2 208.6 L673.8 209.4 L677.3 210.1 L680.9 210.8 L684.4 211.4 L688 211.8 L691.6 212 L695.1 212.1 L698.7 212.1 L702.2 211.9 L705.8 211.6 L709.3 211.2 L712.9 210.8 L716.4 210.3 L720 209.8"/><line class="se" x1="133.3" y1="194.5" x2="346.7" y2="194.5"/><line class="se" x1="453.3" y1="197.9" x2="666.7" y2="197.9"/><line class="dimln" x1="240" y1="194.5" x2="240" y2="254.9"/><line class="dimln" x1="235" y1="194.5" x2="245" y2="194.5"/><line class="dimln" x1="235" y1="254.9" x2="245" y2="254.9"/><text class="dimt" x="249" y="228.7">d1</text><line class="dimln" x1="560" y1="197.9" x2="560" y2="238.7"/><line class="dimln" x1="555" y1="197.9" x2="565" y2="197.9"/><line class="dimln" x1="555" y1="238.7" x2="565" y2="238.7"/><text class="dimt" x="569" y="222.3">d2</text><text class="lbl" x="240" y="171.5" text-anchor="middle">Sol tekerlek izi</text><text class="lbl" x="560" y="174.9" text-anchor="middle">Sağ tekerlek izi</text><text class="lbl mute" x="354.7" y="191.5">düz mastar</text><line class="dimln" x1="80" y1="340" x2="720" y2="340"/><line class="dimln" x1="80" y1="330" x2="80" y2="350"/><line class="dimln" x1="720" y1="330" x2="720" y2="350"/><text class="dimt" x="400" y="332" text-anchor="middle">Şerit genişliği (enine profil)</text><text class="lbl mute" x="80" y="392">Düşey ölçek abartılmıştır · şematik</text></svg>
+            <canvas aria-hidden="true"></canvas>
+            <div class="hud" aria-hidden="true">
+              <span class="km" id="hud-km">Km 0+205</span>
+              <span class="row"><span>IRI sol · son 20 m</span><b id="hud-il">—</b></span>
+              <span class="row"><span>IRI sağ · son 20 m</span><b id="hud-ir">—</b></span>
+              <span class="row opt"><span>Tekerlek izi maks.</span><b class="a" id="hud-rut">—</b></span>
+            </div>
+            <button type="button" class="stage-btn" id="scan-play" aria-pressed="false"><span aria-hidden="true" id="scan-play-ic">▶</span><span id="scan-play-t">Oynat</span></button>
+          </div>
+          <p class="nogl-note">Üç boyutlu görünüm bu tarayıcıda açılamadı; enine profil çizimi gösteriliyor. Grafik ve tablo aynı veriyi taşır.</p>
+          <div class="chart" id="scan-chart">
+            <canvas id="scan-canvas" role="img" aria-label="Boyuna profil ve 20 metrelik kesimlerde IRI değerleri. Değerler sağdaki tabloda da verilmiştir."></canvas>
+            <div class="chart-tip" id="scan-tip" hidden></div>
+          </div>
+          <div class="scrub"><label for="scan-pos">Konum</label><input type="range" id="scan-pos" min="10" max="270" step="0.5" value="205"><output id="scan-pos-out" for="scan-pos">0+205</output></div>
+        </div>
+        <figcaption class="cap" id="fig2cap"><b>Şekil 2.</b>Bir şeridin yüzey profili ve ondan hesaplanan Uluslararası Pürüzlülük İndeksi (IRI). Veriler gösterim amacıyla üretilmiş <strong>temsili bir profildir</strong>; gerçek bir yolun ölçüm sonucu değildir. Amber renk, tekerlek izi çukurlaşmasının derinliğini gösterir.
+          <dl class="evmeta">
+            <dt>Profil</dt><dd>Spektral yöntemle üretilmiş sentetik profil, <span class="std">ISO 8608</span> sınıflandırma biçiminde; 0,1 m örnekleme, 300 m</dd>
+            <dt>Hesap</dt><dd>Çeyrek araç (Golden Car) modeli, 80 km/sa benzetimi, <span class="std">ASTM E1926</span> hesap esası; 20 m kesimler</dd>
+            <dt>Görsel</dt><dd>Uzun dalga boyları görselleştirmede süzülmüştür; düşey ölçek 20 kat büyütülmüştür</dd>
+          </dl>
+        </figcaption>
+      </figure>
+
+      <div class="scan-side">
+        <h4>Ölçülen değer ne söyler?</h4>
+        <p>IRI, bir aracın yol boyunca maruz kaldığı düşey hareketi metre/kilometre cinsinden özetler. Tekerlek izi derinliği ise yükün kalıcı deformasyonunu gösterir. İkisi birlikte, bozulmanın yüzeyde mi yoksa taşıyıcı tabakalarda mı başladığını ayırmaya yardım eder.</p>
+        <div class="tbl-head" style="margin-top:22px;margin-bottom:8px"><p><b>Tablo 2.</b>Şekil 2 verisi, 50 m kesimler</p></div>
+        <div class="tscroll" role="region" aria-label="Tablo 2, yatay kaydırılabilir" tabindex="0">
+          <table class="spec" style="min-width:420px">
+            <thead><tr><th scope="col">Kesim (m)</th><th scope="col" class="n">IRI sol</th><th scope="col" class="n">IRI sağ</th><th scope="col" class="n">İz maks. (mm)</th></tr></thead>
+            <tbody id="scan-tbody"><tr><th scope="row">—</th><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr></tbody>
+          </table>
+        </div>
+        <p class="tnote">IRI birimi m/km. Temsili veri.</p>
+
+        <h4 style="margin-top:30px">Bu tür çıktıyı üreten cihaz sınıfları</h4>
+        <ul class="inst">
+          <li><span class="code">Roughometer IV</span><span>Araç üzerinde çalışan pürüzlülük ölçer</span></li>
+          <li><span class="code">Walking Profiler G3</span><span>Yürüme hızında boyuna profil ölçümü</span></li>
+          <li><span class="code">Hawkeye 1000 / 2000</span><span>Araç tabanlı, çok sensörlü yüzey ölçüm sistemleri</span></li>
+          <li><span class="code">Hawkeye Software · Insight</span><span>Ölçüm verisinin işlenmesi ve raporlanması</span></li>
+        </ul>
+        <p class="tnote">Cihaz açıklamaları genel niteliktedir; ayrıntılı teknik veriler üretici dokümanlarından alınacaktır.</p>
+      </div>
+    </div>
+
+    <div class="sub-h"><span class="no">02.2</span><h3>Ürün grupları</h3></div>
+    <div class="cat">
+      <article>
+        <span class="chip">Grup 01</span>
+        <h4>Yol yüzey ölçüm ekipmanları</h4>
+        <ul>
+          <li><span class="code">Hawkeye 1000 / 2000 Series</span><span>sistem</span></li>
+          <li><span class="code">Hawkeye Software</span><span>yazılım</span></li>
+          <li><span class="code">Hawkeye Insight</span><span>yazılım</span></li>
+          <li><span class="code">Roughometer IV</span><span>cihaz</span></li>
+          <li><span class="code">Walking Profiler G3</span><span>cihaz</span></li>
+          <li><span class="code">iPAVE</span><span>sistem</span></li>
+          <li><span class="code">iSAVE</span><span>sistem</span></li>
+        </ul>
+        <div class="acts"><button type="button" class="btn btn-ghost btn-sm" data-quote="Yol yüzey ölçüm ekipmanları">Teklif İsteyin</button></div>
+      </article>
+      <article>
+        <span class="chip">Grup 02</span>
+        <h4>Asfalt kimyasalları</h4>
+        <ul>
+          <li><span class="code">IMPACT 7000</span><span>soyulmayı önleyici katkı</span></li>
+          <li><span class="code">EVOFLEX CA-3</span><span>katkı</span></li>
+          <li><span class="code">EVOTHERM M15</span><span>katkı</span></li>
+          <li><span class="code">INDULIN AA86</span><span>katkı</span></li>
+        </ul>
+        <div class="acts"><button type="button" class="btn btn-ghost btn-sm" data-quote="Asfalt kimyasalları">Teklif İsteyin</button></div>
+      </article>
+      <article>
+        <span class="chip">Grup 03</span>
+        <h4>Emülsiyon laboratuvar cihazları</h4>
+        <ul>
+          <li><span class="code">ATMO Processus C</span><span>laboratuvar</span></li>
+          <li><span class="code">ATMO Agilis Atomix C</span><span>laboratuvar</span></li>
+        </ul>
+        <div class="acts"><button type="button" class="btn btn-ghost btn-sm" data-quote="Emülsiyon laboratuvar cihazları">Teklif İsteyin</button></div>
+      </article>
+      <article class="w3">
+        <span class="chip">Grup 04</span>
+        <h4>Asfalt yama sistemleri</h4>
+        <p class="mfr">Saint-Gobain ADFORS</p>
+        <ul><li><span class="code">American Road Patch</span><span>hazır rulo asfalt yama</span></li></ul>
+        <p>Patentli, hazır rulo hâlinde uygulanan asfalt yama sistemi.</p>
+        <div class="acts"><button type="button" class="btn btn-ghost btn-sm" data-quote="American Road Patch">Teklif İsteyin</button></div>
+      </article>
+      <article class="w3">
+        <span class="chip">Grup 05</span>
+        <h4>Mikro yüzeyleme</h4>
+        <ul>
+          <li><span class="code">INDULIN MFS</span><span>bileşen</span></li>
+          <li><span class="code">PC-1994</span><span>bileşen</span></li>
+          <li><span class="code">Butonal NX 4190</span><span>bileşen</span></li>
+        </ul>
+        <div class="acts"><button type="button" class="btn btn-ghost btn-sm" data-quote="Mikro yüzeyleme (INDULIN MFS / PC-1994 / Butonal NX 4190)">Teklif İsteyin</button><a class="btn-quiet" href="#fig3">Uygulama süreci, Şekil 3</a></div>
+      </article>
+    </div>
+    <!-- PENDING: datasheets. Brief: datasheets and SDS are published UNGATED. -->
+    <div class="pending docs-pending">
+      <span class="ptag">İçerik bekleniyor</span>
+      <span class="pneed"><b>Müşteri sağlayacak:</b> her ürün için Teknik Veri Sayfası (PDF) ve kimyasallar için Güvenlik Bilgi Formu (GBF); üretici adları ve yetki kapsamı; üreticinin resmî ürün görselleri. Dokümanlar form doldurmadan indirilebilir olacak.</span>
+    </div>
+
+    <div class="sub-h" id="mikro"><span class="no">02.3</span><h3>Mikro yüzeyleme: bozulmuş yüzeye ince, soğuk serme tabaka</h3></div>
+    <div class="ms">
+      <figure class="ev" id="fig3" aria-labelledby="fig3cap">
+        <div class="sheet">
+          <div class="sheet-head"><span class="no">ŞEKİL 3</span><span class="tt">Mikro yüzeyleme uygulama sırası</span><span>Şematik</span></div>
+          <div class="stage ms-stage grab" id="ms-stage" tabindex="0" aria-label="Mikro yüzeyleme uygulamasının üç boyutlu canlandırması. Adımları aşağıdaki düğmelerle seçin.">
+<svg class="fallback" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="f3t f3d"><title id="f3t">Mikro yüzeyleme uygulamasının boyuna kesiti</title><desc id="f3d">Solda yeni serilen ince tabaka çatlakları ve çukurlaşmayı kapatmıştır; sağda serme kutusunun önündeki mevcut bozulmuş yüzey görülmektedir.</desc><path class="f-front" d="M40 205.5 L42 205.2 L44 204.8 L46 204.5 L48 204.2 L50 203.9 L52 203.6 L54 203.4 L56 203.2 L58 203.1 L60 203 L62 203 L64 203 L66 203.1 L68 203.2 L70 203.3 L72 203.5 L74 203.8 L76 204 L78 204.3 L80 204.6 L82 204.9 L84 205.1 L86 205.4 L88 205.5 L90 205.7 L92 205.8 L94 205.8 L96 205.8 L98 205.7 L100 205.5 L102 205.3 L104 204.9 L106 204.5 L108 204 L110 203.5 L112 202.9 L114 202.2 L116 201.5 L118 200.7 L120 200 L122 199.2 L124 198.4 L126 197.6 L128 196.9 L130 196.2 L132 195.5 L134 194.9 L136 194.4 L138 193.9 L140 193.5 L142 193.2 L144 192.9 L146 192.8 L148 199.1 L150 205.5 L152 199.2 L154 192.9 L156 193.1 L158 193.4 L160 193.7 L162 194 L164 194.4 L166 194.8 L168 195.1 L170 195.5 L172 195.9 L174 196.2 L176 196.5 L178 196.7 L180 196.9 L182 197.1 L184 197.2 L186 197.3 L188 197.2 L190 197.2 L192 197.1 L194 196.9 L196 196.8 L198 196.6 L200 196.3 L202 196.1 L204 195.9 L206 195.7 L208 195.5 L210 195.3 L212 195.2 L214 195.1 L216 195.1 L218 195.1 L220 195.2 L222 195.4 L224 195.6 L226 196 L228 196.4 L230 196.9 L232 200.6 L234 207.6 L236 208.2 L238 202.5 L240 200.1 L242 200.8 L244 201.6 L246 202.4 L248 203.1 L250 203.9 L252 204.6 L254 205.2 L256 205.8 L258 206.3 L260 206.8 L262 207.2 L264 207.5 L266 207.7 L268 207.9 L270 207.9 L272 207.9 L274 207.8 L276 207.6 L278 207.4 L280 207.1 L282 206.7 L284 206.3 L286 205.9 L288 205.5 L290 205.1 L292 204.6 L294 204.2 L296 203.8 L298 209.9 L300 216 L302 209.3 L304 202.7 L306 202.5 L308 202.4 L310 202.3 L312 202.3 L314 202.3 L316 202.4 L318 202.6 L320 202.7 L322 202.9 L324 203.1 L326 203.3 L328 203.5 L330 203.7 L332 203.8 L334 203.9 L336 204 L338 204 L340 204 L342 203.9 L344 203.7 L346 203.4 L348 203.1 L350 202.7 L352 202.3 L354 201.7 L356 201.2 L358 200.5 L360 199.8 L362 199.1 L364 198.4 L366 197.7 L368 196.9 L370 196.2 L372 195.5 L374 194.8 L376 194.2 L378 193.6 L380 193.1 L382 192.6 L384 192.2 L386 192 L388 191.8 L390 191.6 L392 191.6 L394 191.7 L396 191.8 L398 192 L400 192.3 L402 192.6 L404 193 L406 193.4 L408 193.9 L410 194.4 L412 194.9 L414 195.4 L416 195.8 L418 196.3 L420 196.7 L422 197.1 L424 197.4 L426 197.7 L428 197.9 L430 198.1 L432 198.2 L434 198.3 L436 198.3 L438 198.3 L440 198.2 L442 198.1 L444 198 L446 197.8 L448 197.6 L450 197.5 L452 197.3 L454 197.2 L456 197.1 L458 197 L460 197 L462 197 L464 197.1 L466 197.3 L468 203.9 L470 210.6 L472 204.6 L474 198.6 L476 199.1 L478 199.7 L480 200.3 L482 200.9 L484 201.6 L486 202.3 L488 203 L490 203.7 L492 204.4 L494 205.1 L496 205.8 L498 206.4 L500 206.9 L502 207.4 L504 207.9 L506 208.2 L508 208.5 L510 208.6 L512 208.7 L514 208.7 L516 208.6 L518 208.5 L520 208.2 L522 207.9 L524 207.5 L526 207.1 L528 213 L530 218.9 L532 212 L534 205 L536 204.5 L538 204 L540 203.5 L542 203.4 L544 203.4 L546 203.4 L548 203.5 L550 203.6 L552 203.8 L554 204 L556 204.3 L558 204.6 L560 205 L562 205.4 L564 205.9 L566 206.4 L568 206.9 L570 207.4 L572 207.9 L574 208.4 L576 208.9 L578 209.3 L580 209.7 L582 210 L584 210.3 L586 210.5 L588 210.7 L590 210.7 L592 210.7 L594 210.6 L596 210.5 L598 210.2 L600 209.9 L602 209.6 L604 209.2 L606 208.7 L608 208.2 L610 214.1 L612 219.9 L614 213 L616 206 L618 205.5 L620 205 L622 204.5 L624 204.1 L626 203.8 L628 203.5 L630 203.3 L632 203.1 L634 203 L636 203 L638 203.1 L640 203.2 L642 203.4 L644 203.7 L646 204 L648 204.4 L650 204.7 L652 205.1 L654 205.6 L656 206 L658 206.4 L660 206.8 L662 207.1 L664 207.4 L666 214.1 L668 220.7 L670 214.4 L672 208.1 L674 208.1 L676 208 L678 207.9 L680 207.7 L682 207.4 L684 207.1 L686 206.7 L688 206.2 L690 205.8 L692 205.3 L694 204.8 L696 204.3 L698 203.7 L700 203.2 L702 202.8 L704 202.3 L706 201.9 L708 201.6 L710 201.3 L712 201 L714 200.9 L716 200.7 L718 200.7 L720 200.7 L722 201.2 L724 201.7 L726 202.2 L728 202.8 L730 203.5 L732 207.3 L734 214.3 L736 215 L738 209.2 L740 206.6 L742 207.1 L744 207.6 L746 208 L748 208.4 L750 208.7 L752 208.9 L754 209 L756 209 L758 208.9 L760 208.8 L760 320 L40 320 Z"/><path fill="url(#pt-asph)" d="M40 205.5 L42 205.2 L44 204.8 L46 204.5 L48 204.2 L50 203.9 L52 203.6 L54 203.4 L56 203.2 L58 203.1 L60 203 L62 203 L64 203 L66 203.1 L68 203.2 L70 203.3 L72 203.5 L74 203.8 L76 204 L78 204.3 L80 204.6 L82 204.9 L84 205.1 L86 205.4 L88 205.5 L90 205.7 L92 205.8 L94 205.8 L96 205.8 L98 205.7 L100 205.5 L102 205.3 L104 204.9 L106 204.5 L108 204 L110 203.5 L112 202.9 L114 202.2 L116 201.5 L118 200.7 L120 200 L122 199.2 L124 198.4 L126 197.6 L128 196.9 L130 196.2 L132 195.5 L134 194.9 L136 194.4 L138 193.9 L140 193.5 L142 193.2 L144 192.9 L146 192.8 L148 199.1 L150 205.5 L152 199.2 L154 192.9 L156 193.1 L158 193.4 L160 193.7 L162 194 L164 194.4 L166 194.8 L168 195.1 L170 195.5 L172 195.9 L174 196.2 L176 196.5 L178 196.7 L180 196.9 L182 197.1 L184 197.2 L186 197.3 L188 197.2 L190 197.2 L192 197.1 L194 196.9 L196 196.8 L198 196.6 L200 196.3 L202 196.1 L204 195.9 L206 195.7 L208 195.5 L210 195.3 L212 195.2 L214 195.1 L216 195.1 L218 195.1 L220 195.2 L222 195.4 L224 195.6 L226 196 L228 196.4 L230 196.9 L232 200.6 L234 207.6 L236 208.2 L238 202.5 L240 200.1 L242 200.8 L244 201.6 L246 202.4 L248 203.1 L250 203.9 L252 204.6 L254 205.2 L256 205.8 L258 206.3 L260 206.8 L262 207.2 L264 207.5 L266 207.7 L268 207.9 L270 207.9 L272 207.9 L274 207.8 L276 207.6 L278 207.4 L280 207.1 L282 206.7 L284 206.3 L286 205.9 L288 205.5 L290 205.1 L292 204.6 L294 204.2 L296 203.8 L298 209.9 L300 216 L302 209.3 L304 202.7 L306 202.5 L308 202.4 L310 202.3 L312 202.3 L314 202.3 L316 202.4 L318 202.6 L320 202.7 L322 202.9 L324 203.1 L326 203.3 L328 203.5 L330 203.7 L332 203.8 L334 203.9 L336 204 L338 204 L340 204 L342 203.9 L344 203.7 L346 203.4 L348 203.1 L350 202.7 L352 202.3 L354 201.7 L356 201.2 L358 200.5 L360 199.8 L362 199.1 L364 198.4 L366 197.7 L368 196.9 L370 196.2 L372 195.5 L374 194.8 L376 194.2 L378 193.6 L380 193.1 L382 192.6 L384 192.2 L386 192 L388 191.8 L390 191.6 L392 191.6 L394 191.7 L396 191.8 L398 192 L400 192.3 L402 192.6 L404 193 L406 193.4 L408 193.9 L410 194.4 L412 194.9 L414 195.4 L416 195.8 L418 196.3 L420 196.7 L422 197.1 L424 197.4 L426 197.7 L428 197.9 L430 198.1 L432 198.2 L434 198.3 L436 198.3 L438 198.3 L440 198.2 L442 198.1 L444 198 L446 197.8 L448 197.6 L450 197.5 L452 197.3 L454 197.2 L456 197.1 L458 197 L460 197 L462 197 L464 197.1 L466 197.3 L468 203.9 L470 210.6 L472 204.6 L474 198.6 L476 199.1 L478 199.7 L480 200.3 L482 200.9 L484 201.6 L486 202.3 L488 203 L490 203.7 L492 204.4 L494 205.1 L496 205.8 L498 206.4 L500 206.9 L502 207.4 L504 207.9 L506 208.2 L508 208.5 L510 208.6 L512 208.7 L514 208.7 L516 208.6 L518 208.5 L520 208.2 L522 207.9 L524 207.5 L526 207.1 L528 213 L530 218.9 L532 212 L534 205 L536 204.5 L538 204 L540 203.5 L542 203.4 L544 203.4 L546 203.4 L548 203.5 L550 203.6 L552 203.8 L554 204 L556 204.3 L558 204.6 L560 205 L562 205.4 L564 205.9 L566 206.4 L568 206.9 L570 207.4 L572 207.9 L574 208.4 L576 208.9 L578 209.3 L580 209.7 L582 210 L584 210.3 L586 210.5 L588 210.7 L590 210.7 L592 210.7 L594 210.6 L596 210.5 L598 210.2 L600 209.9 L602 209.6 L604 209.2 L606 208.7 L608 208.2 L610 214.1 L612 219.9 L614 213 L616 206 L618 205.5 L620 205 L622 204.5 L624 204.1 L626 203.8 L628 203.5 L630 203.3 L632 203.1 L634 203 L636 203 L638 203.1 L640 203.2 L642 203.4 L644 203.7 L646 204 L648 204.4 L650 204.7 L652 205.1 L654 205.6 L656 206 L658 206.4 L660 206.8 L662 207.1 L664 207.4 L666 214.1 L668 220.7 L670 214.4 L672 208.1 L674 208.1 L676 208 L678 207.9 L680 207.7 L682 207.4 L684 207.1 L686 206.7 L688 206.2 L690 205.8 L692 205.3 L694 204.8 L696 204.3 L698 203.7 L700 203.2 L702 202.8 L704 202.3 L706 201.9 L708 201.6 L710 201.3 L712 201 L714 200.9 L716 200.7 L718 200.7 L720 200.7 L722 201.2 L724 201.7 L726 202.2 L728 202.8 L730 203.5 L732 207.3 L734 214.3 L736 215 L738 209.2 L740 206.6 L742 207.1 L744 207.6 L746 208 L748 208.4 L750 208.7 L752 208.9 L754 209 L756 209 L758 208.9 L760 208.8 L760 320 L40 320 Z"/><path class="prof" d="M40 205.5 L42 205.2 L44 204.8 L46 204.5 L48 204.2 L50 203.9 L52 203.6 L54 203.4 L56 203.2 L58 203.1 L60 203 L62 203 L64 203 L66 203.1 L68 203.2 L70 203.3 L72 203.5 L74 203.8 L76 204 L78 204.3 L80 204.6 L82 204.9 L84 205.1 L86 205.4 L88 205.5 L90 205.7 L92 205.8 L94 205.8 L96 205.8 L98 205.7 L100 205.5 L102 205.3 L104 204.9 L106 204.5 L108 204 L110 203.5 L112 202.9 L114 202.2 L116 201.5 L118 200.7 L120 200 L122 199.2 L124 198.4 L126 197.6 L128 196.9 L130 196.2 L132 195.5 L134 194.9 L136 194.4 L138 193.9 L140 193.5 L142 193.2 L144 192.9 L146 192.8 L148 199.1 L150 205.5 L152 199.2 L154 192.9 L156 193.1 L158 193.4 L160 193.7 L162 194 L164 194.4 L166 194.8 L168 195.1 L170 195.5 L172 195.9 L174 196.2 L176 196.5 L178 196.7 L180 196.9 L182 197.1 L184 197.2 L186 197.3 L188 197.2 L190 197.2 L192 197.1 L194 196.9 L196 196.8 L198 196.6 L200 196.3 L202 196.1 L204 195.9 L206 195.7 L208 195.5 L210 195.3 L212 195.2 L214 195.1 L216 195.1 L218 195.1 L220 195.2 L222 195.4 L224 195.6 L226 196 L228 196.4 L230 196.9 L232 200.6 L234 207.6 L236 208.2 L238 202.5 L240 200.1 L242 200.8 L244 201.6 L246 202.4 L248 203.1 L250 203.9 L252 204.6 L254 205.2 L256 205.8 L258 206.3 L260 206.8 L262 207.2 L264 207.5 L266 207.7 L268 207.9 L270 207.9 L272 207.9 L274 207.8 L276 207.6 L278 207.4 L280 207.1 L282 206.7 L284 206.3 L286 205.9 L288 205.5 L290 205.1 L292 204.6 L294 204.2 L296 203.8 L298 209.9 L300 216 L302 209.3 L304 202.7 L306 202.5 L308 202.4 L310 202.3 L312 202.3 L314 202.3 L316 202.4 L318 202.6 L320 202.7 L322 202.9 L324 203.1 L326 203.3 L328 203.5 L330 203.7 L332 203.8 L334 203.9 L336 204 L338 204 L340 204 L342 203.9 L344 203.7 L346 203.4 L348 203.1 L350 202.7 L352 202.3 L354 201.7 L356 201.2 L358 200.5 L360 199.8 L362 199.1 L364 198.4 L366 197.7 L368 196.9 L370 196.2 L372 195.5 L374 194.8 L376 194.2 L378 193.6 L380 193.1 L382 192.6 L384 192.2 L386 192 L388 191.8 L390 191.6 L392 191.6 L394 191.7 L396 191.8 L398 192 L400 192.3 L402 192.6 L404 193 L406 193.4 L408 193.9 L410 194.4 L412 194.9 L414 195.4 L416 195.8 L418 196.3 L420 196.7 L422 197.1 L424 197.4 L426 197.7 L428 197.9 L430 198.1 L432 198.2 L434 198.3 L436 198.3 L438 198.3 L440 198.2 L442 198.1 L444 198 L446 197.8 L448 197.6 L450 197.5 L452 197.3 L454 197.2 L456 197.1 L458 197 L460 197 L462 197 L464 197.1 L466 197.3 L468 203.9 L470 210.6 L472 204.6 L474 198.6 L476 199.1 L478 199.7 L480 200.3 L482 200.9 L484 201.6 L486 202.3 L488 203 L490 203.7 L492 204.4 L494 205.1 L496 205.8 L498 206.4 L500 206.9 L502 207.4 L504 207.9 L506 208.2 L508 208.5 L510 208.6 L512 208.7 L514 208.7 L516 208.6 L518 208.5 L520 208.2 L522 207.9 L524 207.5 L526 207.1 L528 213 L530 218.9 L532 212 L534 205 L536 204.5 L538 204 L540 203.5 L542 203.4 L544 203.4 L546 203.4 L548 203.5 L550 203.6 L552 203.8 L554 204 L556 204.3 L558 204.6 L560 205 L562 205.4 L564 205.9 L566 206.4 L568 206.9 L570 207.4 L572 207.9 L574 208.4 L576 208.9 L578 209.3 L580 209.7 L582 210 L584 210.3 L586 210.5 L588 210.7 L590 210.7 L592 210.7 L594 210.6 L596 210.5 L598 210.2 L600 209.9 L602 209.6 L604 209.2 L606 208.7 L608 208.2 L610 214.1 L612 219.9 L614 213 L616 206 L618 205.5 L620 205 L622 204.5 L624 204.1 L626 203.8 L628 203.5 L630 203.3 L632 203.1 L634 203 L636 203 L638 203.1 L640 203.2 L642 203.4 L644 203.7 L646 204 L648 204.4 L650 204.7 L652 205.1 L654 205.6 L656 206 L658 206.4 L660 206.8 L662 207.1 L664 207.4 L666 214.1 L668 220.7 L670 214.4 L672 208.1 L674 208.1 L676 208 L678 207.9 L680 207.7 L682 207.4 L684 207.1 L686 206.7 L688 206.2 L690 205.8 L692 205.3 L694 204.8 L696 204.3 L698 203.7 L700 203.2 L702 202.8 L704 202.3 L706 201.9 L708 201.6 L710 201.3 L712 201 L714 200.9 L716 200.7 L718 200.7 L720 200.7 L722 201.2 L724 201.7 L726 202.2 L728 202.8 L730 203.5 L732 207.3 L734 214.3 L736 215 L738 209.2 L740 206.6 L742 207.1 L744 207.6 L746 208 L748 208.4 L750 208.7 L752 208.9 L754 209 L756 209 L758 208.9 L760 208.8"/><path class="ms-new" d="M40 193.2 L42 193.2 L44 193.2 L46 193.2 L48 193.2 L50 193.2 L52 193.2 L54 193.1 L56 193.1 L58 193.1 L60 193.1 L62 193 L64 193 L66 192.9 L68 192.9 L70 192.8 L72 192.7 L74 192.7 L76 192.6 L78 192.5 L80 192.4 L82 192.4 L84 192.3 L86 192.2 L88 192.1 L90 192 L92 192 L94 191.9 L96 191.8 L98 191.7 L100 191.6 L102 191.6 L104 191.5 L106 191.4 L108 191.3 L110 191.3 L112 191.2 L114 191.1 L116 191.1 L118 190.8 L120 190 L122 189.1 L124 188.3 L126 187.5 L128 186.8 L130 186 L132 185.3 L134 184.7 L136 184.2 L138 183.7 L140 183.3 L142 183 L144 182.8 L146 182.6 L148 182.6 L150 182.6 L152 182.7 L154 182.9 L156 183.2 L158 183.5 L160 183.8 L162 184.2 L164 184.7 L166 185.1 L168 185.6 L170 186 L172 186.4 L174 186.9 L176 187.2 L178 187.6 L180 187.9 L182 188.1 L184 188.3 L186 188.4 L188 188.5 L190 188.5 L192 188.5 L194 188.4 L196 188.3 L198 188.2 L200 188 L202 187.9 L204 187.7 L206 187.5 L208 187.4 L210 187.3 L212 187.2 L214 187.1 L216 187.2 L218 187.2 L220 187.4 L222 187.6 L224 187.8 L226 188.2 L228 188.6 L230 189 L232 189.6 L234 190.2 L236 190.8 L238 191.5 L240 192.2 L242 192.9 L244 193 L246 193 L248 192.9 L250 192.9 L252 192.8 L254 192.7 L256 192.7 L258 192.6 L260 192.5 L262 192.5 L264 192.4 L266 192.3 L268 192.2 L270 192.1 L272 192.1 L274 192 L276 191.9 L278 191.8 L280 191.7 L282 191.6 L284 191.6 L286 191.5 L288 191.4 L290 191.3 L292 191.3 L294 191.2 L296 191.2 L298 191.1 L300 191 L302 191 L304 191 L306 190.9 L308 190.9 L310 190.9 L312 190.8 L314 190.8 L316 190.8 L318 190.8 L320 190.8 L322 190.8 L324 190.8 L326 190.8 L328 190.9 L330 190.9 L332 190.9 L334 191 L336 191 L338 191.1 L340 191.1 L342 191.2 L344 191.2 L346 191.3 L348 191.4 L350 191.4 L352 191.5 L354 191.6 L356 191.7 L358 191.3 L360 190.7 L362 190 L364 189.4 L366 188.7 L368 188.1 L370 187.4 L372 186.8 L374 186.2 L376 185.6 L378 185.1 L380 184.7 L382 184.3 L384 184 L386 183.8 L388 183.6 L390 183.6 L392 183.6 L394 183.7 L396 183.9 L398 184.1 L400 184.4 L402 184.8 L404 185.2 L406 185.6 L408 186.1 L410 186.6 L412 187.1 L414 187.6 L416 188 L418 188.4 L420 188.8 L420 196.7 L418 196.3 L416 195.8 L414 195.4 L412 194.9 L410 194.4 L408 193.9 L406 193.4 L404 193 L402 192.6 L400 192.3 L398 192 L396 191.8 L394 191.7 L392 191.6 L390 191.6 L388 191.8 L386 192 L384 192.2 L382 192.6 L380 193.1 L378 193.6 L376 194.2 L374 194.8 L372 195.5 L370 196.2 L368 196.9 L366 197.7 L364 198.4 L362 199.1 L360 199.8 L358 200.5 L356 201.2 L354 201.7 L352 202.3 L350 202.7 L348 203.1 L346 203.4 L344 203.7 L342 203.9 L340 204 L338 204 L336 204 L334 203.9 L332 203.8 L330 203.7 L328 203.5 L326 203.3 L324 203.1 L322 202.9 L320 202.7 L318 202.6 L316 202.4 L314 202.3 L312 202.3 L310 202.3 L308 202.4 L306 202.5 L304 202.7 L302 209.3 L300 216 L298 209.9 L296 203.8 L294 204.2 L292 204.6 L290 205.1 L288 205.5 L286 205.9 L284 206.3 L282 206.7 L280 207.1 L278 207.4 L276 207.6 L274 207.8 L272 207.9 L270 207.9 L268 207.9 L266 207.7 L264 207.5 L262 207.2 L260 206.8 L258 206.3 L256 205.8 L254 205.2 L252 204.6 L250 203.9 L248 203.1 L246 202.4 L244 201.6 L242 200.8 L240 200.1 L238 202.5 L236 208.2 L234 207.6 L232 200.6 L230 196.9 L228 196.4 L226 196 L224 195.6 L222 195.4 L220 195.2 L218 195.1 L216 195.1 L214 195.1 L212 195.2 L210 195.3 L208 195.5 L206 195.7 L204 195.9 L202 196.1 L200 196.3 L198 196.6 L196 196.8 L194 196.9 L192 197.1 L190 197.2 L188 197.2 L186 197.3 L184 197.2 L182 197.1 L180 196.9 L178 196.7 L176 196.5 L174 196.2 L172 195.9 L170 195.5 L168 195.1 L166 194.8 L164 194.4 L162 194 L160 193.7 L158 193.4 L156 193.1 L154 192.9 L152 199.2 L150 205.5 L148 199.1 L146 192.8 L144 192.9 L142 193.2 L140 193.5 L138 193.9 L136 194.4 L134 194.9 L132 195.5 L130 196.2 L128 196.9 L126 197.6 L124 198.4 L122 199.2 L120 200 L118 200.7 L116 201.5 L114 202.2 L112 202.9 L110 203.5 L108 204 L106 204.5 L104 204.9 L102 205.3 L100 205.5 L98 205.7 L96 205.8 L94 205.8 L92 205.8 L90 205.7 L88 205.5 L86 205.4 L84 205.1 L82 204.9 L80 204.6 L78 204.3 L76 204 L74 203.8 L72 203.5 L70 203.3 L68 203.2 L66 203.1 L64 203 L62 203 L60 203 L58 203.1 L56 203.2 L54 203.4 L52 203.6 L50 203.9 L48 204.2 L46 204.5 L44 204.8 L42 205.2 L40 205.5 Z"/><g class="spreader"><polygon class="f-side edge" points="430,151 496,151 512,115 414,115"/><rect class="f-top edge" x="420" y="151" width="86" height="40"/></g><line class="dir" x1="530" y1="133" x2="590" y2="133"/><polygon class="dir-h" points="590,128 600,133 590,138"/><text class="lbl mute" x="530" y="121">Serme yönü</text><path class="ldr" d="M220 190.2 L180 96"/><circle class="ldr-dot" cx="220" cy="190.2" r="2.4"/><text class="lbl" x="186" y="100" text-anchor="start">Mikro yüzeyleme tabakası</text><path class="ldr" d="M612 217.9 L600 96"/><circle class="ldr-dot" cx="612" cy="217.9" r="2.4"/><text class="lbl" x="606" y="100" text-anchor="start">Çatlak</text><path class="ldr" d="M640 205.2 L640 360"/><circle class="ldr-dot" cx="640" cy="205.2" r="2.4"/><text class="lbl" x="646" y="364" text-anchor="start">Tekerlek izi çukurlaşması</text><text class="lbl mute" x="40" y="380">Mevcut kaplama · şematik, ölçeksiz</text></svg>
+            <canvas aria-hidden="true"></canvas>
+            <button type="button" class="stage-btn" id="ms-play" aria-pressed="false"><span aria-hidden="true" id="ms-play-ic">▶</span><span id="ms-play-t">Oynat</span></button>
+          </div>
+          <p class="nogl-note">Üç boyutlu görünüm bu tarayıcıda açılamadı; boyuna kesit çizimi gösteriliyor.</p>
+          <ol class="steps" id="ms-steps">
+            <li><button type="button" data-step="0"><span class="k">01</span><span class="t">Mevcut yüzey</span></button></li>
+            <li><button type="button" data-step="1"><span class="k">02</span><span class="t">Yüzey hazırlığı</span></button></li>
+            <li><button type="button" data-step="2" aria-current="step"><span class="k">03</span><span class="t">Serme</span></button></li>
+            <li><button type="button" data-step="3"><span class="k">04</span><span class="t">Kür ve trafiğe açılış</span></button></li>
+          </ol>
+          <p class="step-text" id="ms-text" aria-live="polite">Karışım, serme kutusuyla şerit genişliğinde yayılır. Tekerlek izi çukurlaşmaları doldurulur, çatlaklar kapanır.</p>
+        </div>
+        <figcaption class="cap" id="fig3cap"><b>Şekil 3.</b>Mikro yüzeyleme uygulamasının şematik sırası. Amber işaretler, uygulama öncesinde tespit edilen çatlak ve tekerlek izi bölgelerini gösterir. Tabaka kalınlığı ve çukurlaşma derinliği görünürlük için büyütülmüştür.</figcaption>
+      </figure>
+      <div class="ms-side">
+        <p>Mikro yüzeyleme; polimer modifiyeli bitüm emülsiyonu, agrega, mineral dolgu, su ve katkılardan oluşan karışımın mevcut kaplama üzerine ince bir tabaka hâlinde soğuk serilmesidir.</p>
+        <p>Yüzey bozulmalarını kapatır, tekerlek izlerini doldurabilir ve yeni bir aşınma yüzeyi oluşturur. Taşıyıcı bir tabaka değildir: yapısal bir sorunu çözmez. Bu nedenle uygulama kararı, bozulmanın nedeninin teşhisinden sonra verilmelidir.</p>
+        <div class="ms-prod" aria-label="Portföydeki ilgili ürünler">
+          <div><span class="code">INDULIN MFS</span><span>Grup 05</span></div>
+          <div><span class="code">PC-1994</span><span>Grup 05</span></div>
+          <div><span class="code">Butonal NX 4190</span><span>Grup 05</span></div>
+        </div>
+        <div class="hero-cta" style="margin-top:22px">
+          <button type="button" class="btn btn-primary" data-quote="Mikro yüzeyleme (INDULIN MFS / PC-1994 / Butonal NX 4190)">Teklif İsteyin</button>
+          <a class="btn btn-ghost" href="#iletisim" data-enquiry="hizmet" data-service="Yol üstyapı mühendisliği">Mühendisimizle Görüşün</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 REFERANSLAR ================= -->
+<!-- PENDING — the single most important missing asset (brief §2.1). Three real projects: named, located, dated, with a scope figure.
+     If contracts forbid naming the client, an anonymised but verifiable description is acceptable (e.g. "İç Anadolu'da bir büyükşehir belediyesi"). -->
+<section class="sec" id="referanslar" aria-labelledby="h-ref">
+  <div class="wrap">
+    <div class="sec-meta"><span class="no">§ 03</span><span data-en="PROJECTS">REFERANSLAR</span><span class="rule"></span><span>Kayıt 01–03</span></div>
+    <h2 class="sh" id="h-ref" data-en="Every reference: who, where, when, and how much.">Her referans kaydı: idare, yer, yıl ve ölçülmüş kapsam.</h2>
+    <p class="lead">Bir referansı değerlendirilebilir kılan şey, ölçeğinin ve yönteminin açıkça yazılmasıdır. Bu bölümdeki kayıtlar bu biçimde yayımlanacaktır.</p>
+
+    <div class="refs">
+      <article class="pending ref" aria-label="Referans kaydı 01, içerik bekleniyor">
+        <div class="row1"><span class="ptag">Kayıt 01 · bekleniyor</span><span class="chip mono" style="font-size:11px;color:var(--ink-500)">İdare türü</span></div>
+        <span class="slot big" aria-hidden="true">— km / m²</span>
+        <dl>
+          <dt>Proje</dt><dd><span class="slot">Proje adı</span></dd>
+          <dt>Yer · yıl</dt><dd><span class="slot">İl / ilçe · yıl</span></dd>
+          <dt>Kapsam</dt><dd><span class="slot">Tek satırlık iş tanımı</span></dd>
+          <dt>Yöntem</dt><dd><span class="slot">Uygulanan standart veya yöntem</span></dd>
+        </dl>
+        <p class="pneed"><b>Müşteri sağlayacak:</b> idare türü, konum, yıl, ölçek (km, m², karot, deney kesimi sayısı vb.), kapsam, yöntem; varsa tarihli ve yer bilgili bir fotoğraf.</p>
+      </article>
+      <article class="pending ref" aria-label="Referans kaydı 02, içerik bekleniyor">
+        <div class="row1"><span class="ptag">Kayıt 02 · bekleniyor</span><span class="chip mono" style="font-size:11px;color:var(--ink-500)">İdare türü</span></div>
+        <span class="slot big" aria-hidden="true">— km / m²</span>
+        <dl>
+          <dt>Proje</dt><dd><span class="slot">Proje adı</span></dd>
+          <dt>Yer · yıl</dt><dd><span class="slot">İl / ilçe · yıl</span></dd>
+          <dt>Kapsam</dt><dd><span class="slot">Tek satırlık iş tanımı</span></dd>
+          <dt>Yöntem</dt><dd><span class="slot">Uygulanan standart veya yöntem</span></dd>
+        </dl>
+        <p class="pneed"><b>Müşteri sağlayacak:</b> kayıt 01 ile aynı alanlar. Kurum adı verilemiyorsa doğrulanabilir anonim tanım.</p>
+      </article>
+      <article class="pending ref" aria-label="Referans kaydı 03, içerik bekleniyor">
+        <div class="row1"><span class="ptag">Kayıt 03 · bekleniyor</span><span class="chip mono" style="font-size:11px;color:var(--ink-500)">İdare türü</span></div>
+        <span class="slot big" aria-hidden="true">— km / m²</span>
+        <dl>
+          <dt>Proje</dt><dd><span class="slot">Proje adı</span></dd>
+          <dt>Yer · yıl</dt><dd><span class="slot">İl / ilçe · yıl</span></dd>
+          <dt>Kapsam</dt><dd><span class="slot">Tek satırlık iş tanımı</span></dd>
+          <dt>Yöntem</dt><dd><span class="slot">Uygulanan standart veya yöntem</span></dd>
+        </dl>
+        <p class="pneed"><b>Müşteri sağlayacak:</b> kayıt 01 ile aynı alanlar. Mevcut iki gerçek yol yüzeyi fotoğrafı yer ve tarih bilgisiyle burada kullanılabilir.</p>
+      </article>
+    </div>
+    <div class="ref-foot">
+      <p>Referans listesinin tamamı, kayıtlar onaylandıktan sonra ayrı bir sayfada yayımlanacaktır.</p>
+      <a class="btn btn-ghost btn-sm" href="/referanslar" data-future>Referanslarımızı İnceleyin</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 KURUMSAL ================= -->
+<section class="sec" id="kurumsal" aria-labelledby="h-co">
+  <div class="wrap">
+    <div class="sec-meta"><span class="no">§ 04</span><span data-en="COMPANY">KURUMSAL</span><span class="rule"></span><span>Ankara</span></div>
+    <div class="co">
+      <div class="co-text">
+        <h2 class="sh" id="h-co" data-en="Two civil engineers. One problem.">İki inşaat mühendisi. Tek bir konu.</h2>
+        <p style="margin-top:24px">Geopave Mühendislik, ODTÜ ve İTÜ inşaat mühendisliği mezunu iki ortak tarafından kuruldu. Ankara'daki ofisimizden yol üstyapı mühendisliği danışmanlığı yapıyor ve yol teknolojilerini temsil ediyoruz.</p>
+        <p>Mühendislik hizmetleri ile temsil ettiğimiz teknolojiler aynı sorunun iki yüzüdür: bozulmayı teşhis eden ekip, çözümü uygulayacak malzemeyi ve cihazı da tanır.</p>
+        <dl class="kv">
+          <div><dt>Unvan</dt><dd>Geopave Mühendislik</dd></div>
+          <div><dt>Merkez</dt><dd>Söğütözü, Çankaya / Ankara</dd></div>
+          <div><dt>Ortaklar</dt><dd>2 · ODTÜ ve İTÜ İnşaat Mühendisliği</dd></div>
+          <!-- PENDING: corporate identifiers -->
+          <div><dt>Kurumsal bilgiler</dt><dd><span class="pinline">Bekleniyor</span> <span style="font-size:13px;color:var(--ink-500)">Kuruluş yılı, ticaret sicil no, vergi dairesi ve no, KEP adresi, oda üyelikleri</span></dd></div>
+        </dl>
+      </div>
+      <div>
+        <!-- PENDING: partners. Brief §2.2 — full names, degrees, university, years of experience, chamber membership, photograph, direct contact. -->
+        <div class="people">
+          <article class="pending person" aria-label="Kurucu ortak 1, içerik bekleniyor">
+            <div class="portrait">Portre<br>4:5, doğal ışık</div>
+            <span class="ptag">Kurucu ortak · bekleniyor</span>
+            <p class="pneed"><b>Müşteri sağlayacak:</b> ad soyad, unvan, mezuniyet (ODTÜ veya İTÜ, yıl), deneyim yılı, uzmanlık, İMO sicil, doğrudan iletişim, portre.</p>
+          </article>
+          <article class="pending person" aria-label="Kurucu ortak 2, içerik bekleniyor">
+            <div class="portrait">Portre<br>4:5, aynı çekim</div>
+            <span class="ptag">Kurucu ortak · bekleniyor</span>
+            <p class="pneed"><b>Müşteri sağlayacak:</b> aynı alanlar. İki portre aynı gün, aynı ışıkta çekilmelidir.</p>
+          </article>
+        </div>
+        <!-- PENDING: certificates — show the documents, do not claim them. -->
+        <div class="pending certs">
+          <span class="ptag">Sertifikalar · bekleniyor</span>
+          <p class="pneed"><b>Müşteri sağlayacak:</b> mevcut her belge için ad, veren kuruluş, numara, geçerlilik tarihi ve yayımlanabilir PDF. Belgeler logo şeridi olarak değil, tarihli ve doğrulanabilir liste olarak gösterilecektir.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 TEMSİLCİLİK ================= -->
+<section class="sec inv" id="temsilcilik" aria-labelledby="h-rep">
+  <div class="wrap">
+    <div class="sec-meta"><span class="no">§ 05</span><span data-en="REPRESENTATION">TEMSİLCİLİK</span><span class="rule"></span><span lang="en">Türkiye</span></div>
+    <h2 class="sh" id="h-rep" data-en="Technical representation in Türkiye for pavement technology manufacturers.">Yol teknolojisi üreticileri için Türkiye'de teknik temsil.</h2>
+    <p class="lead">Temsil ettiğimiz ürünleri bir mühendislik firması olarak ele alıyoruz: şartnameye, uygulamaya ve sonuca bağlayarak. <b lang="en">For manufacturers seeking a representative in Türkiye, this is the conversation to start.</b></p>
+
+    <div class="rep">
+      <div>
+        <span class="k">A</span>
+        <h3>Portföydeki ürün hatları</h3>
+        <ul>
+          <li><span>Yüzey ölçüm</span><span class="code">Hawkeye · Roughometer IV · Walking Profiler G3 · iPAVE · iSAVE</span></li>
+          <li><span>Asfalt kimyasalları</span><span class="code">IMPACT 7000 · EVOFLEX CA-3 · EVOTHERM M15 · INDULIN AA86</span></li>
+          <li><span>Laboratuvar</span><span class="code">ATMO Processus C · Agilis Atomix C</span></li>
+          <li><span>Onarım</span><span class="code">American Road Patch</span></li>
+          <li><span>Mikro yüzeyleme</span><span class="code">INDULIN MFS · PC-1994 · Butonal NX 4190</span></li>
+        </ul>
+      </div>
+      <div>
+        <span class="k">B</span>
+        <h3>Üreticiler ve yetki kapsamı</h3>
+        <!-- PENDING: principals -->
+        <div class="pending">
+          <span class="ptag">Bekleniyor</span>
+          <p class="pneed" style="margin-top:8px"><b>Müşteri sağlayacak:</b> temsil edilen her üreticinin adı, yetkinin niteliği (yetkili temsilci, distribütör, servis), kapsadığı bölge ve ad ile logo kullanım izni.</p>
+        </div>
+      </div>
+      <div>
+        <span class="k">C</span>
+        <h3>Destek taahhütleri</h3>
+        <!-- PENDING: service commitments -->
+        <div class="pending">
+          <span class="ptag">Bekleniyor</span>
+          <p class="pneed" style="margin-top:8px"><b>Müşteri sağlayacak:</b> Türkçe teknik dokümantasyon, eğitim, kalibrasyon aralıkları, yedek parça durumu, yanıt süresi ve sorumlu mühendis. Yalnızca fiilen verilen taahhütler yazılacaktır.</p>
+        </div>
+      </div>
+    </div>
+    <div class="rep-cta">
+      <a class="btn btn-primary" href="#iletisim" data-enquiry="temsil"><span data-en="Discuss Representation in Türkiye">Türkiye Temsilciliği için Görüşelim</span></a>
+      <p class="en" lang="en"><i>Discuss representation in Türkiye</i> — the form accepts enquiries in English.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 İLETİŞİM ================= -->
+<section class="sec" id="iletisim" aria-labelledby="h-ct">
+  <div class="wrap">
+    <div class="sec-meta"><span class="no">§ 06</span><span data-en="CONTACT">İLETİŞİM</span><span class="rule"></span><span>Ankara</span></div>
+    <h2 class="sh" id="h-ct" data-en="Tell us about the project or the product you need.">Projenizi ya da ihtiyacınız olan ürünü aktarın.</h2>
+    <div class="ct">
+      <div>
+        <dl class="contact-list">
+          <div><dt>Telefon</dt><dd id="c-tel" class="mono">+90 312 950 57 10</dd><button type="button" class="copy" data-copy="+90 312 950 57 10" aria-controls="c-tel">Kopyala</button></div>
+          <div><dt>Mobil</dt><dd id="c-mob" class="mono">+90 545 413 28 15</dd><button type="button" class="copy" data-copy="+90 545 413 28 15" aria-controls="c-mob">Kopyala</button></div>
+          <div><dt>E-posta</dt><dd id="c-mail" class="mono">info@geopaveco.com</dd><button type="button" class="copy" data-copy="info@geopaveco.com" aria-controls="c-mail">Kopyala</button></div>
+          <div><dt>Faks</dt><dd id="c-fax" class="mono">+90 850 220 04 51</dd><button type="button" class="copy" data-copy="+90 850 220 04 51" aria-controls="c-fax">Kopyala</button></div>
+          <div><dt>Adres</dt><dd id="c-adr" class="addr">Söğütözü Mahallesi, Koç Kuleleri A Blok No: 2 Kat: 3 Daire: 9, 06530 Çankaya / Ankara</dd><button type="button" class="copy" data-copy="Söğütözü Mahallesi, Koç Kuleleri A Blok No: 2 Kat: 3 Daire: 9, 06530 Çankaya/Ankara, Türkiye" aria-controls="c-adr">Kopyala</button></div>
+          <!-- PENDING: business hours are not published anywhere today; do not invent them. -->
+          <div><dt>Çalışma saatleri</dt><dd class="addr"><span class="pinline">Bekleniyor</span> <span style="font-size:13px;color:var(--ink-500)">Müşteri teyidi gerekli</span></dd></div>
+        </dl>
+        <p class="contact-note">Numaraları ve adresi kopyalayabilirsiniz. Bu sayfa arama başlatmaz ve e-posta göndermez.</p>
+      </div>
+
+      <div class="form" id="form-box">
+        <div class="form-head">
+          <h3 id="form-title">Talep formu</h3>
+          <p>Talep türünü seçin; form yalnızca o talep için gereken alanları gösterir.</p>
+        </div>
+        <form id="q-form" novalidate aria-labelledby="form-title">
+          <div class="err-sum" id="err-sum" role="alert" hidden></div>
+          <fieldset>
+            <legend class="sr">Talep türü</legend>
+            <div class="types">
+              <label><input type="radio" name="tur" value="hizmet" checked>Proje ön görüşmesi<small>hizmetler</small></label>
+              <label><input type="radio" name="tur" value="urun">Ürün teklifi<small>proforma</small></label>
+              <label><input type="radio" name="tur" value="temsil">Temsilcilik<small>üreticiler</small></label>
+              <label><input type="radio" name="tur" value="diger">Diğer<small>genel</small></label>
+            </div>
+          </fieldset>
+
+          <div class="fgrid">
+            <div class="fld full"><label for="f-kurum">Kurum / firma adı<span class="req">zorunlu</span></label><input id="f-kurum" name="kurum" autocomplete="organization" data-req data-msg="Lütfen kurum veya firma adını giriniz."></div>
+            <div class="fld"><label for="f-ad">Ad soyad<span class="req">zorunlu</span></label><input id="f-ad" name="ad" autocomplete="name" data-req data-msg="Lütfen adınızı ve soyadınızı giriniz."></div>
+            <div class="fld"><label for="f-gorev">Görev / birim</label><input id="f-gorev" name="gorev" autocomplete="organization-title"></div>
+            <div class="fld"><label for="f-eposta">E-posta<span class="req">zorunlu</span></label><input id="f-eposta" name="eposta" type="email" autocomplete="email" inputmode="email" data-req data-type="email" data-msg="Lütfen geçerli bir e-posta adresi giriniz (örn. ad@kurum.gov.tr)."></div>
+            <div class="fld"><label for="f-tel">Telefon<span class="req">zorunlu</span></label><input id="f-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" data-req data-type="tel" data-msg="Lütfen alan koduyla birlikte telefon numaranızı giriniz."></div>
+          </div>
+
+          <fieldset class="group" data-group="hizmet">
+            <legend class="sr">Proje bilgileri</legend>
+            <div class="fgrid">
+              <div class="fld full"><label for="f-hizmet">İlgilendiğiniz hizmet<span class="req">zorunlu</span></label>
+                <select id="f-hizmet" name="hizmet" data-req data-msg="Lütfen ilgilendiğiniz hizmeti seçiniz.">
+                  <option value="">Seçiniz</option>
+                  <option>Yol üstyapı mühendisliği</option><option>Geoteknik ve temel mühendisliği</option><option>Zemin etütleri</option><option>Köprü mühendisliği</option><option>Kalite kontrol</option><option>Ar-Ge ve ürün geliştirme</option><option>Silindirle sıkıştırılmış beton (SSB) yollar</option><option>Geçirimli beton uygulamaları</option><option>Brüt beton</option><option>Diğer</option>
+                </select></div>
+              <div class="fld"><label for="f-yer">Proje yeri (il / ilçe)<span class="req">zorunlu</span></label><input id="f-yer" name="proje_yeri" data-req data-msg="Lütfen projenin bulunduğu il ve ilçeyi giriniz."></div>
+              <div class="fld"><label for="f-asama">Projenin aşaması<span class="req">zorunlu</span></label>
+                <select id="f-asama" name="asama" data-req data-msg="Lütfen projenin aşamasını seçiniz.">
+                  <option value="">Seçiniz</option><option>Fikir aşamasında</option><option>Ön tasarım</option><option>İhaleye hazırlık</option><option>İhale süreci devam ediyor</option><option>Uygulama aşamasında</option><option>Mevcut bir sorunun çözümü</option>
+                </select></div>
+              <div class="fld"><label for="f-olcek">Projenin ölçeği</label><input id="f-olcek" name="olcek" placeholder="örn. 12 km, 40.000 m²"></div>
+              <div class="fld"><label for="f-saat">Sizi ne zaman arayabiliriz?</label>
+                <select id="f-saat" name="arama"><option>Fark etmez</option><option>Sabah (09:00–12:00)</option><option>Öğleden sonra (13:00–18:00)</option></select></div>
+              <div class="fld full"><label for="f-acik">Kısa açıklama<span class="req">zorunlu</span></label><textarea id="f-acik" name="aciklama" rows="4" data-req data-msg="Lütfen projenizi kısaca açıklayınız." aria-describedby="f-acik-h"></textarea><span class="hint2" id="f-acik-h">Gözlenen sorun, kapsam ve kısıtlar.</span></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="group" data-group="urun" disabled>
+            <legend class="sr">Ürün bilgileri</legend>
+            <div class="fgrid">
+              <div class="fld full"><label for="f-urun">Ürün / model<span class="req">zorunlu</span></label><input id="f-urun" name="urun" list="urun-list" data-req data-msg="Lütfen ürün veya modeli belirtiniz.">
+                <datalist id="urun-list"><option value="Hawkeye 1000 Series"><option value="Hawkeye 2000 Series"><option value="Hawkeye Software"><option value="Hawkeye Insight"><option value="Roughometer IV"><option value="Walking Profiler G3"><option value="iPAVE"><option value="iSAVE"><option value="IMPACT 7000"><option value="EVOFLEX CA-3"><option value="EVOTHERM M15"><option value="INDULIN AA86"><option value="ATMO Processus C"><option value="ATMO Agilis Atomix C"><option value="American Road Patch"><option value="INDULIN MFS"><option value="PC-1994"><option value="Butonal NX 4190"></datalist></div>
+              <div class="fld"><label for="f-miktar">Miktar ve birim<span class="req">zorunlu</span></label><input id="f-miktar" name="miktar" placeholder="örn. 2 adet, 5 ton" data-req data-msg="Lütfen miktarı ve birimini giriniz (örn. 2 adet, 5 ton)."></div>
+              <div class="fld"><label for="f-teslim">Teslim yeri (il / şantiye)<span class="req">zorunlu</span></label><input id="f-teslim" name="teslim" data-req data-msg="Lütfen teslim yerini giriniz."></div>
+              <div class="fld"><label for="f-tarih">İhtiyaç / teslim tarihi<span class="req">zorunlu</span></label><input id="f-tarih" name="tarih" placeholder="örn. ihale tarihi veya gg.aa.yyyy" data-req data-msg="Lütfen ihtiyaç veya teslim tarihini giriniz."></div>
+              <div class="fld"><label for="f-surec">Satın alma süreci</label>
+                <select id="f-surec" name="surec"><option>Belirsiz</option><option>İhale</option><option>Doğrudan temin</option><option>Serbest alım</option><option>Yaklaşık maliyet çalışması</option></select></div>
+              <div class="fld full"><label for="f-not">Eklemek istedikleriniz</label><textarea id="f-not" name="not" rows="3"></textarea></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="group" data-group="temsil" disabled>
+            <legend class="sr">Temsilcilik bilgileri</legend>
+            <div class="fgrid">
+              <div class="fld"><label for="f-uretici">Üretici ve ürün alanı<span class="req">zorunlu</span></label><input id="f-uretici" name="uretici" data-req data-msg="Lütfen firma ve ürün alanınızı belirtiniz."></div>
+              <div class="fld"><label for="f-ulke">Ülke<span class="req">zorunlu</span></label><input id="f-ulke" name="ulke" autocomplete="country-name" data-req data-msg="Lütfen ülkenizi giriniz."></div>
+              <div class="fld full"><label for="f-tmesaj">Mesaj (Türkçe veya İngilizce)<span class="req">zorunlu</span></label><textarea id="f-tmesaj" name="mesaj" rows="4" data-req data-msg="Lütfen mesajınızı yazınız."></textarea></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="group" data-group="diger" disabled>
+            <legend class="sr">Mesaj</legend>
+            <div class="fgrid">
+              <div class="fld full"><label for="f-mesaj">Mesajınız<span class="req">zorunlu</span></label><textarea id="f-mesaj" name="mesaj" rows="4" data-req data-msg="Lütfen mesajınızı yazınız."></textarea></div>
+            </div>
+          </fieldset>
+
+          <div class="hp" aria-hidden="true"><label for="f-web">Bu alanı boş bırakın</label><input id="f-web" name="web" tabindex="-1" autocomplete="off"></div>
+
+          <div class="kvkk">
+            <!-- PENDING: Aydınlatma Metni (KVKK privacy notice) text and data controller details — to be drafted with counsel. -->
+            <p>Kişisel verilerinizin işlenmesine ilişkin <a href="#kvkk" id="kvkk-link">Aydınlatma Metni</a>'ni inceleyebilirsiniz. <span class="pinline" style="font-size:11px">Metin bekleniyor</span></p>
+            <label class="check"><input type="checkbox" id="f-kvkk" name="kvkk" data-req data-type="check" data-msg="Devam etmek için Aydınlatma Metni'ni okuduğunuzu onaylayınız.">Aydınlatma Metni'ni okudum.</label>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit" class="btn btn-primary" id="q-submit">Proje Ön Görüşmesi Talep Edin</button>
+            <p id="q-micro">Projenizi kısaca aktarın; bir iş günü içinde sizi arayalım. Ön görüşme için ücret talep etmiyoruz.</p>
+          </div>
+        </form>
+        <div class="done-panel" id="q-done" hidden tabindex="-1">
+          <span class="ptag">Önizleme</span>
+          <h3 style="margin-top:10px">Talebiniz hazırlandı, gönderilmedi.</h3>
+          <p class="warn">Bu sayfa bir tasarım önizlemesidir. Form henüz bir sunucuya bağlı değildir; bilgileriniz hiçbir yere iletilmedi ve kaydedilmedi. Talebinizi şimdi iletmek için <span class="mono">+90 312 950 57 10</span> numarasını arayabilir veya <span class="mono">info@geopaveco.com</span> adresine yazabilirsiniz.</p>
+          <p style="font-size:14px;color:var(--ink-500);margin-top:12px">Yayındaki sitede bu adımda bir referans numarası verilecek ve talep ilgili mühendise yönlendirilecektir.</p>
+          <dl id="q-summary"></dl>
+          <div class="hero-cta" style="margin-top:18px"><button type="button" class="btn btn-ghost btn-sm" id="q-edit">Formu düzenle</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="pending" id="kvkk" style="margin-top:28px;padding:14px 16px" tabindex="-1">
+      <span class="ptag">Aydınlatma Metni · bekleniyor</span>
+      <p class="pneed" style="margin-top:6px"><b>Müşteri sağlayacak (hukuk danışmanıyla):</b> KVKK Aydınlatma Metni, veri sorumlusu bilgileri, başvuru yolu, saklama süresi ve çerez politikası.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="Geopave Mühendislik, sayfa başı">
+          <svg width="36" height="36" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path class="mark-arc" d="M20 3 A17 17 0 1 1 3.6 15.6" fill="none" stroke-width="3.2"/><path class="mark-arc" d="M20 9.2 A10.8 10.8 0 1 0 30.4 17.2" fill="none" stroke-width="3.2"/><circle class="mark-dot" cx="20" cy="20" r="3.4"/></svg>
+          <span class="wm"><b>GEOPAVE</b><span>MÜHENDİSLİK</span></span>
+        </a>
+        <p style="margin-top:16px;font-size:14px;max-width:34ch">Yol üstyapı mühendisliği danışmanlığı ve yol teknolojileri temsilciliği.</p>
+      </div>
+      <div><h4>Hizmetler</h4><ul><li><a href="/hizmetler/yol-ustyapi-muhendisligi" data-future>Yol üstyapı mühendisliği</a></li><li><a href="/hizmetler/geoteknik-ve-temel-muhendisligi" data-future>Geoteknik ve temel</a></li><li><a href="/hizmetler/kalite-kontrol" data-future>Kalite kontrol</a></li><li><a href="/hizmetler/silindirle-sikistirilmis-beton" data-future>SSB yollar</a></li><li><a href="#hizmetler">Tüm hizmetler</a></li></ul></div>
+      <div><h4>Ürünler</h4><ul><li><a href="/urunler/yol-yuzey-olcum-ekipmanlari" data-future>Yüzey ölçüm ekipmanları</a></li><li><a href="/urunler/asfalt-kimyasallari" data-future>Asfalt kimyasalları</a></li><li><a href="/urunler/emulsiyon-laboratuvar-cihazlari" data-future>Emülsiyon laboratuvar cihazları</a></li><li><a href="/urunler/asfalt-yama-sistemleri" data-future>Asfalt yama sistemleri</a></li><li><a href="/urunler/mikro-yuzeyleme" data-future>Mikro yüzeyleme</a></li></ul></div>
+      <div><h4>İletişim</h4><ul><li class="mono">+90 312 950 57 10</li><li class="mono">+90 545 413 28 15</li><li class="mono">info@geopaveco.com</li><li style="font-size:13.5px">Koç Kuleleri A Blok, Kat 3 D.9<br>Söğütözü, 06530 Çankaya / Ankara</li></ul></div>
+    </div>
+    <!-- PENDING: institutional proof block (brief / visual review §8.9). -->
+    <div class="pending">
+      <span class="ptag">Kurumsal kimlik bilgileri · bekleniyor</span>
+      <p class="pneed" style="margin-top:6px"><b>Müşteri sağlayacak:</b> ticaret sicil no, vergi dairesi ve no, KEP adresi, sertifikalar, mesleki üyelikler, temsil edilen üreticilerin işaretleri; resmî logonun ters (negatif) versiyonu.</p>
+    </div>
+    <div class="foot-base"><span>© <span data-year>2026</span> Geopave Mühendislik</span><span>Ankara, Türkiye</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" hidden></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+var doc=document, root=doc.documentElement;
+var $=function(s,c){return (c||doc).querySelector(s);}, $$=function(s,c){return Array.prototype.slice.call((c||doc).querySelectorAll(s));};
+var mqReduce=matchMedia('(prefers-reduced-motion: reduce)');
+var REDUCED=mqReduce.matches;
+function clamp(v,a,b){return v<a?a:v>b?b:v;}
+function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+function cssv(n){var v=getComputedStyle(root).getPropertyValue(n).trim();return v||'#888888';}
+function num(v,d){return v.toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function chainage(m){m=Math.max(0,m);var km=Math.floor(m/1000),r=Math.round(m-km*1000);return km+'+'+('00'+r).slice(-3);}
+function rng(seed){var s=seed>>>0;return function(){s=(s+0x6D2B79F5)>>>0;var t=s;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;};}
+
+/* ---------- theme change hook ---------- */
+var themeFns=[];
+function themeChanged(){themeFns.forEach(function(f){try{f();}catch(e){console.error(e);}});}
+new MutationObserver(themeChanged).observe(root,{attributes:true,attributeFilter:['data-theme']});
+var mqDark=matchMedia('(prefers-color-scheme: dark)');
+if(mqDark.addEventListener)mqDark.addEventListener('change',themeChanged);
+
+/* ---------- small UI ---------- */
+$$('[data-year]').forEach(function(el){el.textContent=String(new Date().getFullYear());});
+
+var toastEl=$('#toast'),toastT=0;
+function toast(html){toastEl.innerHTML=html;toastEl.hidden=false;clearTimeout(toastT);toastT=setTimeout(function(){toastEl.hidden=true;},4200);}
+
+doc.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[data-future]');
+  if(a){e.preventDefault();toast('Bu bağlantı yeni sitede <code>'+a.getAttribute('href')+'</code> sayfasına gider. Sayfa bu önizlemede henüz yok.');}
+});
+
+var menuBtn=$('.menu-btn'),nav=$('#nav');
+menuBtn.addEventListener('click',function(){var o=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o?'true':'false');menuBtn.setAttribute('aria-label',o?'Menüyü kapat':'Menüyü aç');});
+$$('#nav a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');});});
+
+/* active section in nav */
+if('IntersectionObserver' in window){
+  var navLinks={};$$('#nav a').forEach(function(a){navLinks[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(ents){ents.forEach(function(en){var l=navLinks[en.target.id];if(!l)return;if(en.isIntersecting){$$('#nav a').forEach(function(x){x.removeAttribute('aria-current');});l.setAttribute('aria-current','true');}});},{rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(navLinks).forEach(function(id){var s=doc.getElementById(id);if(s)io.observe(s);});
+}
+
+/* copy buttons */
+$$('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var v=b.getAttribute('data-copy'),label=b.textContent;
+    function done(t){b.textContent=t;b.classList.add('done');setTimeout(function(){b.textContent='Kopyala';b.classList.remove('done');},2200);}
+    function fallback(){var t=doc.getElementById(b.getAttribute('aria-controls'));if(t){var r=doc.createRange();r.selectNodeContents(t);var s=getSelection();s.removeAllRanges();s.addRange(r);}done('Seçildi');}
+    try{navigator.clipboard.writeText(v).then(function(){done('Kopyalandı');},fallback);}catch(e){fallback();}
+  });
+});
+
+/* language toggle — switches navigation, headings and key actions */
+var enNote=$('#en-note'),gp=$('#gp');
+$$('.lang button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var lang=b.getAttribute('data-lang');
+    $$('.lang button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    $$('[data-en]').forEach(function(el){
+      if(el.dataset.tr===undefined)el.dataset.tr=el.innerHTML;
+      el.innerHTML=lang==='en'?el.dataset.en:el.dataset.tr;
+      if(lang==='en')el.setAttribute('lang','en');else el.removeAttribute('lang');
+    });
+    enNote.hidden=lang!=='en';
+    try{localStorage.setItem('gp-lang',lang);}catch(e){}
+  });
+});
+
+/* ---------- form ---------- */
+var form=$('#q-form'),types=$$('input[name="tur"]',form),groups=$$('.group',form);
+var submitTxt={hizmet:'Proje Ön Görüşmesi Talep Edin',urun:'Teklif İsteyin',temsil:'Türkiye Temsilciliği için Görüşelim',diger:'Mesajınızı İletin'};
+var microTxt={hizmet:'Projenizi kısaca aktarın; bir iş günü içinde sizi arayalım. Ön görüşme için ücret talep etmiyoruz.',urun:'Proforma faturanın hazırlanabilmesi için gereken bilgileri tek seferde istiyoruz.',temsil:'Manufacturers may write in English.',diger:''};
+function currentType(){var c=types.filter(function(t){return t.checked;})[0];return c?c.value:'hizmet';}
+function setType(v){
+  types.forEach(function(t){t.checked=t.value===v;});
+  groups.forEach(function(g){g.disabled=g.getAttribute('data-group')!==v;});
+  $('#q-submit').textContent=submitTxt[v];$('#q-micro').textContent=microTxt[v];
+  $('#q-micro').lang=v==='temsil'?'en':'tr';
+}
+types.forEach(function(t){t.addEventListener('change',function(){setType(t.value);});});
+function showForm(){$('#q-done').hidden=true;form.hidden=false;}
+$$('[data-enquiry]').forEach(function(a){a.addEventListener('click',function(){showForm();setType(a.getAttribute('data-enquiry'));var s=a.getAttribute('data-service');if(s)$('#f-hizmet').value=s;});});
+$$('[data-quote]').forEach(function(b){b.addEventListener('click',function(){
+  showForm();setType('urun');$('#f-urun').value=b.getAttribute('data-quote');
+  $('#iletisim').scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'start'});
+  setTimeout(function(){$('#f-miktar').focus({preventScroll:true});},REDUCED?0:600);
+});});
+
+var errIcon='<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 3.6v4.2M7 9.6v1" stroke="currentColor" stroke-width="1.6"/></svg>';
+function fieldErr(inp,msg){
+  var id=inp.id+'-err',e=doc.getElementById(id);
+  var host=inp.type==='checkbox'?inp.closest('.kvkk'):inp.closest('.fld');
+  if(msg){
+    if(!e){e=doc.createElement('p');e.className='err';e.id=id;host.appendChild(e);}
+    e.innerHTML=errIcon+'<span>'+msg+'</span>';
+    inp.setAttribute('aria-invalid','true');
+    var d=(inp.getAttribute('aria-describedby')||'').split(' ').filter(Boolean);if(d.indexOf(id)<0)d.push(id);inp.setAttribute('aria-describedby',d.join(' '));
+  }else{
+    if(e)e.remove();inp.removeAttribute('aria-invalid');
+    var d2=(inp.getAttribute('aria-describedby')||'').split(' ').filter(function(x){return x&&x!==id;});
+    if(d2.length)inp.setAttribute('aria-describedby',d2.join(' '));else inp.removeAttribute('aria-describedby');
+  }
+}
+function check(inp){
+  var v=(inp.value||'').trim(),t=inp.getAttribute('data-type'),ok=true;
+  if(t==='check')ok=inp.checked;
+  else if(!v)ok=false;
+  else if(t==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+  else if(t==='tel')ok=v.replace(/\D/g,'').length>=10;
+  fieldErr(inp,ok?null:inp.getAttribute('data-msg'));
+  return ok;
+}
+function activeReq(){return $$('[data-req]',form).filter(function(i){var g=i.closest('.group');return !(g&&g.disabled);});}
+form.addEventListener('blur',function(e){if(e.target.hasAttribute&&e.target.hasAttribute('data-req')&&e.target.getAttribute('aria-invalid')==='true')check(e.target);},true);
+form.addEventListener('change',function(e){if(e.target.hasAttribute&&e.target.hasAttribute('data-req')&&e.target.getAttribute('aria-invalid')==='true')check(e.target);});
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  var bad=activeReq().filter(function(i){return !check(i);});
+  var sum=$('#err-sum');
+  if(bad.length){sum.hidden=false;sum.textContent=bad.length===1?'Formda tamamlanması gereken 1 alan var.':'Formda tamamlanması gereken '+bad.length+' alan var.';bad[0].focus();return;}
+  sum.hidden=true;
+  if($('#f-web').value)return; // honeypot
+  var dl=$('#q-summary');dl.innerHTML='';
+  var typeLabel={hizmet:'Proje ön görüşmesi',urun:'Ürün teklifi',temsil:'Temsilcilik',diger:'Diğer'}[currentType()];
+  function row(k,v){if(!v)return;var dt=doc.createElement('dt');dt.textContent=k;var dd=doc.createElement('dd');dd.textContent=v;dl.appendChild(dt);dl.appendChild(dd);}
+  row('Talep türü',typeLabel);
+  $$('input,select,textarea',form).forEach(function(i){
+    if(i.type==='radio'||i.type==='checkbox'||i.id==='f-web')return;var g=i.closest('.group');if(g&&g.disabled)return;
+    var l=form.querySelector('label[for="'+i.id+'"]');if(!l)return;
+    var k=l.childNodes[0].textContent.trim();row(k,i.value.trim());
+  });
+  form.hidden=true;var done=$('#q-done');done.hidden=false;done.focus();
+});
+$('#q-edit').addEventListener('click',function(){showForm();$('#f-kurum').focus();});
+$('#kvkk-link').addEventListener('click',function(){setTimeout(function(){$('#kvkk').focus({preventScroll:true});},50);});
+
+/* =====================================================================
+   3D — shared infrastructure
+   ===================================================================== */
+var HAS3=!!window.THREE;
+var scenes=[],raf=0;
+function kick(){if(!raf)raf=requestAnimationFrame(tick);}
+var lastT=0;
+function tick(now){
+  raf=0;var dt=lastT?Math.min(.05,(now-lastT)/1000):.016;lastT=now;var more=false;
+  scenes.forEach(function(s){if(s.visible&&s.step(dt,now/1000))more=true;});
+  if(more)kick();else lastT=0;
+}
+function makeRenderer(canvas){
+  if(!HAS3)return null;
+  try{var r=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true,powerPreference:'low-power'});
+    r.setPixelRatio(Math.min(window.devicePixelRatio||1,1.75));r.setClearColor(0x000000,0);return r;}
+  catch(e){return null;}
+}
+function watch(s,stage){
+  s.visible=false;scenes.push(s);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){en.forEach(function(x){s.visible=x.isIntersecting;if(s.visible){if(s.onShow)s.onShow();kick();}});},{rootMargin:'120px'}).observe(stage);
+  }else{s.visible=true;}
+  if('ResizeObserver' in window){new ResizeObserver(function(){s.resize();s.dirty=true;kick();}).observe(stage);}
+  else window.addEventListener('resize',function(){s.resize();s.dirty=true;kick();});
+  themeFns.push(function(){s.theme();s.dirty=true;kick();});
+}
+function col(n){return new THREE.Color(cssv(n));}
+function placeCam(cam,o,t){cam.position.set(t.x+o.dist*Math.cos(o.el)*Math.sin(o.az),t.y+o.dist*Math.sin(o.el),t.z+o.dist*Math.cos(o.el)*Math.cos(o.az));cam.lookAt(t);}
+function orbit(el,o,changed){
+  var down=null,moved=0;
+  el.addEventListener('pointerdown',function(e){if(e.button!==0)return;down={x:e.clientX,y:e.clientY};moved=0;o.dragging=true;o.vaz=0;try{el.setPointerCapture(e.pointerId);}catch(x){}});
+  el.addEventListener('pointermove',function(e){
+    if(!down){if(o.hover)o.hover(e);return;}
+    var dx=e.clientX-down.x,dy=e.clientY-down.y;down.x=e.clientX;down.y=e.clientY;moved+=Math.abs(dx)+Math.abs(dy);
+    if(moved<4)return;
+    o.az=clamp(o.az-dx*.008,o.minAz,o.maxAz);o.el=clamp(o.el+dy*.005,o.minEl,o.maxEl);o.vaz=REDUCED?0:-dx*.008;o.touched=true;changed();
+  });
+  function up(e){if(!down)return;o.dragging=false;var m=moved;down=null;if(m<5&&o.click)o.click(e);changed();}
+  el.addEventListener('pointerup',up);
+  el.addEventListener('pointercancel',function(){down=null;o.dragging=false;});
+  el.addEventListener('keydown',function(e){var k=e.key,h=true;
+    if(k==='ArrowLeft')o.az=clamp(o.az+.12,o.minAz,o.maxAz);else if(k==='ArrowRight')o.az=clamp(o.az-.12,o.minAz,o.maxAz);
+    else if(k==='ArrowUp')o.el=clamp(o.el+.07,o.minEl,o.maxEl);else if(k==='ArrowDown')o.el=clamp(o.el-.07,o.minEl,o.maxEl);else h=false;
+    if(h){e.preventDefault();o.touched=true;changed();}});
+}
+function inertia(o){if(o.dragging||Math.abs(o.vaz)<1e-4){o.vaz=0;return false;}o.az=clamp(o.az+o.vaz,o.minAz,o.maxAz);o.vaz*=.9;return true;}
+
+/* hatch textures — same material code as the static drawings */
+function hatchCanvas(pat,bg,ink){
+  var S=256,c=doc.createElement('canvas');c.width=c.height=S;var g=c.getContext('2d');
+  g.fillStyle=bg;g.fillRect(0,0,S,S);g.strokeStyle=ink;g.fillStyle=ink;g.lineCap='square';
+  var r=rng(pat.length*97+3),k;
+  function diag(step,w){g.lineWidth=w;g.beginPath();for(k=-S;k<=2*S;k+=step){g.moveTo(k,0);g.lineTo(k-S,S);}g.stroke();}
+  if(pat==='asph'){diag(S/12,2.6);}
+  else if(pat==='bind'){diag(S/8,2.4);for(var i=0;i<8;i++)for(var j=0;j<8;j++){g.beginPath();g.arc(i*32+16,j*32+16,2.4,0,7);g.fill();}}
+  else if(pat==='base'){g.lineWidth=2.4;for(k=0;k<16;k++){var cx=r()*S,cy=r()*S,rad=10+r()*16;for(var ox=-1;ox<=1;ox++)for(var oy=-1;oy<=1;oy++){g.beginPath();for(var v=0;v<7;v++){var a=v/7*6.283+r()*.4,rr=rad*(.7+r()*.4),x=cx+ox*S+Math.cos(a)*rr,y=cy+oy*S+Math.sin(a)*rr;if(v)g.lineTo(x,y);else g.moveTo(x,y);}g.closePath();g.stroke();}}}
+  else if(pat==='sub'){for(k=0;k<520;k++){g.beginPath();g.arc(r()*S,r()*S,1.9,0,7);g.fill();}}
+  else if(pat==='soil'){g.lineWidth=2.4;for(var a2=0;a2<4;a2++)for(var b2=0;b2<4;b2++){var x0=a2*64+8,y0=b2*64+30;for(var q=0;q<3;q++){g.beginPath();g.moveTo(x0+q*9,y0);g.lineTo(x0+q*9+20,y0-20);g.stroke();}g.beginPath();g.arc(x0+44,y0+18,2.6,0,7);g.fill();}}
+  else if(pat==='grain'){g.globalAlpha=.55;for(k=0;k<900;k++){g.beginPath();g.arc(r()*S,r()*S,.6+r()*1.4,0,7);g.fill();}g.globalAlpha=1;}
+  return c;
+}
+function tex(canvas,renderer){var t=new THREE.CanvasTexture(canvas);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());return t;}
+
+var GLSL_LIGHT='vec3 nrm(vec3 p){vec3 n=normalize(cross(dFdx(p),dFdy(p)));return n.y<0.0?-n:n;}\n'+
+  'float hash1(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}\n';
+
+/* =====================================================================
+   FIG 1 — exploded pavement section
+   ===================================================================== */
+var LAYERS=[
+  {name:'Aşınma tabakası',mat:'Bitümlü sıcak karışım (BSK)',th:'40–50 mm',fn:'Trafikle doğrudan temas eden yüzey. Kayma direnci, sürüş konforu ve alt tabakaların sudan korunması bu tabakanın işidir.',pat:'asph',h:.30,ring:.30},
+  {name:'Binder tabakası',mat:'BSK binder',th:'50–80 mm',fn:'Aşınma tabakası ile temel arasında gerilmeleri dağıtır; tekerlek izi oluşumuna karşı direncin önemli bölümünü taşır.',pat:'bind',h:.42,ring:.44},
+  {name:'Temel',mat:'Granüler veya plent-miks temel',th:'150–250 mm',fn:'Trafik yükünü geniş bir alana yayan ana taşıyıcı tabaka.',pat:'base',h:.80,ring:.64},
+  {name:'Alt temel',mat:'Granüler malzeme',th:'150–300 mm',fn:'Drenajı ve dona karşı korumayı sağlar; temel için sağlam bir çalışma platformu oluşturur.',pat:'sub',h:.90,ring:.84},
+  {name:'Taban zemini',mat:'Doğal veya iyileştirilmiş zemin',th:'kalınlık yok; taşıma gücü CBR ile',fn:'Tüm üstyapıyı taşıyan zemin. Taşıma gücü (örneğin CBR değeri) tasarımın başlangıç verisidir.',pat:'soil',h:1.20,ring:.96}
+];
+var xsSel=0,xsStage=$('#xs-stage'),xsLabelBtns=$$('#xs-labels button');
+function xsSelect(i){
+  xsSel=i;var L=LAYERS[i];
+  $('#xs-r-no').textContent=('0'+(i+1)).slice(-2);$('#xs-r-name').textContent=L.name;$('#xs-r-mat').textContent=L.mat;$('#xs-r-th').textContent=L.th;$('#xs-r-fn').textContent=L.fn;
+  xsLabelBtns.forEach(function(b){b.setAttribute('aria-pressed',+b.getAttribute('data-layer')===i?'true':'false');});
+  $$('.fallback .slab',xsStage).forEach(function(g){g.classList.toggle('sel',+g.getAttribute('data-i')===i);});
+  $$('.fallback .ldr,.fallback .ldr-dot',xsStage).forEach(function(g){g.classList.toggle('on',+g.getAttribute('data-i')===i);});
+  if(fig1)fig1.select(i);
+}
+xsLabelBtns.forEach(function(b){b.addEventListener('click',function(){xsSelect(+b.getAttribute('data-layer'));});});
+var xsRange=$('#xs-range'),xsOut=$('#xs-out'),xsToggle=$('#xs-toggle');
+function xsSetExplode(v,fromUser){xsRange.value=Math.round(v*100);xsOut.textContent='%'+Math.round(v*100);xsToggle.textContent=v>.3?'Katmanları birleştir':'Katmanları ayır';xsToggle.setAttribute('aria-pressed',v>.3?'true':'false');if(fig1)fig1.explodeTo(v,fromUser);}
+xsRange.addEventListener('input',function(){xsSetExplode(xsRange.value/100,true);});
+xsToggle.addEventListener('click',function(){xsSetExplode(+xsRange.value>30?0:.62,true);});
+
+var fig1=null;
+function initFig1(){
+  var canvas=$('canvas',xsStage),R=makeRenderer(canvas);
+  if(!R){xsStage.classList.add('nogl');return;}
+  var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(24,1,.1,100);
+  scene.add(new THREE.AmbientLight(0xffffff,.74));var dl=new THREE.DirectionalLight(0xffffff,.42);dl.position.set(-4,8,6);scene.add(dl);
+  var W=3.0,D=2.0,GAP=.62,TILE=1.0;
+  var group=new THREE.Group();scene.add(group);
+  var slabs=LAYERS.map(function(L,i){
+    var geo=new THREE.BoxGeometry(W,L.h,D),uv=geo.attributes.uv;
+    for(var f=0;f<6;f++){var dims=f<2?[D,L.h]:f<4?[W,D]:[W,L.h];for(var k=0;k<4;k++){var idx=f*4+k;uv.setXY(idx,uv.getX(idx)*dims[0]/TILE,uv.getY(idx)*dims[1]/TILE);}}
+    var side=new THREE.MeshLambertMaterial({color:0xffffff}),top=new THREE.MeshLambertMaterial({color:0xffffff});
+    var mesh=new THREE.Mesh(geo,[side,side,top,side,side,side]);mesh.userData.i=i;
+    var edges=new THREE.LineSegments(new THREE.EdgesGeometry(geo),new THREE.LineBasicMaterial());mesh.add(edges);
+    var pts=[];for(var a=0;a<=96;a++){var t=a/96*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(t)*L.ring,0,Math.sin(t)*L.ring*.98));}
+    var ring=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineDashedMaterial({dashSize:.07,gapSize:.05}));ring.computeLineDistances();ring.position.y=L.h/2+.006;mesh.add(ring);
+    group.add(mesh);
+    return {mesh:mesh,side:side,top:top,edges:edges,ring:ring,h:L.h};
+  });
+  // wheel load P on the wearing course
+  var s0=slabs[0],h0=LAYERS[0].h/2;
+  var patch=new THREE.Mesh(new THREE.CircleGeometry(.17,40),new THREE.MeshBasicMaterial());patch.rotation.x=-Math.PI/2;patch.position.y=h0+.008;s0.mesh.add(patch);
+  var shaft=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,h0+1.15,0),new THREE.Vector3(0,h0+.24,0)]),new THREE.LineBasicMaterial());s0.mesh.add(shaft);
+  var head=new THREE.Mesh(new THREE.ConeGeometry(.075,.2,20),new THREE.MeshBasicMaterial());head.rotation.x=Math.PI;head.position.y=h0+.14;s0.mesh.add(head);
+
+  var texN=[],texS=[],grainN,grainS;
+  function theme(){
+    var face=cssv('--fig-face'),hatch=cssv('--fig-hatch'),sel=cssv('--fig-sel'),selH=cssv('--fig-sel-hatch');
+    texN.concat(texS).forEach(function(t){t.dispose();});texN=[];texS=[];
+    LAYERS.forEach(function(L){texN.push(tex(hatchCanvas(L.pat,face,hatch),R));texS.push(tex(hatchCanvas(L.pat,sel,selH),R));});
+    if(grainN){grainN.dispose();grainS.dispose();}
+    grainN=tex(hatchCanvas('grain',cssv('--fig-top'),hatch),R);grainS=tex(hatchCanvas('grain',sel,selH),R);
+    var edge=col('--fig-edge'),amb=col('--amber');
+    slabs.forEach(function(s){s.ring.material.color.copy(amb);});
+    patch.material.color.copy(amb);shaft.material.color.copy(edge);head.material.color.copy(edge);
+    applySel();
+  }
+  function applySel(){
+    var edge=col('--fig-edge'),pri=col('--primary'),topc=col('--fig-top'),selc=col('--fig-sel');
+    slabs.forEach(function(s,i){var on=i===xsSel;
+      s.side.map=on?texS[i]:texN[i];s.side.needsUpdate=true;
+      if(i===0){s.top.map=on?grainS:grainN;s.top.color.set(0xffffff);}else{s.top.map=null;s.top.color.copy(on?selc:topc);}
+      s.top.needsUpdate=true;s.edges.material.color.copy(on?pri:edge);});
+  }
+  var o={az:-.62,el:.5,dist:16.2,minEl:.1,maxEl:1.2,minAz:-Infinity,maxAz:Infinity,vaz:0};
+  var target=new THREE.Vector3(0,0,0);
+  var E=REDUCED?.62:0,Et=.62,intro=REDUCED?1:0,baseAz=o.az,clock=0,userExp=false;
+  var w=1,h=1;
+  function resize(){var r=xsStage.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);R.setSize(w,h,false);
+    cam.aspect=(w*1.36)/h;cam.setViewOffset(w*1.36,h,w*.36,0,w,h);cam.updateProjectionMatrix();leaders.setAttribute('viewBox','0 0 '+w+' '+h);}
+  function layout(){
+    var tot=0;LAYERS.forEach(function(L){tot+=L.h;});tot+=4*GAP*E;
+    var y=tot/2-.25;
+    slabs.forEach(function(s,i){s.mesh.position.y=y-s.h/2;y-=s.h+GAP*E;});
+  }
+  // leaders + labels
+  var leaders=$('.leaders',xsStage),lis=$$('#xs-labels li'),ns='http://www.w3.org/2000/svg',lg=[];
+  for(var i=0;i<5;i++){var g=doc.createElementNS(ns,'g'),p=doc.createElementNS(ns,'path'),c=doc.createElementNS(ns,'circle');c.setAttribute('r','2.6');g.appendChild(p);g.appendChild(c);leaders.appendChild(g);lg.push({g:g,p:p,c:c});}
+  var v3=new THREE.Vector3(),corners=[[1,1],[1,-1],[-1,1],[-1,-1]];
+  function labels(){
+    var ys=[],ax=[];
+    slabs.forEach(function(s,i){var best=-1e9,bx=0,by=0;
+      corners.forEach(function(cn){v3.set(cn[0]*W/2,0,cn[1]*D/2);s.mesh.localToWorld(v3);v3.project(cam);var px=(v3.x+1)/2*w,py=(1-v3.y)/2*h;if(px>best){best=px;bx=px;by=py;}});
+      ax.push([bx,by]);ys.push(by);});
+    var gap=Math.max(34,Math.min(50,h*.085)),lo=gap*.55,hi=h-gap*.55;
+    for(var i=0;i<5;i++){ys[i]=Math.max(ys[i],i?ys[i-1]+gap:lo);}
+    if(ys[4]>hi){ys[4]=hi;for(i=3;i>=0;i--)ys[i]=Math.min(ys[i],ys[i+1]-gap);}
+    var lx=w*.64;
+    for(i=0;i<5;i++){lis[i].style.top=ys[i].toFixed(1)+'px';
+      var a=ax[i],ex=lx-6;lg[i].p.setAttribute('d','M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+' L'+(ex-16).toFixed(1)+' '+ys[i].toFixed(1)+' L'+ex.toFixed(1)+' '+ys[i].toFixed(1));
+      lg[i].c.setAttribute('cx',a[0].toFixed(1));lg[i].c.setAttribute('cy',a[1].toFixed(1));lg[i].g.setAttribute('class',i===xsSel?'on':'');}
+  }
+  var ray=new THREE.Raycaster(),ndc=new THREE.Vector2();
+  function pick(e){var r=canvas.getBoundingClientRect();ndc.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);ray.setFromCamera(ndc,cam);var hit=ray.intersectObjects(slabs.map(function(s){return s.mesh;}),false)[0];return hit?hit.object.userData.i:-1;}
+  o.click=function(e){var i=pick(e);if(i>=0)xsSelect(i);};
+  var hoverT=0;o.hover=function(e){var n=performance.now();if(n-hoverT<60)return;hoverT=n;xsStage.classList.toggle('pick',pick(e)>=0);};
+  orbit(xsStage,o,function(){S.dirty=true;kick();});
+
+  var S={dirty:true,resize:resize,theme:theme,
+    select:function(){applySel();S.dirty=true;kick();},
+    explodeTo:function(v,u){Et=v;if(u){userExp=true;intro=1;}if(REDUCED)E=v;S.dirty=true;kick();},
+    step:function(dt){
+      var anim=false;clock+=dt;
+      if(intro<1){intro=Math.min(1,intro+dt/2.4);var k=ease(intro);if(!userExp)E=Et*k;o.az=baseAz-.5*(1-k);anim=true;}
+      else if(Math.abs(Et-E)>.001){E+=(Et-E)*Math.min(1,dt*7);anim=true;}else E=Et;
+      if(inertia(o))anim=true;
+      if(!REDUCED&&!o.touched&&intro>=1){o.az=baseAz+Math.sin(clock*.28)*.11;anim=true;}
+      if(!anim&&!S.dirty)return false;
+      layout();placeCam(cam,o,target);R.render(scene,cam);labels();
+      if(!xsStage.classList.contains('gl'))xsStage.classList.add('gl');
+      S.dirty=false;return anim;
+    }};
+  theme();resize();layout();
+  fig1=S;watch(S,xsStage);
+}
+
+/* =====================================================================
+   FIG 2 — representative profile, IRI (quarter-car) and 3D surface
+   ===================================================================== */
+var SL=300,DX=.1,N=Math.round(SL/DX)+1;
+function envelope(x){return .62+.32*Math.sin(x/SL*Math.PI-.4)+1.15*Math.exp(-Math.pow((x-205)/36,2));}
+function genProfile(seed){
+  var r=rng(seed),p=new Float64Array(N),G0=22e-6,n0=.1,nMin=.02,nMax=3,K=220;
+  for(var k=0;k<K;k++){
+    var n1=nMin*Math.pow(nMax/nMin,k/K),n2=nMin*Math.pow(nMax/nMin,(k+1)/K),n=Math.sqrt(n1*n2),dn=n2-n1;
+    var A=Math.sqrt(2*G0*Math.pow(n/n0,-2)*dn),ph=r()*6.2832,w=6.2832*n,mod=n>.15;
+    for(var i=0;i<N;i++){var x=i*DX;p[i]+=A*Math.cos(w*x+ph)*(mod?envelope(x):1);}
+  }
+  return p; // metres
+}
+function quarterCar(p){ // ASTM E1926 Golden Car, 80 km/h; returns cumulative |zs'-zu'| dt (m)
+  var V=80/3.6,dt=DX/V,sub=8,hh=dt/sub,k1=653,k2=63.3,c=6,mu=.15;
+  var acc=new Float64Array(N),zs=p[0],zu=p[0],vs=0,vu=0,a=0;
+  for(var i=0;i<N-1;i++){
+    for(var s=0;s<sub;s++){var y=p[i]+(p[i+1]-p[i])*(s/sub);var as=-c*(vs-vu)-k2*(zs-zu),au=(c*(vs-vu)+k2*(zs-zu)-k1*(zu-y))/mu;vs+=as*hh;vu+=au*hh;zs+=vs*hh;zu+=vu*hh;a+=Math.abs(vs-vu)*hh;}
+    acc[i+1]=a;
+  }
+  return acc;
+}
+function detrend(p,win){var n=p.length,pre=new Float64Array(n+1),o=new Float32Array(n),h=Math.round(win/2);for(var i=0;i<n;i++)pre[i+1]=pre[i]+p[i];for(i=0;i<n;i++){var a=Math.max(0,i-h),b=Math.min(n,i+h+1);o[i]=(p[i]-(pre[b]-pre[a])/(b-a))*1000;}return o;}
+function rutSeries(seed,scale){var r=rng(seed),o=new Float32Array(N),ph=r()*6.28,ph2=r()*6.28;for(var i=0;i<N;i++){var x=i*DX;o[i]=Math.max(.5,scale*(2.6+11.5*Math.exp(-Math.pow((x-208)/40,2))+1.4*Math.sin(x/17+ph)+.8*Math.sin(x/5.3+ph2)));}return o;}
+var pL=genProfile(11),pR=genProfile(29),aL=quarterCar(pL),aR=quarterCar(pR);
+var hL=detrend(pL,10),hR=detrend(pR,10),rL=rutSeries(5,1),rR=rutSeries(9,.78);
+function iriBetween(acc,x0,x1){var i0=Math.round(x0/DX),i1=Math.round(x1/DX);return (acc[i1]-acc[i0])*1000/(x1-x0);}
+function rutMax(x0,x1){var m=0;for(var i=Math.round(x0/DX);i<=Math.round(x1/DX);i++)m=Math.max(m,rL[i],rR[i]);return m;}
+var SEG=20,segs=[];for(var s0=0;s0<SL;s0+=SEG){var il=iriBetween(aL,s0,s0+SEG),ir=iriBetween(aR,s0,s0+SEG);segs.push({x0:s0,x1:s0+SEG,l:il,r:ir,m:(il+ir)/2,rut:rutMax(s0,s0+SEG)});}
+
+/* table 2 */
+(function(){var tb=$('#scan-tbody'),html='';for(var x=0;x<SL;x+=50){html+='<tr data-x0="'+x+'"><th scope="row" class="mono">'+chainage(x)+'–'+chainage(x+50)+'</th><td class="n">'+num(iriBetween(aL,x,x+50),2)+'</td><td class="n">'+num(iriBetween(aR,x,x+50),2)+'</td><td class="n">'+num(rutMax(x,x+50),1)+'</td></tr>';}tb.innerHTML=html;})();
+
+var scanC=REDUCED?205:205,scanPlaying=false,scanUserPaused=false;
+var scanPos=$('#scan-pos'),scanPosOut=$('#scan-pos-out'),scanPlay=$('#scan-play');
+var fig2=null;
+function hudUpdate(){
+  var c=scanC,x0=Math.max(0,c-20);
+  $('#hud-km').textContent='Km '+chainage(c);
+  $('#hud-il').textContent=c>=10?num(iriBetween(aL,x0,c),2)+' m/km':'—';
+  $('#hud-ir').textContent=c>=10?num(iriBetween(aR,x0,c),2)+' m/km':'—';
+  $('#hud-rut').textContent=num(rutMax(x0,c),1)+' mm';
+  scanPos.value=c;scanPosOut.textContent=chainage(c);
+  $$('#scan-tbody tr').forEach(function(tr){var a=+tr.getAttribute('data-x0');tr.classList.toggle('cur',c>=a&&c<a+50);});
+}
+function setScan(c,user){scanC=clamp(c,10,270);if(user&&scanPlaying){scanPlaying=false;scanUserPaused=true;playUI();}hudUpdate();drawChart();if(fig2){fig2.dirty=true;kick();}}
+function playUI(){scanPlay.setAttribute('aria-pressed',scanPlaying?'true':'false');$('#scan-play-ic').textContent=scanPlaying?'❚❚':'▶';$('#scan-play-t').textContent=scanPlaying?'Duraklat':'Oynat';}
+scanPlay.addEventListener('click',function(){scanPlaying=!scanPlaying;scanUserPaused=!scanPlaying;playUI();kick();});
+scanPos.addEventListener('input',function(){setScan(+scanPos.value,true);});
+
+/* chart */
+var CH_AMP=(function(){var m=0;for(var i=0;i<N;i++)m=Math.max(m,Math.abs(hL[i]));return Math.ceil(m);})();
+var chart=$('#scan-canvas'),tip=$('#scan-tip'),hoverSeg=-1,CH={};
+function drawChart(){
+  var dpr=Math.min(window.devicePixelRatio||1,2),W=chart.clientWidth,H=chart.clientHeight;if(!W||!H)return;
+  if(chart.width!==Math.round(W*dpr)||chart.height!==Math.round(H*dpr)){chart.width=Math.round(W*dpr);chart.height=Math.round(H*dpr);}
+  var g=chart.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);
+  var ink=cssv('--ink-900'),mut=cssv('--ink-500'),line=cssv('--line'),soft=cssv('--line-soft'),strong=cssv('--line-strong'),amb=cssv('--amber'),pri=cssv('--primary'),band=cssv('--primary-100'),body=cssv('--ink-700');
+  var L=46,Rr=12,T=16,mid=Math.round(H*.36),B=H-24;
+  var X=function(m){return L+(m/SL)*(W-L-Rr);};
+  CH={L:L,Rr:Rr,W:W,mid:mid,B:B,X:X};
+  // window band (3D view extent)
+  g.fillStyle=band;g.fillRect(X(scanC-10),T-6,X(scanC+30)-X(scanC-10),B-T+6);
+  g.font='500 10.5px "IBM Plex Mono", ui-monospace, monospace';g.textBaseline='middle';
+  // panel A: profile (left wheel path, detrended mm)
+  var aTop=T,aBot=mid-14,aMid=(aTop+aBot)/2,amp=CH_AMP;
+  g.strokeStyle=soft;g.lineWidth=1;g.beginPath();g.moveTo(L,aMid+.5);g.lineTo(W-Rr,aMid+.5);g.stroke();
+  g.fillStyle=mut;g.textAlign='right';g.fillText('+'+amp,L-6,aTop+4);g.fillText('0',L-6,aMid);g.fillText('−'+amp,L-6,aBot-4);
+  g.textAlign='left';g.fillText('Profil, sol iz (mm)',L+4,aTop-6);
+  g.strokeStyle=body;g.lineWidth=1.2;g.beginPath();
+  var step=Math.max(1,Math.floor(N/(W-L-Rr)/1));for(var i=0;i<N;i+=step){var y=aMid-clamp(hL[i]/amp,-1,1)*(aBot-aTop)/2;if(i)g.lineTo(X(i*DX),y);else g.moveTo(X(0),y);}g.stroke();
+  // panel B: IRI bars
+  var bTop=mid+16,maxI=Math.ceil(Math.max.apply(null,segs.map(function(s){return Math.max(s.l,s.r);}))/2)*2;
+  var Y=function(v){return B-(v/maxI)*(B-bTop);};
+  g.fillStyle=mut;g.textAlign='left';g.fillText('IRI, 20 m ortalaması (m/km)',L+4,bTop-8);
+  for(var t=0;t<=maxI;t+=2){g.strokeStyle=t?soft:strong;g.beginPath();g.moveTo(L,Math.round(Y(t))+.5);g.lineTo(W-Rr,Math.round(Y(t))+.5);g.stroke();g.fillStyle=mut;g.textAlign='right';g.fillText(String(t),L-6,Y(t));}
+  var cur=Math.min(segs.length-1,Math.floor(scanC/SEG));
+  segs.forEach(function(s,k){var x0=X(s.x0)+1,x1=X(s.x1)-1,y=Y(s.m);g.fillStyle=k===cur?amb:strong;
+    var r=Math.min(3,(x1-x0)/2);g.beginPath();g.moveTo(x0,B);g.lineTo(x0,y+r);g.quadraticCurveTo(x0,y,x0+r,y);g.lineTo(x1-r,y);g.quadraticCurveTo(x1,y,x1,y+r);g.lineTo(x1,B);g.closePath();g.fill();
+    if(k===hoverSeg){g.strokeStyle=ink;g.lineWidth=1.5;g.stroke();}
+  });
+  var cs=segs[cur];g.fillStyle=ink;g.textAlign='center';g.font='600 11px "IBM Plex Mono", ui-monospace, monospace';g.fillText(num(cs.m,2),(X(cs.x0)+X(cs.x1))/2,Y(cs.m)-9);
+  // x axis
+  g.font='500 10.5px "IBM Plex Mono", ui-monospace, monospace';g.fillStyle=mut;g.textBaseline='alphabetic';
+  for(var m=0;m<=SL;m+=50){g.textAlign=m===0?'left':m===SL?'right':'center';g.fillText(chainage(m),X(m),H-6);}
+  // cursor
+  g.strokeStyle=pri;g.lineWidth=1.5;g.beginPath();g.moveTo(Math.round(X(scanC))+.5,T-6);g.lineTo(Math.round(X(scanC))+.5,B);g.stroke();
+}
+function chartSeg(e){var r=chart.getBoundingClientRect(),x=e.clientX-r.left;if(!CH.X)return{m:0,k:-1};var m=(x-CH.L)/(CH.W-CH.L-CH.Rr)*SL;return{m:m,k:(m>=0&&m<SL)?Math.floor(m/SEG):-1,x:x};}
+var chartDrag=false;
+chart.addEventListener('pointerdown',function(e){chartDrag=true;try{chart.setPointerCapture(e.pointerId);}catch(x){}setScan(chartSeg(e).m,true);});
+chart.addEventListener('pointerup',function(){chartDrag=false;});
+chart.addEventListener('pointercancel',function(){chartDrag=false;});
+chart.addEventListener('pointermove',function(e){var s=chartSeg(e);if(chartDrag){setScan(s.m,true);}
+  if(s.k!==hoverSeg){hoverSeg=s.k;drawChart();}
+  if(s.k>=0){var q=segs[s.k];tip.hidden=false;tip.innerHTML='<b>Km '+chainage(q.x0)+'–'+chainage(q.x1)+'</b><br>IRI ort. '+num(q.m,2)+' m/km<br>sol '+num(q.l,2)+' · sağ '+num(q.r,2)+'<br>iz maks. '+num(q.rut,1)+' mm';
+    var x=clamp(s.x,90,chart.clientWidth-90);tip.style.left=x+'px';}else tip.hidden=true;});
+chart.addEventListener('pointerleave',function(){hoverSeg=-1;tip.hidden=true;drawChart();});
+if('ResizeObserver' in window)new ResizeObserver(drawChart).observe(chart);else window.addEventListener('resize',drawChart);
+themeFns.push(drawChart);
+if(doc.fonts&&doc.fonts.ready)doc.fonts.ready.then(drawChart);
+hudUpdate();drawChart();
+
+function initFig2(){
+  var stage=$('#scan-stage'),canvas=$('canvas',stage),R=makeRenderer(canvas);
+  if(!R){stage.classList.add('nogl');return;}
+  var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(30,16/9,.1,200);
+  var NX=37,NZ=201,LEN=40,Z0=10,LW=3.6,nv=NX*NZ;
+  var pos=new Float32Array(nv*3),rutA=new Float32Array(nv),chA=new Float32Array(nv),idx=[];
+  for(var j=0;j<NZ;j++)for(var i=0;i<NX;i++){var v=j*NX+i;pos[v*3]=-LW/2+i*LW/(NX-1);pos[v*3+2]=Z0-j*LEN/(NZ-1);}
+  for(j=0;j<NZ-1;j++)for(i=0;i<NX-1;i++){var a=j*NX+i,b=a+1,c=a+NX,d=c+1;idx.push(a,c,b,b,c,d);}
+  var geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));geo.setAttribute('aRut',new THREE.BufferAttribute(rutA,1));geo.setAttribute('aChain',new THREE.BufferAttribute(chA,1));geo.setIndex(idx);
+  // lateral weights
+  var wl=[],wr=[],bl=[],br=[],tL=[];
+  for(i=0;i<NX;i++){var X=-LW/2+i*LW/(NX-1),gs=function(u,s){return Math.exp(-u*u/(s*s));};
+    wl.push(gs(X+.9,.32));wr.push(gs(X-.9,.32));bl.push(gs(X+.9-.52,.17)+gs(X+.9+.52,.17));br.push(gs(X-.9-.52,.17)+gs(X-.9+.52,.17));tL.push(clamp((.9-X)/1.8,0,1));}
+  var mat=new THREE.ShaderMaterial({
+    uniforms:{uBase:{value:new THREE.Color()},uMeas:{value:new THREE.Color()},uAmber:{value:new THREE.Color()},uGrid:{value:new THREE.Color()}},
+    vertexShader:'attribute float aRut;attribute float aChain;varying vec3 vP;varying float vRut;varying float vCh;void main(){vP=position;vRut=aRut;vCh=aChain;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
+    fragmentShader:GLSL_LIGHT+'uniform vec3 uBase;uniform vec3 uMeas;uniform vec3 uAmber;uniform vec3 uGrid;varying vec3 vP;varying float vRut;varying float vCh;\n'+
+      'float gl1(float v,float sp,float w){float x=v/sp;float d=abs(fract(x-0.5)-0.5);float fw=fwidth(x);return 1.0-smoothstep(fw*0.5,fw*(0.5+w),d);}\n'+
+      'void main(){vec3 n=nrm(vP);float lit=0.5+0.5*max(dot(n,normalize(vec3(0.45,1.0,0.3))),0.0);float meas=smoothstep(-0.04,0.04,vP.z);\n'+
+      'vec3 c=mix(uBase,uMeas,meas)*lit;c=mix(c,uAmber,meas*smoothstep(0.12,0.8,vRut));\n'+
+      'float g=max(gl1(vCh,1.0,0.8)*0.45,gl1(vCh,10.0,1.4));float gx=gl1(vP.x+1.8,0.6,0.8)*0.45;\n'+
+      'c=mix(c,uGrid,max(g,gx)*(0.16+0.4*meas));float far=smoothstep(-12.0,-29.5,vP.z);gl_FragColor=vec4(c,1.0-far);}',
+    transparent:true,side:THREE.DoubleSide,extensions:{derivatives:true}});
+  var mesh=new THREE.Mesh(geo,mat);mesh.frustumCulled=false;scene.add(mesh);
+  // scan line + laser fan + sensor beam
+  var rowS=Math.round(Z0/(LEN/(NZ-1)));
+  var linePos=new Float32Array(NX*3),lineGeo=new THREE.BufferGeometry();lineGeo.setAttribute('position',new THREE.BufferAttribute(linePos,3));
+  var scanLine=new THREE.Line(lineGeo,new THREE.LineBasicMaterial());scanLine.frustumCulled=false;scene.add(scanLine);
+  var fanPos=new Float32Array((NX+1)*3),fanIdx=[];for(i=0;i<NX-1;i++)fanIdx.push(NX,i,i+1);
+  var fanGeo=new THREE.BufferGeometry();fanGeo.setAttribute('position',new THREE.BufferAttribute(fanPos,3));fanGeo.setIndex(fanIdx);
+  var fan=new THREE.Mesh(fanGeo,new THREE.MeshBasicMaterial({transparent:true,opacity:.13,side:THREE.DoubleSide,depthWrite:false}));fan.frustumCulled=false;scene.add(fan);
+  var beamGeo=new THREE.BoxGeometry(3.9,.07,.12),beam=new THREE.Mesh(beamGeo,new THREE.MeshBasicMaterial());beam.position.set(0,1.62,0);scene.add(beam);
+  var beamEdges=new THREE.LineSegments(new THREE.EdgesGeometry(beamGeo),new THREE.LineBasicMaterial());beam.add(beamEdges);
+  var head=new THREE.Mesh(new THREE.BoxGeometry(.22,.14,.2),new THREE.MeshBasicMaterial());head.position.set(0,-.1,0);beam.add(head);
+
+  function sample(arr,m){var f=m/DX,i0=Math.floor(f),t=f-i0;i0=clamp(i0,0,N-2);return arr[i0]*(1-t)+arr[i0+1]*t;}
+  var VS=.02;
+  function build(){
+    var c=scanC;
+    for(var j=0;j<NZ;j++){var z=Z0-j*LEN/(NZ-1),m=clamp(c-z,0,SL),hl=sample(hL,m),hr=sample(hR,m),rl=sample(rL,m),rr=sample(rR,m);
+      for(var i=0;i<NX;i++){var v=j*NX+i,t=tL[i],base=hr*(1-t)+hl*t,rut=-rl*wl[i]-rr*wr[i]+.28*(rl*bl[i]+rr*br[i]);
+        pos[v*3+1]=(base+rut)*VS;rutA[v]=Math.max(rl*wl[i],rr*wr[i])/18;chA[v]=m;}}
+    geo.attributes.position.needsUpdate=true;geo.attributes.aRut.needsUpdate=true;geo.attributes.aChain.needsUpdate=true;
+    var apexY=1.55;
+    for(var i2=0;i2<NX;i2++){var v2=rowS*NX+i2;linePos[i2*3]=pos[v2*3];linePos[i2*3+1]=pos[v2*3+1]+.012;linePos[i2*3+2]=0;fanPos[i2*3]=pos[v2*3]*.98;fanPos[i2*3+1]=pos[v2*3+1]+.01;fanPos[i2*3+2]=0;}
+    fanPos[NX*3]=0;fanPos[NX*3+1]=apexY;fanPos[NX*3+2]=0;
+    lineGeo.attributes.position.needsUpdate=true;fanGeo.attributes.position.needsUpdate=true;
+  }
+  function theme(){mat.uniforms.uBase.value.copy(col('--scan-base'));mat.uniforms.uMeas.value.copy(col('--scan-meas'));mat.uniforms.uAmber.value.copy(col('--amber'));mat.uniforms.uGrid.value.copy(col('--scan-grid'));
+    var amb=col('--amber'),ink=col('--fig-edge'),face=col('--fig-face');scanLine.material.color.copy(amb);fan.material.color.copy(amb);beam.material.color.copy(face);beamEdges.material.color.copy(ink);head.material.color.copy(ink);}
+  var o={az:.62,el:.4,dist:14.5,minEl:.12,maxEl:1.1,minAz:-.4,maxAz:1.3,vaz:0},target=new THREE.Vector3(0,0,-3.5);
+  function resize(){var r=stage.getBoundingClientRect();R.setSize(Math.max(1,r.width),Math.max(1,r.height),false);cam.aspect=r.width/Math.max(1,r.height);cam.updateProjectionMatrix();}
+  orbit(stage,o,function(){S.dirty=true;kick();});
+  var lastBuilt=-1,hudT=0;
+  var S={dirty:true,resize:resize,theme:theme,
+    onShow:function(){if(!REDUCED&&!scanUserPaused&&!scanPlaying){scanPlaying=true;playUI();}},
+    step:function(dt){
+      var anim=false;
+      if(scanPlaying){scanC+=dt*6;if(scanC>270)scanC=10;anim=true;hudT+=dt;if(hudT>.1){hudT=0;hudUpdate();drawChart();}}
+      if(inertia(o))anim=true;
+      if(!anim&&!S.dirty)return false;
+      if(scanC!==lastBuilt){build();lastBuilt=scanC;}
+      placeCam(cam,o,target);R.render(scene,cam);
+      if(!stage.classList.contains('gl'))stage.classList.add('gl');
+      S.dirty=false;return anim;
+    }};
+  theme();resize();build();
+  fig2=S;watch(S,stage);
+}
+
+/* =====================================================================
+   FIG 3 — micro surfacing application sequence
+   ===================================================================== */
+var MS_STEPS=[
+  {t0:0,text:'Mevcut yüzey: tekerlek izi çukurlaşması, çatlaklar ve agrega kaybı tespit edilir (amber). Uygulama kararı bu tespitten sonra verilir.'},
+  {t0:3.5,text:'Yüzey hazırlığı: kaplama temizlenir; serme öncesi gerekli ön işlemler yapılır.'},
+  {t0:5.5,text:'Karışım, serme kutusuyla şerit genişliğinde yayılır. Tekerlek izi çukurlaşmaları doldurulur, çatlaklar kapanır.'},
+  {t0:13.5,text:'Kür ve trafiğe açılış: yeni, ince bir aşınma yüzeyi oluşur. Taşıyıcı tabakalar değişmez.'}
+];
+var MS_T=17,msT=9.4,msPlaying=false,msUserPaused=false,fig3=null;
+var msPlay=$('#ms-play'),msSteps=$$('#ms-steps button'),msText=$('#ms-text');
+function msStepOf(t){for(var i=MS_STEPS.length-1;i>=0;i--)if(t>=MS_STEPS[i].t0)return i;return 0;}
+var msLastStep=-1;
+function msUI(){var s=msStepOf(msT);if(s!==msLastStep){msLastStep=s;msSteps.forEach(function(b){if(+b.getAttribute('data-step')===s)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});msText.textContent=MS_STEPS[s].text;}}
+function msPlayUI(){msPlay.setAttribute('aria-pressed',msPlaying?'true':'false');$('#ms-play-ic').textContent=msPlaying?'❚❚':'▶';$('#ms-play-t').textContent=msPlaying?'Duraklat':'Oynat';}
+msPlay.addEventListener('click',function(){msPlaying=!msPlaying;msUserPaused=!msPlaying;if(msPlaying&&msT>=MS_T-.05)msT=0;msPlayUI();kick();});
+msSteps.forEach(function(b){b.addEventListener('click',function(){var s=+b.getAttribute('data-step');msT=s===2?(REDUCED?9.4:MS_STEPS[2].t0):s===3?15.5:MS_STEPS[s].t0+(s===0?1.4:0);msUI();if(fig3){fig3.dirty=true;kick();}});});
+msUI();
+
+function initFig3(){
+  var stage=$('#ms-stage'),canvas=$('canvas',stage),R=makeRenderer(canvas);
+  if(!R){stage.classList.add('nogl');return;}
+  var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(30,2,.1,100);
+  scene.add(new THREE.AmbientLight(0xffffff,.74));var dl=new THREE.DirectionalLight(0xffffff,.42);dl.position.set(-4,8,6);scene.add(dl);
+  var NX=193,NZ=57,LX=12,LZ=3.6,nv=NX*NZ;
+  function gs(u,s){return Math.exp(-u*u/(s*s));}
+  function oldH(x,z){return -.065*(gs(z-.9,.34)*(.75+.25*Math.sin(x*.7))+gs(z+.9,.34)*(.55+.25*Math.sin(x*.5+1)))+.017*(gs(z-1.42,.18)+gs(z-.38,.18)+gs(z+.38,.18)+gs(z+1.42,.18))+.008*Math.sin(x*1.3+z*.7)+.004*Math.sin(x*4.1);}
+  function rutN(x,z){return Math.max(gs(z-.9,.34)*(.75+.25*Math.sin(x*.7)),gs(z+.9,.34)*(.55+.25*Math.sin(x*.5+1)));}
+  var TH=.03;function newH(x,z){return Math.max(oldH(x,z),-.004)+TH;}
+  function grid(fn,withRut){var p=new Float32Array(nv*3),ra=new Float32Array(nv),ix=[];
+    for(var j=0;j<NZ;j++)for(var i=0;i<NX;i++){var v=j*NX+i,x=-LX/2+i*LX/(NX-1),z=-LZ/2+j*LZ/(NZ-1);p[v*3]=x;p[v*3+1]=fn(x,z);p[v*3+2]=z;ra[v]=rutN(x,z);}
+    for(j=0;j<NZ-1;j++)for(i=0;i<NX-1;i++){var a=j*NX+i,b=a+1,c=a+NX,d=c+1;ix.push(a,c,b,b,c,d);}
+    var g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(p,3));g.setAttribute('aRut',new THREE.BufferAttribute(ra,1));g.setIndex(ix);return g;}
+  var VSH='attribute float aRut;varying vec3 vP;varying float vRut;void main(){vP=position;vRut=aRut;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}';
+  var oldMat=new THREE.ShaderMaterial({uniforms:{uAsph:{value:new THREE.Color()},uCrack:{value:new THREE.Color()},uAmber:{value:new THREE.Color()},uMark:{value:0}},
+    vertexShader:VSH,
+    fragmentShader:GLSL_LIGHT+'uniform vec3 uAsph;uniform vec3 uCrack;uniform vec3 uAmber;uniform float uMark;varying vec3 vP;varying float vRut;\n'+
+      'vec2 h2(vec2 p){p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3)));return fract(sin(p)*43758.5453);}\n'+
+      'float vor(vec2 x){vec2 n=floor(x),f=fract(x),mg,mr;float md=8.0;for(int j=-1;j<=1;j++)for(int i=-1;i<=1;i++){vec2 g=vec2(float(i),float(j));vec2 r=g+h2(n+g)-f;float d=dot(r,r);if(d<md){md=d;mr=r;mg=g;}}\n'+
+      'md=8.0;for(int j=-2;j<=2;j++)for(int i=-2;i<=2;i++){vec2 g=mg+vec2(float(i),float(j));vec2 r=g+h2(n+g)-f;if(dot(mr-r,mr-r)>0.00001)md=min(md,dot(0.5*(mr+r),normalize(r-mr)));}return md;}\n'+
+      'void main(){vec3 n=nrm(vP);float lit=0.55+0.45*max(dot(n,normalize(vec3(-0.3,1.0,0.5))),0.0);vec2 q=vP.xz;\n'+
+      'float wp=clamp(exp(-pow((q.y-0.9)/0.3,2.0))+exp(-pow((q.y+0.9)/0.3,2.0)),0.0,1.0)*clamp(0.35+0.9*sin(q.x*0.8+1.3)*sin(q.x*0.31+0.4)+0.3,0.0,1.0);\n'+
+      'float e=vor(q*vec2(2.3,2.9));float fw=fwidth(e);float crack=(1.0-smoothstep(0.012,0.012+fw*1.5+0.02,e))*wp;\n'+
+      'float lc=(1.0-smoothstep(0.006,0.02,abs(q.y-0.05-0.03*sin(q.x*2.3))))*step(-3.0,q.x)*step(q.x,4.5);crack=max(crack,lc);\n'+
+      'float sp=hash1(floor(q*60.0));float rav=step(0.93,hash1(floor(q*22.0)))*wp;\n'+
+      'vec3 c=uAsph*lit*(0.88+0.24*sp);c=mix(c,uCrack,max(crack*0.92,rav*0.5));\n'+
+      'float mk=max(crack,smoothstep(0.35,0.85,vRut)*0.55);c=mix(c,mix(c,uAmber,mk),uMark);gl_FragColor=vec4(c,1.0);}',
+    extensions:{derivatives:true}});
+  var newMat=new THREE.ShaderMaterial({uniforms:{uNew:{value:new THREE.Color()},uAmber:{value:new THREE.Color()},uFront:{value:-7}},
+    vertexShader:VSH,
+    fragmentShader:GLSL_LIGHT+'uniform vec3 uNew;uniform vec3 uAmber;uniform float uFront;varying vec3 vP;varying float vRut;\n'+
+      'void main(){if(vP.x>uFront)discard;vec3 n=nrm(vP);float lit=0.6+0.4*max(dot(n,normalize(vec3(-0.3,1.0,0.5))),0.0);float sp=hash1(floor(vP.xz*90.0));\n'+
+      'vec3 c=uNew*lit*(0.8+0.4*sp)+vec3(0.03)*sp;float edge=1.0-smoothstep(0.0,0.1,uFront-vP.x);c=mix(c,uAmber,edge*0.9);gl_FragColor=vec4(c,1.0);}',
+    extensions:{derivatives:true}});
+  var oldMesh=new THREE.Mesh(grid(oldH),oldMat),newMesh=new THREE.Mesh(grid(newH),newMat);scene.add(oldMesh,newMesh);
+  // cut faces (front edge z=+LZ/2, end edge x=+LX/2)
+  var hatchTex=null,skirtMat=new THREE.MeshLambertMaterial({color:0xffffff,side:THREE.DoubleSide}),BOT=-.34;
+  function skirt(pts,top,bot){var n=pts.length,p=new Float32Array(n*2*3),uv=new Float32Array(n*2*2),ix=[],s=0;
+    for(var k=0;k<n;k++){var x=pts[k][0],z=pts[k][1];if(k)s+=Math.hypot(x-pts[k-1][0],z-pts[k-1][1]);var yt=top(x,z),yb=bot(x,z);
+      p.set([x,yt,z,x,yb,z],k*6);uv.set([s,yt,s,yb],k*4);if(k)ix.push((k-1)*2,(k-1)*2+1,k*2,k*2,(k-1)*2+1,k*2+1);}
+    var g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(p,3));g.setAttribute('uv',new THREE.BufferAttribute(uv,2));g.setAttribute('aRut',new THREE.BufferAttribute(new Float32Array(n*2),1));g.setIndex(ix);g.computeVertexNormals();return g;}
+  var front=[],end=[];for(var k=0;k<NX;k++)front.push([-LX/2+k*LX/(NX-1),LZ/2]);for(k=0;k<NZ;k++)end.push([LX/2,LZ/2-k*LZ/(NZ-1)]);
+  var fb=function(){return BOT;};
+  scene.add(new THREE.Mesh(skirt(front,oldH,fb),skirtMat),new THREE.Mesh(skirt(end,oldH,fb),skirtMat));
+  var newSkirtMat=newMat.clone();newSkirtMat.uniforms=newMat.uniforms; // share uniforms
+  newSkirtMat.side=THREE.DoubleSide;
+  scene.add(new THREE.Mesh(skirt(front,newH,oldH),newSkirtMat),new THREE.Mesh(skirt(end,newH,oldH),newSkirtMat));
+  var edgeMat=new THREE.LineBasicMaterial();
+  function edgeLine(pts,fn){return new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts.map(function(q){return new THREE.Vector3(q[0],fn(q[0],q[1]),q[1]);})),edgeMat);}
+  scene.add(edgeLine(front,fb),edgeLine(end,fb));
+  // spreader box
+  var spr=new THREE.Group(),sprMat=new THREE.MeshLambertMaterial(),sprInk=new THREE.LineBasicMaterial();
+  function part(w,h,d,x,y,z,m){var g=new THREE.BoxGeometry(w,h,d),me=new THREE.Mesh(g,m||sprMat);me.position.set(x,y,z);me.add(new THREE.LineSegments(new THREE.EdgesGeometry(g),sprInk));spr.add(me);return me;}
+  part(.62,.4,3.92,.36,.24,0);part(.46,.3,3.5,.5,.6,0);part(1.0,.12,.07,.4,.1,1.99);part(1.0,.12,.07,.4,.1,-1.99);
+  var strike=part(.05,.07,3.86,.03,.05,0,new THREE.MeshLambertMaterial());
+  scene.add(spr);
+  function theme(){
+    oldMat.uniforms.uAsph.value.copy(col('--asph-old'));oldMat.uniforms.uCrack.value.copy(col('--crack'));oldMat.uniforms.uAmber.value.copy(col('--amber'));
+    newMat.uniforms.uNew.value.copy(col('--asph-new'));newMat.uniforms.uAmber.value.copy(col('--amber'));
+    if(hatchTex)hatchTex.dispose();hatchTex=tex(hatchCanvas('asph',cssv('--fig-face'),cssv('--fig-hatch')),R);hatchTex.repeat.set(1/.8,1/.8);skirtMat.map=hatchTex;skirtMat.needsUpdate=true;
+    edgeMat.color.copy(col('--fig-edge'));sprMat.color.copy(col('--fig-face'));sprInk.color.copy(col('--fig-edge'));strike.material.color.copy(col('--fig-edge'));
+  }
+  var o={az:.36,el:.5,dist:12.6,minEl:.15,maxEl:1.15,minAz:-.9,maxAz:1.2,vaz:0},target=new THREE.Vector3(.2,-.1,0);
+  function resize(){var r=stage.getBoundingClientRect();R.setSize(Math.max(1,r.width),Math.max(1,r.height),false);cam.aspect=r.width/Math.max(1,r.height);
+    o.dist=cam.aspect<1.7?14.5:12.6;cam.updateProjectionMatrix();}
+  function apply(){
+    var t=msT,f,mark=0,sx;
+    if(t<3.5){f=-7;mark=clamp(t/1.0,0,1);}
+    else if(t<5.5){f=-7;mark=1-clamp((t-3.5)/1.6,0,1);}
+    else if(t<13.5){f=-6.25+(t-5.5)/8*12.5;}
+    else{f=6.4;}
+    newMat.uniforms.uFront.value=f;oldMat.uniforms.uMark.value=mark;
+    sx=t<5.5?-6.75:t<13.5?f:6.25+(t-13.5)*.9;
+    spr.position.x=sx;spr.visible=t>=4.8&&sx<7.2;
+  }
+  orbit(stage,o,function(){S.dirty=true;kick();});
+  var S={dirty:true,resize:resize,theme:theme,
+    onShow:function(){if(!REDUCED&&!msUserPaused&&!msPlaying){msPlaying=true;msPlayUI();}},
+    step:function(dt){
+      var anim=false;
+      if(msPlaying){msT+=dt;if(msT>=MS_T)msT=0;anim=true;msUI();}
+      if(inertia(o))anim=true;
+      if(!anim&&!S.dirty)return false;
+      apply();placeCam(cam,o,target);R.render(scene,cam);
+      if(!stage.classList.contains('gl'))stage.classList.add('gl');
+      S.dirty=false;return anim;
+    }};
+  theme();resize();apply();
+  fig3=S;watch(S,stage);
+}
+
+/* ---------- boot: text first, WebGL after first paint ---------- */
+function boot(){
+  try{initFig1();}catch(e){console.error(e);xsStage.classList.add('nogl');}
+  try{initFig2();}catch(e){console.error(e);$('#scan-stage').classList.add('nogl');}
+  try{initFig3();}catch(e){console.error(e);$('#ms-stage').classList.add('nogl');}
+  kick();
+}
+if(!HAS3){['#xs-stage','#scan-stage','#ms-stage'].forEach(function(s){$(s).classList.add('nogl');});}
+else requestAnimationFrame(function(){setTimeout(boot,30);});
+if(mqReduce.addEventListener)mqReduce.addEventListener('change',function(e){REDUCED=e.matches;if(REDUCED){scanPlaying=false;msPlaying=false;playUI();msPlayUI();}});
+})();
+
+</script>
+</body>
+</html>
