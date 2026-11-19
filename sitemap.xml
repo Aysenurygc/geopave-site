@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Every page of the preview, Stage 1 and Stage 2. URLs must be absolute and on the serving host:
+     if the site moves to its own domain, replace https://aysenurygc.github.io/geopave-site/ throughout. 404.html is deliberately excluded.
+     robots.txt currently disallows crawling, so this file documents the structure rather than feeding search engines. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://aysenurygc.github.io/geopave-site/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/kurumsal/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/kurumsal/biz-kimiz/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/kurumsal/ekibimiz/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/kurumsal/kalite-cevre-ve-surecler/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/kurumsal/sertifikalar/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/kurumsal/insan-kaynaklari/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/yol-ustyapi-muhendisligi/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/geoteknik-ve-temel-muhendisligi/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/zemin-etutleri/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/kopru-muhendisligi/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/kalite-kontrol/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/arge-ve-urun-gelistirme/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/silindirle-sikistirilmis-beton/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/gecirimli-beton/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/hizmetler/brut-beton/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/urunler/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/urunler/yol-yuzey-olcum-ekipmanlari/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/urunler/asfalt-kimyasallari/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/urunler/emulsiyon-laboratuvar-cihazlari/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/urunler/asfalt-yama-sistemleri/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/urunler/mikro-yuzeyleme/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/urunler/asfalt-kimyasallari/impact-7000/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/urunler/asfalt-yama-sistemleri/american-road-patch/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/referanslar/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/temsilcilik/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/iletisim/</loc></url>
+  <url><loc>https://aysenurygc.github.io/geopave-site/en/</loc></url>
+</urlset>
